@@ -143,10 +143,10 @@ export default function CvCover() {
               ))}
             </Block>
 
-            <Block title="Ciberseguridad Web">
-              <Typography variant="body2">
-                OWASP Top 10 · ZAP · Wireshark · Burp Suite · Nmap · Fortify
-              </Typography>
+            <Block title="Cloud">
+              {["Vercel", "Render", "AWS"].map((s) => (
+                <SkillChip key={s} label={s} />
+              ))}
             </Block>
 
             <Block title="Bases de Datos">
