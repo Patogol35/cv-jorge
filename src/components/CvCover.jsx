@@ -87,8 +87,8 @@ export default function CvCover() {
                 Santamaría Cherrez
               </Typography>
               <Typography variant="body2" sx={{ mt: 1, opacity: 0.9 }}>
-                Ingeniero de Software <br />
-                Desarrollador Full Stack
+                Máster en Ingeniería de Software<br />
+                y Sistemas Informáticos 
               </Typography>
             </Box>
 
@@ -103,10 +103,10 @@ export default function CvCover() {
             <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.3)" }} />
 
             <Stack direction="row" spacing={1}>
-              <Social icon={<LinkedInIcon />} url="https://www.linkedin.com" />
+              <Social icon={<LinkedInIcon />} url="https://www.linkedin.com/in/jorge-patricio-santamaría-cherrez-2a73792b2" />
               <Social icon={<GitHubIcon />} url="https://github.com/Patogol35" />
-              <Social icon={<FacebookIcon />} url="https://facebook.com" />
-              <Social icon={<InstagramIcon />} url="https://instagram.com" />
+              <Social icon={<FacebookIcon />} url="https://www.facebook.com/share/1C9RgHAPvL/" />
+              <Social icon={<InstagramIcon />} url="https://www.instagram.com/jorge_patricio_26" />
             </Stack>
 
             {/* QR */}
@@ -176,8 +176,8 @@ export default function CvCover() {
           <Section title="Experiencia Profesional">
             <Item
               icon={<WorkIcon color="primary" />}
-              title="Docente de Tecnologías de la Información"
-              desc="Docencia en programación y desarrollo de software."
+              title="Docente de Informática"
+              desc="Docencia de Sistemas para formación artesanal."
             />
             <Item
               icon={<WorkIcon color="primary" />}
