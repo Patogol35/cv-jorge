@@ -63,7 +63,6 @@ export default function CvCover() {
         >
           <Stack spacing={3} alignItems="center">
 
-            {/* AVATAR */}
             <Avatar
               src="https://res.cloudinary.com/dqkwc0kf7/image/upload/v1757093856/FB_IMG_1757092624480_hgpu4i.jpg"
               sx={{
@@ -73,7 +72,6 @@ export default function CvCover() {
               }}
             />
 
-            {/* NOMBRE */}
             <Box textAlign="center">
               <Typography variant="h6" fontWeight={800}>
                 Jorge Patricio
@@ -90,7 +88,6 @@ export default function CvCover() {
 
             <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.3)" }} />
 
-            {/* CONTACTO */}
             <Stack spacing={1} width="100%">
               <ContactItem
                 icon={<EmailIcon />}
@@ -109,7 +106,6 @@ export default function CvCover() {
 
             <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.3)" }} />
 
-            {/* REDES */}
             <Stack direction="row" spacing={1}>
               <Social
                 icon={<LinkedInIcon />}
@@ -129,14 +125,9 @@ export default function CvCover() {
               />
             </Stack>
 
-            {/* QR LOCAL */}
+            {/* QR */}
             <Box sx={{ mt: 2, bgcolor: "#fff", p: 1.5, borderRadius: 2 }}>
-              <img
-                src="/qr-cv.png"
-                alt="QR CV"
-                width={120}
-                height={120}
-              />
+              <img src="/qr-cv.png" alt="QR CV" width={120} height={120} />
               <Typography
                 variant="caption"
                 color="text.secondary"
@@ -147,7 +138,6 @@ export default function CvCover() {
                 CV Online
               </Typography>
             </Box>
-
           </Stack>
         </Grid>
 
@@ -157,13 +147,13 @@ export default function CvCover() {
           xs={12}
           md={8}
           sx={{
-            px: { xs: 3, md: 4 },
+            pl: { xs: 3, md: 3 },
+            pr: { xs: 2, md: 1 }, // 👈 AQUÍ se elimina el espacio feo
             py: { xs: 4, md: 5 },
             bgcolor: "#fafafa",
           }}
         >
 
-          {/* CONOCIMIENTOS */}
           <Section title="Áreas de Conocimiento">
             <Block title="Desarrollo Web Full Stack">
               {[
@@ -193,7 +183,6 @@ export default function CvCover() {
             </Block>
           </Section>
 
-          {/* EXPERIENCIA */}
           <Section title="Experiencia Profesional">
             <ExperienceItem
               title="Docente de Tecnologías de la Información"
@@ -209,7 +198,6 @@ export default function CvCover() {
             />
           </Section>
 
-          {/* FORMACIÓN */}
           <Section title="Formación Académica">
             <EducationItem
               title="Universidad Internacional de La Rioja (UNIR)"
@@ -241,12 +229,7 @@ const ContactItem = ({ icon, text }) => (
 
 const Social = ({ icon, url }) => (
   <Tooltip title={url}>
-    <IconButton
-      href={url}
-      target="_blank"
-      rel="noopener noreferrer"
-      sx={{ color: "#fff" }}
-    >
+    <IconButton href={url} target="_blank" sx={{ color: "#fff" }}>
       {icon}
     </IconButton>
   </Tooltip>
