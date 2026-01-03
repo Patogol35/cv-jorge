@@ -1,4 +1,4 @@
-                                    import {
+import {
   Box,
   Paper,
   Typography,
@@ -17,17 +17,19 @@ import SchoolIcon from "@mui/icons-material/School";
 import WorkIcon from "@mui/icons-material/Work";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import InstagramIcon from "@mui/icons-material/Instagram";
 
 /* =========================
 SKILL CHIP
 ========================= */
-const Skill = ({ label }) => (
+const SkillChip = ({ label }) => (
   <Chip
     label={label}
     size="small"
     sx={{
-      bgcolor: "#eef4ff",
-      color: "#1e3a8a",
+      bgcolor: "#e3f2fd",
+      color: "#0d47a1",
       fontWeight: 600,
       borderRadius: "6px",
       height: 26,
@@ -44,13 +46,14 @@ export default function CvCover() {
         display: "flex",
         justifyContent: "center",
         py: 4,
+        overflowX: "hidden",
       }}
     >
       <Paper
         elevation={8}
         sx={{
           width: "100%",
-          maxWidth: 900,
+          maxWidth: 980,
           borderRadius: 3,
           overflow: "hidden",
           display: "flex",
@@ -59,10 +62,10 @@ export default function CvCover() {
         {/* ================= SIDEBAR ================= */}
         <Box
           sx={{
-            width: 280,
-            bgcolor: "#0f172a",
+            width: 300,
+            bgcolor: "#0d47a1",
             color: "#fff",
-            p: 3,
+            p: 4,
             flexShrink: 0,
           }}
         >
@@ -70,8 +73,8 @@ export default function CvCover() {
             <Avatar
               src="https://res.cloudinary.com/dqkwc0kf7/image/upload/v1757093856/FB_IMG_1757092624480_hgpu4i.jpg"
               sx={{
-                width: 130,
-                height: 130,
+                width: 140,
+                height: 140,
                 border: "3px solid #fff",
               }}
             />
@@ -83,66 +86,106 @@ export default function CvCover() {
               <Typography fontWeight={800} fontSize={18}>
                 Santamaría Cherrez
               </Typography>
-              <Typography variant="body2" sx={{ opacity: 0.85, mt: 1 }}>
+              <Typography variant="body2" sx={{ mt: 1, opacity: 0.9 }}>
                 Ingeniero de Software <br />
-                Full Stack Developer
+                Desarrollador Full Stack
               </Typography>
             </Box>
 
-            <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.2)" }} />
+            <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.3)" }} />
 
             <Stack spacing={1} width="100%">
-              <Info icon={<EmailIcon />} text="patogol3535@gmail.com" />
-              <Info icon={<WhatsAppIcon />} text="0997979099" />
-              <Info icon={<LocationOnIcon />} text="Ambato, Ecuador" />
+              <Contact icon={<EmailIcon />} text="patogol3535@gmail.com" />
+              <Contact icon={<WhatsAppIcon />} text="0997979099" />
+              <Contact icon={<LocationOnIcon />} text="Ambato, Ecuador" />
             </Stack>
 
-            <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.2)" }} />
+            <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.3)" }} />
 
             <Stack direction="row" spacing={1}>
-              <Social icon={<LinkedInIcon />} />
-              <Social icon={<GitHubIcon />} />
+              <Social icon={<LinkedInIcon />} url="https://www.linkedin.com" />
+              <Social icon={<GitHubIcon />} url="https://github.com/Patogol35" />
+              <Social icon={<FacebookIcon />} url="https://facebook.com" />
+              <Social icon={<InstagramIcon />} url="https://instagram.com" />
             </Stack>
+
+            {/* QR */}
+            <Box
+              sx={{
+                mt: 2,
+                bgcolor: "#fff",
+                p: 1.5,
+                borderRadius: 2,
+                textAlign: "center",
+              }}
+            >
+              <Box
+                component="img"
+                src="/qr-cv.png"
+                alt="QR CV"
+                sx={{
+                  width: 120,
+                  height: 120,
+                  display: "block",
+                  mx: "auto",
+                }}
+              />
+              <Typography variant="caption" color="text.secondary" mt={1}>
+                CV Online
+              </Typography>
+            </Box>
           </Stack>
         </Box>
 
         {/* ================= CONTENT ================= */}
         <Box sx={{ flex: 1, p: 4, bgcolor: "#ffffff" }}>
           <Section title="Áreas de Conocimiento">
-            <Sub title="Desarrollo Full Stack">
+            <Block title="Desarrollo Web Full Stack">
               {[
+                "PHP",
                 "JavaScript",
                 "React",
                 "Java",
                 "Spring Boot",
-                "PHP",
+                "MySQL",
+                "Postman",
+                "Vercel",
+              ].map((s) => (
+                <SkillChip key={s} label={s} />
+              ))}
+            </Block>
+
+            <Block title="Cloud">
+              {["Vercel", "Render", "AWS"].map((s) => (
+                <SkillChip key={s} label={s} />
+              ))}
+            </Block>
+
+            <Block title="Bases de Datos">
+              {[
                 "MySQL",
                 "PostgreSQL",
+                "MongoDB",
+                "Elasticsearch",
               ].map((s) => (
-                <Skill key={s} label={s} />
+                <SkillChip key={s} label={s} />
               ))}
-            </Sub>
-
-            <Sub title="Cloud & Tools">
-              {["AWS", "Vercel", "Render", "Postman"].map((s) => (
-                <Skill key={s} label={s} />
-              ))}
-            </Sub>
+            </Block>
           </Section>
 
           <Section title="Experiencia Profesional">
             <Item
-              icon={<WorkIcon />}
+              icon={<WorkIcon color="primary" />}
               title="Docente de Tecnologías de la Información"
-              desc="Formación en programación, desarrollo web y software."
+              desc="Docencia en programación y desarrollo de software."
             />
             <Item
-              icon={<WorkIcon />}
+              icon={<WorkIcon color="primary" />}
               title="Desarrollador de Intranet"
-              desc="Sistemas internos para gestión académica y administrativa."
+              desc="Desarrollo de intranet para gestión interna."
             />
             <Item
-              icon={<WorkIcon />}
+              icon={<WorkIcon color="primary" />}
               title="Desarrollador de Aulas Virtuales"
               desc="Implementación de plataformas educativas virtuales."
             />
@@ -150,12 +193,12 @@ export default function CvCover() {
 
           <Section title="Formación Académica">
             <Item
-              icon={<SchoolIcon />}
+              icon={<SchoolIcon color="primary" />}
               title="Universidad Internacional de La Rioja (UNIR)"
-              desc="Maestría en Ingeniería de Software · 2023 – 2024"
+              desc="Maestría en Ingeniería de Software y Sistemas Informáticos · mar. 2023 – abr. 2024"
             />
             <Item
-              icon={<SchoolIcon />}
+              icon={<SchoolIcon color="primary" />}
               title="Universidad Indoamérica"
               desc="Ingeniería de Sistemas"
             />
@@ -170,16 +213,18 @@ export default function CvCover() {
 SUB COMPONENTS
 ========================= */
 
-const Info = ({ icon, text }) => (
-  <Stack direction="row" spacing={1} alignItems="center">
+const Contact = ({ icon, text }) => (
+  <Stack direction="row" spacing={1.5} alignItems="center">
     {icon}
     <Typography variant="body2">{text}</Typography>
   </Stack>
 );
 
-const Social = ({ icon }) => (
-  <Tooltip title="Perfil">
-    <IconButton sx={{ color: "#fff" }}>{icon}</IconButton>
+const Social = ({ icon, url }) => (
+  <Tooltip title={url}>
+    <IconButton href={url} target="_blank" sx={{ color: "#fff" }}>
+      {icon}
+    </IconButton>
   </Tooltip>
 );
 
@@ -193,7 +238,7 @@ const Section = ({ title, children }) => (
   </Box>
 );
 
-const Sub = ({ title, children }) => (
+const Block = ({ title, children }) => (
   <Box>
     <Typography fontWeight={700} mb={1}>
       {title}
