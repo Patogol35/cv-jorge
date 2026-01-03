@@ -58,6 +58,7 @@ export default function CvCover() {
           borderRadius: 3,
           overflow: "hidden",
           display: "flex",
+          flexDirection: { xs: "column", md: "row" },
         }}
       >
         {/* ================= SIDEBAR ================= */}
@@ -81,20 +82,13 @@ export default function CvCover() {
             />
 
             <Box textAlign="center">
-              <Typography fontWeight={800} fontSize={20} letterSpacing={0.5}>
+              <Typography fontWeight={800} fontSize={20}>
                 Jorge Patricio
               </Typography>
-              <Typography fontWeight={800} fontSize={20} letterSpacing={0.5}>
+              <Typography fontWeight={800} fontSize={20}>
                 Santamaría Cherrez
               </Typography>
-              <Typography
-                sx={{
-                  mt: 1,
-                  fontSize: 13,
-                  opacity: 0.9,
-                  lineHeight: 1.4,
-                }}
-              >
+              <Typography sx={{ mt: 1, fontSize: 13, opacity: 0.9 }}>
                 Máster en Ingeniería de Software
                 <br />
                 y Sistemas Informáticos
@@ -103,6 +97,7 @@ export default function CvCover() {
 
             <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.3)" }} />
 
+            {/* CONTACTO */}
             <Stack spacing={1} width="100%">
               <Contact icon={<EmailIcon />} text="patogol3535@gmail.com" />
               <Contact icon={<WhatsAppIcon />} text="0997979099" />
@@ -111,9 +106,12 @@ export default function CvCover() {
 
             <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.3)" }} />
 
-            {/* REDES */}
-            <Stack direction="row" spacing={1}>
-              <Social icon={<EmailIcon />} url="mailto:patogol3535@gmail.com" />
+            {/* ================= REDES (VERTICAL) ================= */}
+            <Stack spacing={1.2} alignItems="center">
+              <Social
+                icon={<EmailIcon />}
+                url="mailto:patogol3535@gmail.com"
+              />
               <Social
                 icon={<WhatsAppIcon />}
                 url="https://wa.me/593997979099"
@@ -122,7 +120,10 @@ export default function CvCover() {
                 icon={<LinkedInIcon />}
                 url="https://www.linkedin.com/in/jorge-patricio-santamaría-cherrez-2a73792b2"
               />
-              <Social icon={<GitHubIcon />} url="https://github.com/Patogol35" />
+              <Social
+                icon={<GitHubIcon />}
+                url="https://github.com/Patogol35"
+              />
               <Social
                 icon={<FacebookIcon />}
                 url="https://www.facebook.com/share/1C9RgHAPvL/"
@@ -133,7 +134,7 @@ export default function CvCover() {
               />
             </Stack>
 
-            {/* QR */}
+            {/* ================= QR ================= */}
             <Box
               sx={{
                 mt: 2,
@@ -147,12 +148,7 @@ export default function CvCover() {
                 component="img"
                 src="/qr-cv.png"
                 alt="QR CV"
-                sx={{
-                  width: 120,
-                  height: 120,
-                  display: "block",
-                  mx: "auto",
-                }}
+                sx={{ width: 120, height: 120, mx: "auto" }}
               />
               <Typography
                 sx={{
@@ -160,7 +156,6 @@ export default function CvCover() {
                   fontSize: 13,
                   fontWeight: 600,
                   color: "#0d47a1",
-                  letterSpacing: 0.6,
                   textTransform: "uppercase",
                 }}
               >
@@ -247,21 +242,21 @@ SUB COMPONENTS
 const Contact = ({ icon, text }) => (
   <Stack direction="row" spacing={1.5} alignItems="center">
     {icon}
-    <Typography
-      sx={{
-        fontSize: 13,
-        fontWeight: 500,
-        opacity: 0.95,
-      }}
-    >
-      {text}
-    </Typography>
+    <Typography sx={{ fontSize: 13, fontWeight: 500 }}>{text}</Typography>
   </Stack>
 );
 
 const Social = ({ icon, url }) => (
   <Tooltip title={url}>
-    <IconButton href={url} target="_blank" sx={{ color: "#fff" }}>
+    <IconButton
+      href={url}
+      target="_blank"
+      sx={{
+        color: "#fff",
+        transition: "0.3s",
+        "&:hover": { transform: "scale(1.15)", bgcolor: "rgba(255,255,255,.15)" },
+      }}
+    >
       {icon}
     </IconButton>
   </Tooltip>
@@ -269,14 +264,7 @@ const Social = ({ icon, url }) => (
 
 const Section = ({ title, children }) => (
   <Box mb={4}>
-    <Typography
-      sx={{
-        fontWeight: 800,
-        fontSize: 18,
-        letterSpacing: 0.8,
-        color: "#0d47a1",
-      }}
-    >
+    <Typography sx={{ fontWeight: 800, fontSize: 18, color: "#0d47a1" }}>
       {title}
     </Typography>
     <Divider sx={{ my: 1.5 }} />
@@ -300,13 +288,7 @@ const Item = ({ icon, title, desc }) => (
     {icon}
     <Box>
       <Typography fontWeight={700}>{title}</Typography>
-      <Typography
-        sx={{
-          fontSize: 13.5,
-          color: "#37474f",
-          lineHeight: 1.5,
-        }}
-      >
+      <Typography sx={{ fontSize: 13.5, color: "#37474f" }}>
         {desc}
       </Typography>
     </Box>
