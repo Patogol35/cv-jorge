@@ -185,7 +185,7 @@ export default function CvCover() {
 
 
             <Block title="Otras tecnologías">
-              {["Postman", "Microsoft Office", "Maquinas Virtuales", "Scrum"].map((s) => (
+              {["Postman", "Microsoft Office", "Maquinas Virtuales", "Scrum", "AnyDesk"].map((s) => (
                 <SkillChip key={s} label={s} />
               ))}
             </Block>
@@ -195,7 +195,7 @@ export default function CvCover() {
             <Item
               icon={<SchoolIcon color="primary" />}
               title="Universidad Internacional de La Rioja (UNIR)"
-              desc="Maestría en Ingeniería de Software y Sistemas Informáticos · 2023 – 2024"
+              desc="Maestría en Ingeniería de Software y Sistemas Informáticos"
             />
             <Item
               icon={<SchoolIcon color="primary" />}
