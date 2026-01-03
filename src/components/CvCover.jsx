@@ -34,6 +34,7 @@ const SkillChip = ({ label }) => (
       fontWeight: 600,
       borderRadius: "6px",
       height: 26,
+      mb: 0.5,
     }}
   />
 );
@@ -47,7 +48,7 @@ export default function CvCover() {
           maxWidth: 980,
           mx: "auto",
           borderRadius: 3,
-          overflow: "visible",
+          overflowX: "hidden", // 🔒 BLINDAJE REAL
         }}
       >
         <Grid
@@ -68,6 +69,7 @@ export default function CvCover() {
               p: 4,
               display: "flex",
               justifyContent: "center",
+              minWidth: 0, // 🔒 FIX FLEX
             }}
           >
             <Stack spacing={3} alignItems="center" width="100%">
@@ -127,9 +129,29 @@ export default function CvCover() {
                 <Social icon={<InstagramIcon />} url="https://instagram.com" />
               </Stack>
 
-              {/* QR */}
-              <Box sx={{ mt: 2, bgcolor: "#fff", p: 1.5, borderRadius: 2 }}>
-                <img src="/qr-cv.png" alt="QR CV" width={120} height={120} />
+              {/* ================= QR FIX DEFINITIVO ================= */}
+              <Box
+                sx={{
+                  mt: 2,
+                  bgcolor: "#fff",
+                  p: 1.5,
+                  borderRadius: 2,
+                  maxWidth: "100%",
+                  overflow: "hidden",
+                }}
+              >
+                <Box
+                  component="img"
+                  src="/qr-cv.png"
+                  alt="QR CV"
+                  sx={{
+                    width: 120,
+                    height: 120,
+                    maxWidth: "100%",
+                    display: "block",
+                    mx: "auto",
+                  }}
+                />
                 <Typography
                   variant="caption"
                   color="text.secondary"
@@ -152,6 +174,7 @@ export default function CvCover() {
               px: 4,
               py: 4,
               bgcolor: "#fafafa",
+              minWidth: 0, // 🔒 FIX FLEX
             }}
           >
             <Section title="Áreas de Conocimiento">
@@ -242,7 +265,7 @@ const Social = ({ icon, url }) => (
 
 const Section = ({ title, children }) => (
   <Box mb={4}>
-    <Typography variant="h6" fontWeight={800} sx={{ letterSpacing: 0.5 }}>
+    <Typography variant="h6" fontWeight={800} sx={{ letterSpacing: 0.4 }}>
       {title}
     </Typography>
     <Divider sx={{ my: 1.5 }} />
