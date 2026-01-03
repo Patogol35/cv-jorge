@@ -15,12 +15,11 @@ import EmailIcon from "@mui/icons-material/Email";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import SchoolIcon from "@mui/icons-material/School";
+import WorkIcon from "@mui/icons-material/Work";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
-
-const cvUrl = "https://jorge-santamaria.dev/cv";
 
 /* =========================
 SKILL CHIP
@@ -117,11 +116,10 @@ export default function CvCover() {
               />
             </Stack>
 
+            {/* QR LOCAL DESDE /public */}
             <Box sx={{ mt: 2, bgcolor: "#fff", p: 1.5, borderRadius: 2 }}>
               <img
-                src={`https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=${encodeURIComponent(
-                  cvUrl
-                )}`}
+                src="/qr-cv.png"
                 alt="QR CV"
                 width={120}
                 height={120}
@@ -136,12 +134,14 @@ export default function CvCover() {
                 CV Online
               </Typography>
             </Box>
+
           </Stack>
         </Grid>
 
         {/* ================= CONTENIDO ================= */}
         <Grid item xs={12} md={8} sx={{ p: 4, bgcolor: "#fafafa" }}>
 
+          {/* CONOCIMIENTOS */}
           <Section title="Áreas de Conocimiento">
 
             <Block title="Desarrollo Web Full Stack">
@@ -173,6 +173,19 @@ export default function CvCover() {
 
           </Section>
 
+          {/* EXPERIENCIA */}
+          <Section title="Experiencia Profesional">
+            <ExperienceItem
+              title="Docente de Instituto"
+              description="Impartición de asignaturas técnicas relacionadas con informática, programación y tecnologías de la información."
+            />
+            <ExperienceItem
+              title="Desarrollador de Intranet"
+              description="Desarrollo y mantenimiento de una intranet institucional para la gestión de procesos internos y usuarios."
+            />
+          </Section>
+
+          {/* FORMACIÓN */}
           <Section title="Formación Académica">
             <EducationItem
               title="Universidad Internacional de La Rioja (UNIR)"
@@ -247,6 +260,16 @@ const EducationItem = ({ title, subtitle, date }) => (
           {date}
         </Typography>
       )}
+    </Box>
+  </Box>
+);
+
+const ExperienceItem = ({ title, description }) => (
+  <Box display="flex" gap={2}>
+    <WorkIcon color="primary" />
+    <Box>
+      <Typography fontWeight={700}>{title}</Typography>
+      <Typography variant="body2">{description}</Typography>
     </Box>
   </Box>
 );
