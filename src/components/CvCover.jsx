@@ -14,7 +14,6 @@ import {
 import EmailIcon from "@mui/icons-material/Email";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
-import SchoolIcon from "@mui/icons-material/School";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -30,10 +29,10 @@ const SkillChip = ({ label }) => (
     label={label}
     size="small"
     sx={{
-      bgcolor: "rgba(25,118,210,.12)",
+      bgcolor: "rgba(25,118,210,.08)",
       color: "primary.main",
       fontWeight: 600,
-      borderRadius: 1.5,
+      borderRadius: 1,
     }}
   />
 );
@@ -41,7 +40,7 @@ const SkillChip = ({ label }) => (
 export default function CvCover() {
   return (
     <Paper
-      elevation={10}
+      elevation={8}
       sx={{
         borderRadius: 4,
         overflow: "hidden",
@@ -65,14 +64,14 @@ export default function CvCover() {
         >
           <Stack spacing={3} alignItems="center">
 
-            {/* AVATAR CON HALO */}
+            {/* AVATAR */}
             <Box
               sx={{
                 p: 0.5,
                 borderRadius: "50%",
                 background:
                   "radial-gradient(circle, rgba(255,255,255,.9), rgba(255,255,255,.1))",
-                boxShadow: "0 0 30px rgba(255,255,255,.5)",
+                boxShadow: "0 0 30px rgba(255,255,255,.4)",
               }}
             >
               <Avatar
@@ -87,16 +86,22 @@ export default function CvCover() {
 
             {/* NOMBRE */}
             <Box textAlign="center">
-              <Typography variant="h5" fontWeight={800}>
+              <Typography variant="h5" fontWeight={900} letterSpacing={0.5}>
                 Jorge Patricio
               </Typography>
-              <Typography variant="h6" fontWeight={700}>
+              <Typography variant="h6" fontWeight={800}>
                 Santamaría Cherrez
               </Typography>
 
-              <Typography variant="body2" sx={{ opacity: 0.9, mt: 1 }}>
-                Máster en Ingeniería de Software <br />
-                y Sistemas Informáticos
+              <Typography
+                variant="body2"
+                sx={{ opacity: 0.85, mt: 1, fontStyle: "italic" }}
+              >
+                Ingeniero de Software · Full Stack
+              </Typography>
+
+              <Typography variant="caption" sx={{ opacity: 0.8, mt: 0.5 }}>
+                Máster en Ingeniería de Software y Sistemas Informáticos
               </Typography>
             </Box>
 
@@ -119,7 +124,7 @@ export default function CvCover() {
               <Social icon={<GitHubIcon />} url="https://github.com/jorge-santamaria" />
             </Stack>
 
-            {/* QR SIN LIBRERÍA */}
+            {/* QR */}
             <Box
               sx={{
                 mt: 2,
@@ -150,7 +155,7 @@ export default function CvCover() {
         </Grid>
 
         {/* ================= CONTENIDO ================= */}
-        <Grid item xs={12} md={8} sx={{ p: 5, bgcolor: "#f5f7fa" }}>
+        <Grid item xs={12} md={8} sx={{ p: { xs: 3, md: 5 }, bgcolor: "#f4f6f8" }}>
 
           {/* ÁREAS */}
           <Section title="Áreas de Conocimiento">
@@ -205,9 +210,11 @@ SUB COMPONENTS
 ========================= */
 
 const ContactItem = ({ icon, text }) => (
-  <Stack direction="row" spacing={1} alignItems="center">
-    {icon}
-    <Typography variant="body2">{text}</Typography>
+  <Stack direction="row" spacing={1.5} alignItems="center">
+    <Box sx={{ opacity: 0.8 }}>{icon}</Box>
+    <Typography variant="body2" sx={{ opacity: 0.9 }}>
+      {text}
+    </Typography>
   </Stack>
 );
 
@@ -220,27 +227,39 @@ const Social = ({ icon, url }) => (
 );
 
 const Section = ({ title, children }) => (
-  <Box mb={5}>
-    <Typography variant="h5" fontWeight={800} gutterBottom>
+  <Box mb={6}>
+    <Typography
+      variant="overline"
+      sx={{ color: "primary.main", fontWeight: 700, letterSpacing: 1 }}
+    >
       {title}
     </Typography>
-    <Divider sx={{ mb: 3 }} />
+
+    <Divider sx={{ my: 2 }} />
+
     <Stack spacing={3}>{children}</Stack>
   </Box>
 );
 
 const CardBlock = ({ title, children }) => (
   <Paper
-    elevation={3}
+    elevation={0}
     sx={{
       p: 3,
       borderRadius: 3,
       bgcolor: "#fff",
+      border: "1px solid #e0e0e0",
+      transition: "all .3s",
+      "&:hover": {
+        boxShadow: "0 8px 24px rgba(0,0,0,.08)",
+        transform: "translateY(-2px)",
+      },
     }}
   >
     <Typography fontWeight={700} mb={1}>
       {title}
     </Typography>
+
     <Stack direction="row" spacing={1} flexWrap="wrap">
       {children}
     </Stack>
@@ -249,7 +268,34 @@ const CardBlock = ({ title, children }) => (
 
 const TimelineItem = ({ title, subtitle, date }) => (
   <Box display="flex" gap={2}>
-    <SchoolIcon color="primary" />
+    <Box
+      sx={{
+        width: 12,
+        position: "relative",
+        "&::before": {
+          content: '""',
+          position: "absolute",
+          top: 0,
+          left: "50%",
+          width: 2,
+          height: "100%",
+          bgcolor: "primary.main",
+          transform: "translateX(-50%)",
+        },
+      }}
+    >
+      <Box
+        sx={{
+          width: 10,
+          height: 10,
+          bgcolor: "primary.main",
+          borderRadius: "50%",
+          position: "relative",
+          zIndex: 1,
+        }}
+      />
+    </Box>
+
     <Box>
       <Typography fontWeight={700}>{title}</Typography>
       <Typography variant="body2">{subtitle}</Typography>
