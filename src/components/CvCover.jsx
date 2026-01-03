@@ -1,8 +1,7 @@
-import {
+                                    import {
   Box,
   Paper,
   Typography,
-  Grid,
   Divider,
   Stack,
   Avatar,
@@ -18,227 +17,150 @@ import SchoolIcon from "@mui/icons-material/School";
 import WorkIcon from "@mui/icons-material/Work";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import InstagramIcon from "@mui/icons-material/Instagram";
 
 /* =========================
 SKILL CHIP
 ========================= */
-const SkillChip = ({ label }) => (
+const Skill = ({ label }) => (
   <Chip
     label={label}
     size="small"
     sx={{
-      bgcolor: "#e3f2fd",
-      color: "#0d47a1",
+      bgcolor: "#eef4ff",
+      color: "#1e3a8a",
       fontWeight: 600,
       borderRadius: "6px",
       height: 26,
-      mb: 0.5,
     }}
   />
 );
 
 export default function CvCover() {
   return (
-    <Box sx={{ width: "100%", overflowX: "hidden", py: 4 }}>
+    <Box
+      sx={{
+        minHeight: "100vh",
+        bgcolor: "#f1f5f9",
+        display: "flex",
+        justifyContent: "center",
+        py: 4,
+      }}
+    >
       <Paper
-        elevation={6}
+        elevation={8}
         sx={{
-          maxWidth: 980,
-          mx: "auto",
+          width: "100%",
+          maxWidth: 900,
           borderRadius: 3,
-          overflowX: "hidden", // 🔒 BLINDAJE REAL
+          overflow: "hidden",
+          display: "flex",
         }}
       >
-        <Grid
-          container
-          spacing={0}
-          columnSpacing={0}
-          rowSpacing={0}
-          sx={{ width: "100%", m: 0 }}
+        {/* ================= SIDEBAR ================= */}
+        <Box
+          sx={{
+            width: 280,
+            bgcolor: "#0f172a",
+            color: "#fff",
+            p: 3,
+            flexShrink: 0,
+          }}
         >
-          {/* ================= SIDEBAR ================= */}
-          <Grid
-            item
-            xs={12}
-            md={4}
-            sx={{
-              bgcolor: "#0d47a1",
-              color: "#fff",
-              p: 4,
-              display: "flex",
-              justifyContent: "center",
-              minWidth: 0, // 🔒 FIX FLEX
-            }}
-          >
-            <Stack spacing={3} alignItems="center" width="100%">
-              <Avatar
-                src="https://res.cloudinary.com/dqkwc0kf7/image/upload/v1757093856/FB_IMG_1757092624480_hgpu4i.jpg"
-                sx={{
-                  width: 140,
-                  height: 140,
-                  border: "3px solid #fff",
-                }}
-              />
+          <Stack spacing={3} alignItems="center">
+            <Avatar
+              src="https://res.cloudinary.com/dqkwc0kf7/image/upload/v1757093856/FB_IMG_1757092624480_hgpu4i.jpg"
+              sx={{
+                width: 130,
+                height: 130,
+                border: "3px solid #fff",
+              }}
+            />
 
-              <Box textAlign="center">
-                <Typography variant="h6" fontWeight={800}>
-                  Jorge Patricio
-                </Typography>
-                <Typography variant="h6" fontWeight={800}>
-                  Santamaría Cherrez
-                </Typography>
+            <Box textAlign="center">
+              <Typography fontWeight={800} fontSize={18}>
+                Jorge Patricio
+              </Typography>
+              <Typography fontWeight={800} fontSize={18}>
+                Santamaría Cherrez
+              </Typography>
+              <Typography variant="body2" sx={{ opacity: 0.85, mt: 1 }}>
+                Ingeniero de Software <br />
+                Full Stack Developer
+              </Typography>
+            </Box>
 
-                <Typography variant="body2" sx={{ mt: 1, opacity: 0.9 }}>
-                  Ingeniero de Software <br />
-                  Desarrollador Full Stack
-                </Typography>
-              </Box>
+            <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.2)" }} />
 
-              <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.3)" }} />
-
-              <Stack spacing={1} width="100%">
-                <ContactItem
-                  icon={<EmailIcon />}
-                  text={
-                    <a
-                      href="mailto:patogol3535@gmail.com"
-                      style={{ color: "inherit", textDecoration: "none" }}
-                    >
-                      patogol3535@gmail.com
-                    </a>
-                  }
-                />
-                <ContactItem icon={<WhatsAppIcon />} text="0997979099" />
-                <ContactItem
-                  icon={<LocationOnIcon />}
-                  text="Ambato, Ecuador"
-                />
-              </Stack>
-
-              <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.3)" }} />
-
-              <Stack direction="row" spacing={1}>
-                <Social icon={<LinkedInIcon />} url="https://www.linkedin.com" />
-                <Social
-                  icon={<GitHubIcon />}
-                  url="https://github.com/Patogol35"
-                />
-                <Social icon={<FacebookIcon />} url="https://facebook.com" />
-                <Social icon={<InstagramIcon />} url="https://instagram.com" />
-              </Stack>
-
-              {/* ================= QR FIX DEFINITIVO ================= */}
-              <Box
-                sx={{
-                  mt: 2,
-                  bgcolor: "#fff",
-                  p: 1.5,
-                  borderRadius: 2,
-                  maxWidth: "100%",
-                  overflow: "hidden",
-                }}
-              >
-                <Box
-                  component="img"
-                  src="/qr-cv.png"
-                  alt="QR CV"
-                  sx={{
-                    width: 120,
-                    height: 120,
-                    maxWidth: "100%",
-                    display: "block",
-                    mx: "auto",
-                  }}
-                />
-                <Typography
-                  variant="caption"
-                  color="text.secondary"
-                  display="block"
-                  align="center"
-                  mt={1}
-                >
-                  CV Online
-                </Typography>
-              </Box>
+            <Stack spacing={1} width="100%">
+              <Info icon={<EmailIcon />} text="patogol3535@gmail.com" />
+              <Info icon={<WhatsAppIcon />} text="0997979099" />
+              <Info icon={<LocationOnIcon />} text="Ambato, Ecuador" />
             </Stack>
-          </Grid>
 
-          {/* ================= CONTENIDO ================= */}
-          <Grid
-            item
-            xs={12}
-            md={8}
-            sx={{
-              px: 4,
-              py: 4,
-              bgcolor: "#fafafa",
-              minWidth: 0, // 🔒 FIX FLEX
-            }}
-          >
-            <Section title="Áreas de Conocimiento">
-              <Block title="Desarrollo Web Full Stack">
-                {[
-                  "PHP",
-                  "JavaScript",
-                  "React",
-                  "Java",
-                  "Spring Boot",
-                  "MySQL",
-                  "Postman",
-                  "Vercel",
-                ].map((s) => (
-                  <SkillChip key={s} label={s} />
-                ))}
-              </Block>
+            <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.2)" }} />
 
-              <Block title="Cloud">
-                {["Vercel", "Render", "AWS"].map((s) => (
-                  <SkillChip key={s} label={s} />
-                ))}
-              </Block>
+            <Stack direction="row" spacing={1}>
+              <Social icon={<LinkedInIcon />} />
+              <Social icon={<GitHubIcon />} />
+            </Stack>
+          </Stack>
+        </Box>
 
-              <Block title="Bases de Datos">
-                {[
-                  "MySQL",
-                  "PostgreSQL",
-                  "MongoDB",
-                  "Elasticsearch",
-                ].map((s) => (
-                  <SkillChip key={s} label={s} />
-                ))}
-              </Block>
-            </Section>
+        {/* ================= CONTENT ================= */}
+        <Box sx={{ flex: 1, p: 4, bgcolor: "#ffffff" }}>
+          <Section title="Áreas de Conocimiento">
+            <Sub title="Desarrollo Full Stack">
+              {[
+                "JavaScript",
+                "React",
+                "Java",
+                "Spring Boot",
+                "PHP",
+                "MySQL",
+                "PostgreSQL",
+              ].map((s) => (
+                <Skill key={s} label={s} />
+              ))}
+            </Sub>
 
-            <Section title="Experiencia Profesional">
-              <ExperienceItem
-                title="Docente de Tecnologías de la Información"
-                description="Docencia en programación y desarrollo de software."
-              />
-              <ExperienceItem
-                title="Desarrollador de Intranet"
-                description="Desarrollo de intranet para gestión interna."
-              />
-              <ExperienceItem
-                title="Desarrollador de Aulas Virtuales"
-                description="Implementación de plataformas educativas virtuales."
-              />
-            </Section>
+            <Sub title="Cloud & Tools">
+              {["AWS", "Vercel", "Render", "Postman"].map((s) => (
+                <Skill key={s} label={s} />
+              ))}
+            </Sub>
+          </Section>
 
-            <Section title="Formación Académica">
-              <EducationItem
-                title="Universidad Internacional de La Rioja (UNIR)"
-                subtitle="Maestría en Ingeniería de Software y Sistemas Informáticos"
-                date="mar. 2023 – abr. 2024"
-              />
-              <EducationItem
-                title="Universidad Indoamérica"
-                subtitle="Ingeniería de Sistemas"
-              />
-            </Section>
-          </Grid>
-        </Grid>
+          <Section title="Experiencia Profesional">
+            <Item
+              icon={<WorkIcon />}
+              title="Docente de Tecnologías de la Información"
+              desc="Formación en programación, desarrollo web y software."
+            />
+            <Item
+              icon={<WorkIcon />}
+              title="Desarrollador de Intranet"
+              desc="Sistemas internos para gestión académica y administrativa."
+            />
+            <Item
+              icon={<WorkIcon />}
+              title="Desarrollador de Aulas Virtuales"
+              desc="Implementación de plataformas educativas virtuales."
+            />
+          </Section>
+
+          <Section title="Formación Académica">
+            <Item
+              icon={<SchoolIcon />}
+              title="Universidad Internacional de La Rioja (UNIR)"
+              desc="Maestría en Ingeniería de Software · 2023 – 2024"
+            />
+            <Item
+              icon={<SchoolIcon />}
+              title="Universidad Indoamérica"
+              desc="Ingeniería de Sistemas"
+            />
+          </Section>
+        </Box>
       </Paper>
     </Box>
   );
@@ -248,24 +170,22 @@ export default function CvCover() {
 SUB COMPONENTS
 ========================= */
 
-const ContactItem = ({ icon, text }) => (
-  <Stack direction="row" spacing={1.5} alignItems="center">
+const Info = ({ icon, text }) => (
+  <Stack direction="row" spacing={1} alignItems="center">
     {icon}
     <Typography variant="body2">{text}</Typography>
   </Stack>
 );
 
-const Social = ({ icon, url }) => (
-  <Tooltip title={url}>
-    <IconButton href={url} target="_blank" sx={{ color: "#fff" }}>
-      {icon}
-    </IconButton>
+const Social = ({ icon }) => (
+  <Tooltip title="Perfil">
+    <IconButton sx={{ color: "#fff" }}>{icon}</IconButton>
   </Tooltip>
 );
 
 const Section = ({ title, children }) => (
   <Box mb={4}>
-    <Typography variant="h6" fontWeight={800} sx={{ letterSpacing: 0.4 }}>
+    <Typography fontWeight={800} fontSize={18}>
       {title}
     </Typography>
     <Divider sx={{ my: 1.5 }} />
@@ -273,7 +193,7 @@ const Section = ({ title, children }) => (
   </Box>
 );
 
-const Block = ({ title, children }) => (
+const Sub = ({ title, children }) => (
   <Box>
     <Typography fontWeight={700} mb={1}>
       {title}
@@ -284,29 +204,14 @@ const Block = ({ title, children }) => (
   </Box>
 );
 
-const EducationItem = ({ title, subtitle, date }) => (
-  <Box display="flex" gap={1.5} alignItems="flex-start">
-    <SchoolIcon color="primary" sx={{ mt: "2px" }} />
-    <Box>
-      <Typography fontWeight={700}>{title}</Typography>
-      <Typography variant="body2">{subtitle}</Typography>
-      {date && (
-        <Typography variant="caption" color="text.secondary">
-          {date}
-        </Typography>
-      )}
-    </Box>
-  </Box>
-);
-
-const ExperienceItem = ({ title, description }) => (
-  <Box display="flex" gap={1.5} alignItems="flex-start">
-    <WorkIcon color="primary" sx={{ mt: "2px" }} />
+const Item = ({ icon, title, desc }) => (
+  <Stack direction="row" spacing={1.5} alignItems="flex-start">
+    {icon}
     <Box>
       <Typography fontWeight={700}>{title}</Typography>
       <Typography variant="body2" color="text.secondary">
-        {description}
+        {desc}
       </Typography>
     </Box>
-  </Box>
+  </Stack>
 );
