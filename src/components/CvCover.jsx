@@ -8,7 +8,6 @@ import {
   Chip,
   IconButton,
   Tooltip,
-  Grid,
 } from "@mui/material";
 
 import EmailIcon from "@mui/icons-material/Email";
@@ -43,7 +42,7 @@ export default function CvCover() {
   return (
     <Box
       sx={{
-        minHeight: { xs: "auto", md: "100vh" },
+        minHeight: "100vh",
         bgcolor: "#f1f5f9",
         display: "flex",
         justifyContent: "center",
@@ -59,25 +58,24 @@ export default function CvCover() {
           borderRadius: 3,
           overflow: "hidden",
           display: "flex",
-          flexDirection: { xs: "column", md: "row" },
         }}
       >
         {/* ================= SIDEBAR ================= */}
         <Box
           sx={{
-            width: { xs: "100%", md: 300 },
+            width: 300,
             bgcolor: "#0d47a1",
             color: "#fff",
-            p: { xs: 3, md: 4 },
+            p: 4,
             flexShrink: 0,
           }}
         >
-          <Stack spacing={{ xs: 2, md: 3 }} alignItems="center">
+          <Stack spacing={3} alignItems="center">
             <Avatar
               src="https://res.cloudinary.com/dqkwc0kf7/image/upload/v1757093856/FB_IMG_1757092624480_hgpu4i.jpg"
               sx={{
-                width: { xs: 110, md: 140 },
-                height: { xs: 110, md: 140 },
+                width: 140,
+                height: 140,
                 border: "3px solid #fff",
               }}
             />
@@ -113,44 +111,29 @@ export default function CvCover() {
 
             <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.3)" }} />
 
-            {/* ================= REDES (3 + 3 FORZADO) ================= */}
-            <Grid container spacing={1}>
-              <Grid item xs={4}>
-                <Social icon={<EmailIcon />} url="mailto:patogol3535@gmail.com" />
-              </Grid>
-              <Grid item xs={4}>
-                <Social
-                  icon={<WhatsAppIcon />}
-                  url="https://wa.me/593997979099"
-                />
-              </Grid>
-              <Grid item xs={4}>
-                <Social
-                  icon={<LinkedInIcon />}
-                  url="https://www.linkedin.com/in/jorge-patricio-santamaría-cherrez-2a73792b2"
-                />
-              </Grid>
-              <Grid item xs={4}>
-                <Social
-                  icon={<GitHubIcon />}
-                  url="https://github.com/Patogol35"
-                />
-              </Grid>
-              <Grid item xs={4}>
-                <Social
-                  icon={<FacebookIcon />}
-                  url="https://www.facebook.com/share/1C9RgHAPvL/"
-                />
-              </Grid>
-              <Grid item xs={4}>
-                <Social
-                  icon={<InstagramIcon />}
-                  url="https://www.instagram.com/jorge_patricio_26"
-                />
-              </Grid>
-            </Grid>
+            {/* REDES */}
+            <Stack direction="row" spacing={1}>
+              <Social icon={<EmailIcon />} url="mailto:patogol3535@gmail.com" />
+              <Social
+                icon={<WhatsAppIcon />}
+                url="https://wa.me/593997979099"
+              />
+              <Social
+                icon={<LinkedInIcon />}
+                url="https://www.linkedin.com/in/jorge-patricio-santamaría-cherrez-2a73792b2"
+              />
+              <Social icon={<GitHubIcon />} url="https://github.com/Patogol35" />
+              <Social
+                icon={<FacebookIcon />}
+                url="https://www.facebook.com/share/1C9RgHAPvL/"
+              />
+              <Social
+                icon={<InstagramIcon />}
+                url="https://www.instagram.com/jorge_patricio_26"
+              />
+            </Stack>
 
-            {/* ================= QR ================= */}
+            {/* QR */}
             <Box
               sx={{
                 mt: 2,
@@ -264,7 +247,13 @@ SUB COMPONENTS
 const Contact = ({ icon, text }) => (
   <Stack direction="row" spacing={1.5} alignItems="center">
     {icon}
-    <Typography sx={{ fontSize: 13, fontWeight: 500, opacity: 0.95 }}>
+    <Typography
+      sx={{
+        fontSize: 13,
+        fontWeight: 500,
+        opacity: 0.95,
+      }}
+    >
       {text}
     </Typography>
   </Stack>
@@ -272,11 +261,7 @@ const Contact = ({ icon, text }) => (
 
 const Social = ({ icon, url }) => (
   <Tooltip title={url}>
-    <IconButton
-      href={url}
-      target="_blank"
-      sx={{ color: "#fff", width: "100%" }}
-    >
+    <IconButton href={url} target="_blank" sx={{ color: "#fff" }}>
       {icon}
     </IconButton>
   </Tooltip>
@@ -315,7 +300,13 @@ const Item = ({ icon, title, desc }) => (
     {icon}
     <Box>
       <Typography fontWeight={700}>{title}</Typography>
-      <Typography sx={{ fontSize: 13.5, color: "#37474f", lineHeight: 1.5 }}>
+      <Typography
+        sx={{
+          fontSize: 13.5,
+          color: "#37474f",
+          lineHeight: 1.5,
+        }}
+      >
         {desc}
       </Typography>
     </Box>
