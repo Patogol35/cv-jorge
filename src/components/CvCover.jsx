@@ -30,10 +30,10 @@ const SkillChip = ({ label }) => (
     size="small"
     sx={{
       bgcolor: "#e3f2fd",
-      color: "primary.main",
+      color: "#0d47a1",
       fontWeight: 600,
-      borderRadius: 1,
-      mb: 0.5,
+      borderRadius: "6px",
+      height: 26,
     }}
   />
 );
@@ -47,11 +47,16 @@ export default function CvCover() {
           maxWidth: 980,
           mx: "auto",
           borderRadius: 3,
-          overflow: "hidden",
+          overflow: "visible",
         }}
       >
-        <Grid container sx={{ m: 0 }}>
-
+        <Grid
+          container
+          spacing={0}
+          columnSpacing={0}
+          rowSpacing={0}
+          sx={{ width: "100%", m: 0 }}
+        >
           {/* ================= SIDEBAR ================= */}
           <Grid
             item
@@ -61,14 +66,18 @@ export default function CvCover() {
               bgcolor: "#0d47a1",
               color: "#fff",
               p: 4,
-              boxSizing: "border-box",
+              display: "flex",
+              justifyContent: "center",
             }}
           >
-            <Stack spacing={3} alignItems="center">
-
+            <Stack spacing={3} alignItems="center" width="100%">
               <Avatar
                 src="https://res.cloudinary.com/dqkwc0kf7/image/upload/v1757093856/FB_IMG_1757092624480_hgpu4i.jpg"
-                sx={{ width: 140, height: 140, border: "3px solid #fff" }}
+                sx={{
+                  width: 140,
+                  height: 140,
+                  border: "3px solid #fff",
+                }}
               />
 
               <Box textAlign="center">
@@ -78,7 +87,8 @@ export default function CvCover() {
                 <Typography variant="h6" fontWeight={800}>
                   Santamaría Cherrez
                 </Typography>
-                <Typography variant="body2" sx={{ mt: 1, opacity: 0.85 }}>
+
+                <Typography variant="body2" sx={{ mt: 1, opacity: 0.9 }}>
                   Ingeniero de Software <br />
                   Desarrollador Full Stack
                 </Typography>
@@ -87,27 +97,49 @@ export default function CvCover() {
               <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.3)" }} />
 
               <Stack spacing={1} width="100%">
-                <ContactItem icon={<EmailIcon />} text="patogol3535@gmail.com" />
+                <ContactItem
+                  icon={<EmailIcon />}
+                  text={
+                    <a
+                      href="mailto:patogol3535@gmail.com"
+                      style={{ color: "inherit", textDecoration: "none" }}
+                    >
+                      patogol3535@gmail.com
+                    </a>
+                  }
+                />
                 <ContactItem icon={<WhatsAppIcon />} text="0997979099" />
-                <ContactItem icon={<LocationOnIcon />} text="Ambato, Ecuador" />
+                <ContactItem
+                  icon={<LocationOnIcon />}
+                  text="Ambato, Ecuador"
+                />
               </Stack>
 
               <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.3)" }} />
 
               <Stack direction="row" spacing={1}>
                 <Social icon={<LinkedInIcon />} url="https://www.linkedin.com" />
-                <Social icon={<GitHubIcon />} url="https://github.com/Patogol35" />
+                <Social
+                  icon={<GitHubIcon />}
+                  url="https://github.com/Patogol35"
+                />
                 <Social icon={<FacebookIcon />} url="https://facebook.com" />
                 <Social icon={<InstagramIcon />} url="https://instagram.com" />
               </Stack>
 
+              {/* QR */}
               <Box sx={{ mt: 2, bgcolor: "#fff", p: 1.5, borderRadius: 2 }}>
                 <img src="/qr-cv.png" alt="QR CV" width={120} height={120} />
-                <Typography variant="caption" color="text.secondary" align="center">
+                <Typography
+                  variant="caption"
+                  color="text.secondary"
+                  display="block"
+                  align="center"
+                  mt={1}
+                >
                   CV Online
                 </Typography>
               </Box>
-
             </Stack>
           </Grid>
 
@@ -117,31 +149,43 @@ export default function CvCover() {
             xs={12}
             md={8}
             sx={{
-              p: 4,
+              px: 4,
+              py: 4,
               bgcolor: "#fafafa",
-              boxSizing: "border-box",
             }}
           >
             <Section title="Áreas de Conocimiento">
-
               <Block title="Desarrollo Web Full Stack">
-                {["PHP", "JavaScript", "React", "Java", "Spring Boot", "MySQL", "Postman"].map(
-                  (s) => <SkillChip key={s} label={s} />
-                )}
+                {[
+                  "PHP",
+                  "JavaScript",
+                  "React",
+                  "Java",
+                  "Spring Boot",
+                  "MySQL",
+                  "Postman",
+                  "Vercel",
+                ].map((s) => (
+                  <SkillChip key={s} label={s} />
+                ))}
               </Block>
 
               <Block title="Cloud">
-                {["Vercel", "Render", "AWS"].map(
-                  (s) => <SkillChip key={s} label={s} />
-                )}
+                {["Vercel", "Render", "AWS"].map((s) => (
+                  <SkillChip key={s} label={s} />
+                ))}
               </Block>
 
               <Block title="Bases de Datos">
-                {["MySQL", "PostgreSQL", "MongoDB", "Elasticsearch"].map(
-                  (s) => <SkillChip key={s} label={s} />
-                )}
+                {[
+                  "MySQL",
+                  "PostgreSQL",
+                  "MongoDB",
+                  "Elasticsearch",
+                ].map((s) => (
+                  <SkillChip key={s} label={s} />
+                ))}
               </Block>
-
             </Section>
 
             <Section title="Experiencia Profesional">
@@ -163,14 +207,13 @@ export default function CvCover() {
               <EducationItem
                 title="Universidad Internacional de La Rioja (UNIR)"
                 subtitle="Maestría en Ingeniería de Software y Sistemas Informáticos"
-                date="2023 – 2024"
+                date="mar. 2023 – abr. 2024"
               />
               <EducationItem
                 title="Universidad Indoamérica"
                 subtitle="Ingeniería de Sistemas"
               />
             </Section>
-
           </Grid>
         </Grid>
       </Paper>
@@ -199,10 +242,10 @@ const Social = ({ icon, url }) => (
 
 const Section = ({ title, children }) => (
   <Box mb={4}>
-    <Typography variant="h6" fontWeight={800}>
+    <Typography variant="h6" fontWeight={800} sx={{ letterSpacing: 0.5 }}>
       {title}
     </Typography>
-    <Divider sx={{ my: 2 }} />
+    <Divider sx={{ my: 1.5 }} />
     <Stack spacing={2}>{children}</Stack>
   </Box>
 );
@@ -219,8 +262,8 @@ const Block = ({ title, children }) => (
 );
 
 const EducationItem = ({ title, subtitle, date }) => (
-  <Box display="flex" gap={2}>
-    <SchoolIcon color="primary" />
+  <Box display="flex" gap={1.5} alignItems="flex-start">
+    <SchoolIcon color="primary" sx={{ mt: "2px" }} />
     <Box>
       <Typography fontWeight={700}>{title}</Typography>
       <Typography variant="body2">{subtitle}</Typography>
@@ -234,11 +277,13 @@ const EducationItem = ({ title, subtitle, date }) => (
 );
 
 const ExperienceItem = ({ title, description }) => (
-  <Box display="flex" gap={2}>
-    <WorkIcon color="primary" />
+  <Box display="flex" gap={1.5} alignItems="flex-start">
+    <WorkIcon color="primary" sx={{ mt: "2px" }} />
     <Box>
       <Typography fontWeight={700}>{title}</Typography>
-      <Typography variant="body2">{description}</Typography>
+      <Typography variant="body2" color="text.secondary">
+        {description}
+      </Typography>
     </Box>
   </Box>
 );
