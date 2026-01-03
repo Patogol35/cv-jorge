@@ -175,15 +175,15 @@ export default function CvCover() {
 
           {/* EXPERIENCIA */}
           <Section title="Experiencia Profesional">
-            <ExperienceItem
-              title="Docente de Instituto"
-              description="Impartición de asignaturas técnicas relacionadas con informática, programación y tecnologías de la información."
-            />
-            <ExperienceItem
-              title="Desarrollador de Intranet"
-              description="Desarrollo y mantenimiento de una intranet institucional para la gestión de procesos internos y usuarios."
-            />
-          </Section>
+  <ExperienceItem
+    title="Docente de Instituto"
+    description="Docencia en áreas de informática y programación."
+  />
+  <ExperienceItem
+    title="Desarrollador de Intranet"
+    description="Desarrollo de intranet para gestión interna."
+  />
+</Section>
 
           {/* FORMACIÓN */}
           <Section title="Formación Académica">
