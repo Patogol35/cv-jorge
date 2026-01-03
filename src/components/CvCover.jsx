@@ -28,14 +28,11 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 const cvUrl = "https://jorge-santamaria.dev/cv";
 
 // === Styled Components ===
-const StyledPaper = styled(Paper)(({ theme }) => ({
-  padding: theme.spacing(3),
+const ContentCard = styled(Paper)(({ theme }) => ({
+  padding: theme.spacing(2.5),
   borderRadius: theme.shape.borderRadius * 2,
-  backgroundColor: theme.palette.grey[50],
-  transition: "transform 0.2s, box-shadow 0.2s",
-  "&:hover": {
-    boxShadow: theme.shadows[6],
-  },
+  backgroundColor: "#ffffff",
+  border: `1px solid ${theme.palette.divider}`,
 }));
 
 const SkillChip = ({ label }) => (
@@ -48,12 +45,12 @@ const SkillChip = ({ label }) => (
       fontWeight: 600,
       borderRadius: "8px",
       height: "28px",
-      fontSize: "0.8rem",
+      fontSize: "0.8125rem",
     }}
   />
 );
 
-// === Subcomponents (mejorados visualmente) ===
+// === Subcomponents ===
 const ContactItem = ({ icon, text }) => (
   <Stack direction="row" spacing={1.5} alignItems="center">
     {icon}
@@ -63,7 +60,7 @@ const ContactItem = ({ icon, text }) => (
   </Stack>
 );
 
-const Social = ({ icon, url }) => (
+const SocialButton = ({ icon, url }) => (
   <Tooltip title={url} arrow>
     <IconButton
       href={url}
@@ -71,12 +68,14 @@ const Social = ({ icon, url }) => (
       rel="noopener noreferrer"
       sx={{
         color: "#fff",
-        bgcolor: "rgba(255,255,255,0.15)",
+        bgcolor: "rgba(255,255,255,0.18)",
         "&:hover": {
-          bgcolor: "rgba(255,255,255,0.25)",
-          transform: "scale(1.1)",
+          bgcolor: "rgba(255,255,255,0.3)",
+          transform: "scale(1.08)",
         },
         transition: "all 0.2s ease",
+        width: 36,
+        height: 36,
       }}
     >
       {icon}
@@ -85,48 +84,29 @@ const Social = ({ icon, url }) => (
 );
 
 const Section = ({ title, children }) => (
-  <Box mb={6}>
-    <Typography variant="h5" fontWeight={700} gutterBottom color="text.primary">
+  <Box mb={5}>
+    <Typography variant="h5" fontWeight={700} gutterBottom>
       {title}
     </Typography>
-    <Divider sx={{ mb: 3, borderColor: "divider" }} />
+    <Divider sx={{ mb: 2.5 }} />
     <Stack spacing={3}>{children}</Stack>
   </Box>
 );
 
 const CardBlock = ({ title, children }) => (
-  <StyledPaper elevation={2}>
+  <ContentCard elevation={1}>
     <Typography fontWeight={700} variant="subtitle1" mb={1.5}>
       {title}
     </Typography>
-    <Stack direction="row" spacing={1.5} flexWrap="wrap" useFlexGap>
+    <Stack direction="row" spacing={1.2} flexWrap="wrap" useFlexGap>
       {children}
     </Stack>
-  </StyledPaper>
-);
-
-const TimelineItem = ({ title, subtitle, date }) => (
-  <Box display="flex" gap={2} mb={2}>
-    <SchoolIcon color="primary" sx={{ mt: 0.5 }} />
-    <Box>
-      <Typography fontWeight={700} variant="body1">
-        {title}
-      </Typography>
-      <Typography variant="body2" color="text.secondary">
-        {subtitle}
-      </Typography>
-      {date && (
-        <Typography variant="caption" color="text.disabled">
-          {date}
-        </Typography>
-      )}
-    </Box>
-  </Box>
+  </ContentCard>
 );
 
 const ExperienceItem = ({ role, company, date, description }) => (
-  <Box display="flex" gap={2} mb={3}>
-    <WorkIcon color="primary" sx={{ mt: 0.5 }} />
+  <Box display="flex" gap={2}>
+    <WorkIcon color="primary" sx={{ mt: 0.75, flexShrink: 0 }} />
     <Box>
       <Typography fontWeight={700} variant="body1">
         {role}
@@ -144,6 +124,25 @@ const ExperienceItem = ({ role, company, date, description }) => (
   </Box>
 );
 
+const EducationItem = ({ title, subtitle, date }) => (
+  <Box display="flex" gap={2}>
+    <SchoolIcon color="primary" sx={{ mt: 0.75, flexShrink: 0 }} />
+    <Box>
+      <Typography fontWeight={700} variant="body1">
+        {title}
+      </Typography>
+      <Typography variant="body2" color="text.secondary">
+        {subtitle}
+      </Typography>
+      {date && (
+        <Typography variant="caption" color="text.disabled">
+          {date}
+        </Typography>
+      )}
+    </Box>
+  </Box>
+);
+
 // === Main Component ===
 export default function CvCover() {
   const theme = useTheme();
@@ -155,126 +154,133 @@ export default function CvCover() {
         minHeight: "100vh",
         display: "flex",
         justifyContent: "center",
+        alignItems: "center",
         backgroundColor: theme.palette.grey[100],
-        p: { xs: 1, md: 2 },
+        p: { xs: 1, sm: 2 },
       }}
     >
       <Paper
-        elevation={0}
+        elevation={6}
         sx={{
           width: "100%",
-          maxWidth: 1200,
-          borderRadius: { xs: 0, md: 4 },
+          maxWidth: 1150,
+          borderRadius: { xs: 0, md: 3 },
           overflow: "hidden",
-          boxShadow: theme.shadows[8],
         }}
       >
-        <Grid container sx={{ minHeight: { md: "80vh" } }}>
-          {/* === SIDEBAR === */}
+        <Grid container sx={{ minHeight: { md: "85vh" } }}>
+          {/* === SIDEBAR IZQUIERDA (AZUL) === */}
           <Grid
             item
             xs={12}
             md={4}
             sx={{
-              background:
-                "linear-gradient(150deg, #0d47a1 0%, #1565c0 100%)",
+              background: "linear-gradient(150deg, #0d47a1 0%, #1976d2 100%)",
               color: "#fff",
               p: { xs: 3, md: 4 },
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
             }}
           >
-            <Stack spacing={4} alignItems="center" width="100%">
-              <Box
+            {/* Avatar con decoración */}
+            <Box
+              sx={{
+                p: 1.2,
+                borderRadius: "50%",
+                background: "rgba(255, 255, 255, 0.35)",
+                boxShadow: "0 6px 20px rgba(0, 0, 0, 0.25)",
+                mb: 2.5,
+              }}
+            >
+              <Avatar
+                src="/foto.jpg"
+                alt="Jorge Patricio Santamaría Cherrez"
                 sx={{
-                  p: 1,
-                  borderRadius: "50%",
-                  background: "rgba(255,255,255,0.25)",
-                  boxShadow: "0 6px 20px rgba(0,0,0,0.25)",
+                  width: 130,
+                  height: 130,
+                  border: "4px solid #fff",
+                  boxShadow: "0 4px 10px rgba(0,0,0,0.2)",
                 }}
-              >
-                <Avatar
-                  src="/foto.jpg"
-                  alt="Jorge Patricio Santamaría"
-                  sx={{
-                    width: { xs: 120, md: 140 },
-                    height: { xs: 120, md: 140 },
-                    border: "4px solid #fff",
-                    boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
-                  }}
-                />
-              </Box>
+              />
+            </Box>
 
-              <Box textAlign="center">
-                <Typography variant="h5" fontWeight={800} lineHeight={1.2}>
-                  Jorge Patricio
-                </Typography>
-                <Typography variant="h6" fontWeight={700} color="rgba(255,255,255,0.9)">
-                  Santamaría Cherrez
-                </Typography>
-                <Typography variant="body2" sx={{ opacity: 0.9, mt: 1 }}>
-                  Máster en Ingeniería de Software <br />
-                  y Sistemas Informáticos
-                </Typography>
-              </Box>
+            {/* Nombre y título */}
+            <Box textAlign="center" mb={2.5}>
+              <Typography variant="h5" fontWeight={800} lineHeight={1.2}>
+                Jorge Patricio
+              </Typography>
+              <Typography variant="h6" fontWeight={600} color="rgba(255,255,255,0.92)">
+                Santamaría Cherrez
+              </Typography>
+              <Typography variant="body2" sx={{ opacity: 0.95, mt: 1 }}>
+                Máster en Ingeniería de Software <br />
+                y Sistemas Informáticos
+              </Typography>
+            </Box>
 
-              <Divider flexItem sx={{ borderColor: "rgba(255,255,255,0.4)", width: "80%" }} />
+            <Divider flexItem sx={{ borderColor: "rgba(255,255,255,0.4)", width: "80%", mb: 2.5 }} />
 
-              <Stack spacing={2} width="100%">
-                <ContactItem icon={<EmailIcon fontSize="small" />} text="patricio_jorge@hotmail.es" />
-                <ContactItem icon={<WhatsAppIcon fontSize="small" />} text="+593 99 797 9099" />
-                <ContactItem icon={<LocationOnIcon fontSize="small" />} text="Ambato, Ecuador" />
-              </Stack>
-
-              <Divider flexItem sx={{ borderColor: "rgba(255,255,255,0.4)", width: "80%" }} />
-
-              <Stack direction="row" spacing={1.5} justifyContent="center">
-                <Social icon={<LinkedInIcon />} url="https://linkedin.com/in/patogol35" />
-                <Social icon={<GitHubIcon />} url="https://github.com/Patogol35" />
-                <Social icon={<FacebookIcon />} url="https://facebook.com" />
-                <Social icon={<InstagramIcon />} url="https://instagram.com" />
-              </Stack>
-
-              <Box
-                sx={{
-                  mt: 2,
-                  bgcolor: "rgba(255,255,255,0.95)",
-                  p: 2,
-                  borderRadius: 2,
-                  textAlign: "center",
-                  boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
-                }}
-              >
-                <img
-                  src={`https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=${encodeURIComponent(cvUrl)}`}
-                  alt="QR CV"
-                  width={120}
-                  height={120}
-                />
-                <Typography variant="caption" color="text.secondary" display="block" mt={1}>
-                  Escanea para ver mi CV online
-                </Typography>
-              </Box>
+            {/* Contacto */}
+            <Stack spacing={1.8} width="100%" mb={2.5}>
+              <ContactItem icon={<EmailIcon fontSize="small" />} text="patricio_jorge@hotmail.es" />
+              <ContactItem icon={<WhatsAppIcon fontSize="small" />} text="+593 99 797 9099" />
+              <ContactItem icon={<LocationOnIcon fontSize="small" />} text="Ambato, Ecuador" />
             </Stack>
+
+            <Divider flexItem sx={{ borderColor: "rgba(255,255,255,0.4)", width: "80%", mb: 2.5 }} />
+
+            {/* Redes sociales */}
+            <Stack direction="row" spacing={1.5} justifyContent="center" mb={3}>
+              <SocialButton icon={<LinkedInIcon />} url="https://linkedin.com/in/patogol35" />
+              <SocialButton icon={<GitHubIcon />} url="https://github.com/Patogol35" />
+              <SocialButton icon={<FacebookIcon />} url="https://facebook.com" />
+              <SocialButton icon={<InstagramIcon />} url="https://instagram.com" />
+            </Stack>
+
+            {/* QR Code */}
+            <Box
+              sx={{
+                bgcolor: "rgba(255,255,255,0.97)",
+                p: 2,
+                borderRadius: 2,
+                textAlign: "center",
+                width: "100%",
+                maxWidth: 180,
+                boxShadow: "0 4px 12px rgba(0,0,0,0.12)",
+              }}
+            >
+              <img
+                src={`https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=${encodeURIComponent(cvUrl)}`}
+                alt="QR CV"
+                width={120}
+                height={120}
+              />
+              <Typography variant="caption" color="text.secondary" display="block" mt={1}>
+                CV Online
+              </Typography>
+            </Box>
           </Grid>
 
-          {/* === MAIN CONTENT === */}
+          {/* === CONTENIDO PRINCIPAL (DERECHA) === */}
           <Grid
             item
             xs={12}
             md={8}
             sx={{
-              p: { xs: 2.5, md: 5 },
+              p: { xs: 2.5, md: 4.5 },
               bgcolor: "#ffffff",
             }}
           >
             <Section title="Áreas de Conocimiento">
               <CardBlock title="Desarrollo Web Full Stack">
-                {["PHP", "JavaScript", "React", "Java", "Spring Boot", "MySQL"].map((s) => (
+                {["React", "JavaScript", "Spring Boot", "Java", "PHP", "MySQL"].map((s) => (
                   <SkillChip key={s} label={s} />
                 ))}
               </CardBlock>
 
               <CardBlock title="Cloud & DevOps">
-                {["AWS", "Render", "Vercel", "Git", "Linux"].map((s) => (
+                {["AWS", "Vercel", "Render", "Git", "Linux"].map((s) => (
                   <SkillChip key={s} label={s} />
                 ))}
               </CardBlock>
@@ -291,29 +297,29 @@ export default function CvCover() {
                 role="Desarrollador Full Stack"
                 company="Proyectos Independientes"
                 date="2024 – Actualidad"
-                description="Desarrollo de aplicaciones web modernas, seguras y escalables con React, Spring Boot y despliegue en Vercel/AWS."
+                description="Desarrollo de aplicaciones web modernas, seguras y escalables con React, Spring Boot y despliegue en Vercel y AWS."
               />
               <ExperienceItem
                 role="Desarrollador Web"
                 company="Startups / Freelance"
                 date="2023 – 2024"
-                description="Implementación de interfaces responsivas, APIs REST y optimización de rendimiento."
+                description="Implementación de interfaces responsivas y APIs REST con enfoque en rendimiento y experiencia de usuario."
               />
               <ExperienceItem
                 role="Ingeniero de Software"
-                company="Proyectos Académicos & Empresariales"
+                company="Proyectos Académicos y Empresariales"
                 date="2022 – 2023"
-                description="Arquitectura limpia, bases de datos, pruebas y control de versiones con Git."
+                description="Diseño de arquitecturas limpias, integración de bases de datos y control de versiones con Git."
               />
             </Section>
 
             <Section title="Formación Académica">
-              <TimelineItem
+              <EducationItem
                 title="Universidad Internacional de La Rioja (UNIR)"
                 subtitle="Máster en Ingeniería de Software y Sistemas Informáticos"
                 date="2023 – 2024"
               />
-              <TimelineItem
+              <EducationItem
                 title="Universidad Indoamérica"
                 subtitle="Ingeniería de Sistemas"
                 date="2017 – 2022"
