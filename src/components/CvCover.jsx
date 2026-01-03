@@ -161,11 +161,11 @@ export default function CvCover() {
                 "PHP",
                 "JavaScript",
                 "React",
-                "Java",
+              
                 "Spring Boot",
-                "MySQL",
-                "Postman",
-                "Vercel",
+                "Python",
+        
+            
               ].map((s) => (
                 <SkillChip key={s} label={s} />
               ))}
