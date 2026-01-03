@@ -46,24 +46,20 @@ export default function CvCover() {
         minHeight: "100vh",
         bgcolor: "#f1f5f9",
         display: "flex",
-        justifyContent: "center", // Centra horizontalmente el contenido
+        justifyContent: "center",
         py: 4,
         fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
       }}
     >
-      {/* Ajuste: Eliminar maxWidth y usar margin: 'auto' para centrar */}
       <Paper
         elevation={8}
         sx={{
-          width: "100%", // Ocupa todo el ancho disponible
-          maxWidth: "none", // Elimina el límite de ancho
+          width: "100%",
+          maxWidth: 900,
           borderRadius: 3,
           overflow: "hidden",
           display: "flex",
           flexDirection: "row",
-          margin: "auto", // Centra la tarjeta horizontalmente
-          // Añadimos un padding mínimo para evitar que toque los bordes de la pantalla
-          px: { xs: 1, sm: 2 },
         }}
       >
         {/* ================= SIDEBAR ================= */}
@@ -79,7 +75,7 @@ export default function CvCover() {
         >
           <Stack spacing={3} alignItems="center">
             <Avatar
-              src="https://res.cloudinary.com/dqkwc0kf7/image/upload/v1757093856/FB_IMG_1757092624480_hgpu4i.jpg "
+              src="https://res.cloudinary.com/dqkwc0kf7/image/upload/v1757093856/FB_IMG_1757092624480_hgpu4i.jpg"
               sx={{
                 width: { xs: 110, md: 140 },
                 height: { xs: 110, md: 140 },
@@ -111,7 +107,6 @@ export default function CvCover() {
 
             <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.3)" }} />
 
-            {/* ================= REDES 2 x 3 ================= */}
             <Box
               sx={{
                 display: "grid",
@@ -123,24 +118,17 @@ export default function CvCover() {
               }}
             >
               <Social icon={<EmailIcon />} url="mailto:patogol3535@gmail.com" />
-              <Social icon={<WhatsAppIcon />} url="https://wa.me/593997979099 " />
-              <Social icon={<LinkedInIcon />} url="https://www.linkedin.com/in/jorge-patricio-santama ría-cherrez-2a73792b2" />
-              <Social icon={<GitHubIcon />} url="https://github.com/Patogol35 " />
-              <Social icon={<FacebookIcon />} url="https://www.facebook.com/share/1C9RgHAPvL/ " />
-              <Social icon={<InstagramIcon />} url="https://www.instagram.com/jorge_patricio_26 " />
+              <Social icon={<WhatsAppIcon />} url="https://wa.me/593997979099" />
+              <Social icon={<LinkedInIcon />} url="https://www.linkedin.com/in/jorge-patricio-santamaria-cherrez-2a73792b2" />
+              <Social icon={<GitHubIcon />} url="https://github.com/Patogol35" />
+              <Social icon={<FacebookIcon />} url="https://www.facebook.com/share/1C9RgHAPvL/" />
+              <Social icon={<InstagramIcon />} url="https://www.instagram.com/jorge_patricio_26" />
             </Box>
 
-            {/* ================= PORTAFOLIO ================= */}
-            <Box
-              sx={{
-                mt: 2,
-                textAlign: "center",
-              }}
-            >
+            <Box sx={{ mt: 2, textAlign: "center" }}>
               <Tooltip title="Ver Portafolio Profesional">
-                {/* Icono de Portafolio con mismo estilo y sin texto */}
                 <IconButton
-                  href="https://portafoliojorgepatriciosantamariach.vercel.app/ "
+                  href="https://portafoliojorgepatriciosantamariach.vercel.app/"
                   target="_blank"
                   sx={{
                     color: "#fff",
@@ -159,76 +147,83 @@ export default function CvCover() {
           </Stack>
         </Box>
 
-        {/* ================= CONTENT ================= */}
+        {/* ================= CONTENT (CENTRADO) ================= */}
         <Box
           sx={{
             flex: 1,
-            p: { xs: 2.5, md: 3 }, // Padding interior del contenido
+            p: { xs: 2.5, md: 3 },
             bgcolor: "#ffffff",
           }}
         >
-          <Section title="Áreas de Conocimiento">
-            <Block title="Desarrollo de Software">
-              {["PHP", "React", "Spring Boot", "Python"].map((s) => (
-                <SkillChip key={s} label={s} />
-              ))}
-            </Block>
+          {/* Envuelve todo en un Stack centrado */}
+          <Stack
+            spacing={4}
+            alignItems="center" // ← Centra todo horizontalmente
+            sx={{ width: "100%" }}
+          >
+            <SectionCentered title="Áreas de Conocimiento">
+              <BlockCentered title="Desarrollo de Software">
+                {["PHP", "React", "Spring Boot", "Python"].map((s) => (
+                  <SkillChip key={s} label={s} />
+                ))}
+              </BlockCentered>
 
-            <Block title="Cloud">
-              {["Vercel", "Render", "AWS"].map((s) => (
-                <SkillChip key={s} label={s} />
-              ))}
-            </Block>
+              <BlockCentered title="Cloud">
+                {["Vercel", "Render", "AWS"].map((s) => (
+                  <SkillChip key={s} label={s} />
+                ))}
+              </BlockCentered>
 
-            <Block title="Bases de Datos">
-              {["MySQL", "PostgreSQL", "MongoDB", "Elasticsearch"].map((s) => (
-                <SkillChip key={s} label={s} />
-              ))}
-            </Block>
+              <BlockCentered title="Bases de Datos">
+                {["MySQL", "PostgreSQL", "MongoDB", "Elasticsearch"].map((s) => (
+                  <SkillChip key={s} label={s} />
+                ))}
+              </BlockCentered>
 
-            <Block title="Otras Tecnologías">
-              {[
-                "Postman",
-                "Microsoft Office",
-                "Máquinas Virtuales",
-                "Scrum",
-                "AnyDesk",
-              ].map((s) => (
-                <SkillChip key={s} label={s} />
-              ))}
-            </Block>
-          </Section>
+              <BlockCentered title="Otras Tecnologías">
+                {[
+                  "Postman",
+                  "Microsoft Office",
+                  "Máquinas Virtuales",
+                  "Scrum",
+                  "AnyDesk",
+                ].map((s) => (
+                  <SkillChip key={s} label={s} />
+                ))}
+              </BlockCentered>
+            </SectionCentered>
 
-          <Section title="Formación Académica">
-            <Item
-              icon={<SchoolIcon color="primary" />}
-              title="Universidad Internacional de La Rioja (UNIR)"
-              desc="Maestría en Ingeniería de Software y Sistemas Informáticos"
-            />
-            <Item
-              icon={<SchoolIcon color="primary" />}
-              title="Universidad Indoamérica"
-              desc="Ingeniería de Sistemas"
-            />
-          </Section>
+            <SectionCentered title="Formación Académica">
+              <ItemCentered
+                icon={<SchoolIcon color="primary" />}
+                title="Universidad Internacional de La Rioja (UNIR)"
+                desc="Maestría en Ingeniería de Software y Sistemas Informáticos"
+              />
+              <ItemCentered
+                icon={<SchoolIcon color="primary" />}
+                title="Universidad Indoamérica"
+                desc="Ingeniería de Sistemas"
+              />
+            </SectionCentered>
 
-          <Section title="Experiencia Profesional">
-            <Item
-              icon={<WorkIcon color="primary" />}
-              title="Docente de Informática"
-              desc="Formación técnica en informática y tecnologías digitales."
-            />
-            <Item
-              icon={<WorkIcon color="primary" />}
-              title="Desarrollador de Aplicaciones"
-              desc="Diseño y desarrollo de soluciones digitales eficientes."
-            />
-            <Item
-              icon={<WorkIcon color="primary" />}
-              title="Desarrollador de Aulas Virtuales"
-              desc="Desarrollo e implementación de plataformas educativas virtuales."
-            />
-          </Section>
+            <SectionCentered title="Experiencia Profesional">
+              <ItemCentered
+                icon={<WorkIcon color="primary" />}
+                title="Docente de Informática"
+                desc="Formación técnica en informática y tecnologías digitales."
+              />
+              <ItemCentered
+                icon={<WorkIcon color="primary" />}
+                title="Desarrollador de Aplicaciones"
+                desc="Diseño y desarrollo de soluciones digitales eficientes."
+              />
+              <ItemCentered
+                icon={<WorkIcon color="primary" />}
+                title="Desarrollador de Aulas Virtuales"
+                desc="Desarrollo e implementación de plataformas educativas virtuales."
+              />
+            </SectionCentered>
+          </Stack>
         </Box>
       </Paper>
     </Box>
@@ -236,7 +231,7 @@ export default function CvCover() {
 }
 
 /* =========================
-SUB COMPONENTS
+SUB COMPONENTS CENTRADOS
 ========================= */
 
 const Contact = ({ icon, text }) => (
@@ -263,29 +258,34 @@ const Social = ({ icon, url }) => (
   </Tooltip>
 );
 
-const Section = ({ title, children }) => (
-  <Box mb={4}>
-    <Typography fontWeight={800} fontSize={18} color="#0d47a1">
+// Sección centrada
+const SectionCentered = ({ title, children }) => (
+  <Box sx={{ width: "100%", maxWidth: 600 }}>
+    <Typography fontWeight={800} fontSize={18} color="#0d47a1" align="center">
       {title}
     </Typography>
-    <Divider sx={{ my: 1.5 }} />
-    <Stack spacing={2}>{children}</Stack>
-  </Box>
-);
-
-const Block = ({ title, children }) => (
-  <Box>
-    <Typography fontWeight={700} mb={1}>
-      {title}
-    </Typography>
-    <Stack direction="row" spacing={1} flexWrap="wrap">
+    <Divider sx={{ my: 1.5, width: "60%", mx: "auto" }} />
+    <Stack spacing={2} alignItems="center">
       {children}
     </Stack>
   </Box>
 );
 
-const Item = ({ icon, title, desc }) => (
-  <Stack direction="row" spacing={1.5}>
+// Bloque centrado
+const BlockCentered = ({ title, children }) => (
+  <Box sx={{ width: "100%" }}>
+    <Typography fontWeight={700} mb={1} align="center">
+      {title}
+    </Typography>
+    <Stack direction="row" spacing={1} flexWrap="wrap" justifyContent="center">
+      {children}
+    </Stack>
+  </Box>
+);
+
+// Ítem centrado
+const ItemCentered = ({ icon, title, desc }) => (
+  <Stack direction="row" spacing={1.5} alignItems="flex-start" sx={{ maxWidth: 500 }}>
     {icon}
     <Box>
       <Typography fontWeight={700}>{title}</Typography>
