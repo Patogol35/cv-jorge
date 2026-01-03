@@ -33,6 +33,7 @@ const SkillChip = ({ label }) => (
       fontWeight: 600,
       borderRadius: "6px",
       height: 26,
+      fontSize: 12,
     }}
   />
 );
@@ -46,7 +47,7 @@ export default function CvCover() {
         display: "flex",
         justifyContent: "center",
         py: 4,
-        overflowX: "hidden",
+        fontFamily: `"Inter", "Roboto", "Helvetica", "Arial", sans-serif`,
       }}
     >
       <Paper
@@ -80,15 +81,15 @@ export default function CvCover() {
             />
 
             <Box textAlign="center">
-              <Typography fontWeight={800} fontSize={18}>
+              <Typography fontWeight={800} fontSize={20} letterSpacing={0.5}>
                 Jorge Patricio
               </Typography>
-              <Typography fontWeight={800} fontSize={18}>
+              <Typography fontWeight={800} fontSize={20} letterSpacing={0.5}>
                 Santamaría Cherrez
               </Typography>
               <Typography variant="body2" sx={{ mt: 1, opacity: 0.9 }}>
                 Máster en Ingeniería de Software<br />
-                y Sistemas Informáticos 
+                y Sistemas Informáticos
               </Typography>
             </Box>
 
@@ -102,11 +103,26 @@ export default function CvCover() {
 
             <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.3)" }} />
 
+            {/* REDES */}
             <Stack direction="row" spacing={1}>
-              <Social icon={<LinkedInIcon />} url="https://www.linkedin.com/in/jorge-patricio-santamaría-cherrez-2a73792b2" />
+              <Social icon={<EmailIcon />} url="mailto:patogol3535@gmail.com" />
+              <Social
+                icon={<WhatsAppIcon />}
+                url="https://wa.me/593997979099"
+              />
+              <Social
+                icon={<LinkedInIcon />}
+                url="https://www.linkedin.com/in/jorge-patricio-santamaría-cherrez-2a73792b2"
+              />
               <Social icon={<GitHubIcon />} url="https://github.com/Patogol35" />
-              <Social icon={<FacebookIcon />} url="https://www.facebook.com/share/1C9RgHAPvL/" />
-              <Social icon={<InstagramIcon />} url="https://www.instagram.com/jorge_patricio_26" />
+              <Social
+                icon={<FacebookIcon />}
+                url="https://www.facebook.com/share/1C9RgHAPvL/"
+              />
+              <Social
+                icon={<InstagramIcon />}
+                url="https://www.instagram.com/jorge_patricio_26"
+              />
             </Stack>
 
             {/* QR */}
@@ -162,12 +178,7 @@ export default function CvCover() {
             </Block>
 
             <Block title="Bases de Datos">
-              {[
-                "MySQL",
-                "PostgreSQL",
-                "MongoDB",
-                "Elasticsearch",
-              ].map((s) => (
+              {["MySQL", "PostgreSQL", "MongoDB", "Elasticsearch"].map((s) => (
                 <SkillChip key={s} label={s} />
               ))}
             </Block>
@@ -177,17 +188,17 @@ export default function CvCover() {
             <Item
               icon={<WorkIcon color="primary" />}
               title="Docente de Informática"
-              desc="Docencia de Sistemas para formación artesanal."
+              desc="Docencia de sistemas orientada a la formación artesanal."
             />
             <Item
               icon={<WorkIcon color="primary" />}
               title="Desarrollador de Intranet"
-              desc="Desarrollo de intranet para gestión interna."
+              desc="Diseño y desarrollo de sistemas internos de gestión."
             />
             <Item
               icon={<WorkIcon color="primary" />}
               title="Desarrollador de Aulas Virtuales"
-              desc="Implementación de plataformas educativas virtuales."
+              desc="Implementación y administración de plataformas educativas."
             />
           </Section>
 
@@ -195,7 +206,7 @@ export default function CvCover() {
             <Item
               icon={<SchoolIcon color="primary" />}
               title="Universidad Internacional de La Rioja (UNIR)"
-              desc="Maestría en Ingeniería de Software y Sistemas Informáticos · mar. 2023 – abr. 2024"
+              desc="Maestría en Ingeniería de Software y Sistemas Informáticos · 2023 – 2024"
             />
             <Item
               icon={<SchoolIcon color="primary" />}
@@ -230,7 +241,7 @@ const Social = ({ icon, url }) => (
 
 const Section = ({ title, children }) => (
   <Box mb={4}>
-    <Typography fontWeight={800} fontSize={18}>
+    <Typography fontWeight={800} fontSize={18} letterSpacing={0.4}>
       {title}
     </Typography>
     <Divider sx={{ my: 1.5 }} />
