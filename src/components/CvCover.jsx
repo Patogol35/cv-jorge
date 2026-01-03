@@ -147,7 +147,7 @@ export default function CvCover() {
                 }}
               />
               <Typography variant="caption" color="text.secondary" mt={1}>
-                CV Online
+                Portafolio Virtual
               </Typography>
             </Box>
           </Stack>
@@ -188,17 +188,17 @@ export default function CvCover() {
             <Item
               icon={<WorkIcon color="primary" />}
               title="Docente de Informática"
-              desc="Docencia de sistemas orientada a la formación artesanal."
+              desc="Enseñanza de informática y sistemas para formación técnica."
             />
             <Item
               icon={<WorkIcon color="primary" />}
-              title="Desarrollador de Intranet"
-              desc="Diseño y desarrollo de sistemas internos de gestión."
+              title="Desarrollador de Aplicaciones"
+              desc="Desarrollo de soluciones digitales."
             />
             <Item
               icon={<WorkIcon color="primary" />}
               title="Desarrollador de Aulas Virtuales"
-              desc="Implementación y administración de plataformas educativas."
+              desc="Administración y configuración de plataformas educativas virtuales."
             />
           </Section>
 
