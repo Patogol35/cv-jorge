@@ -8,6 +8,7 @@ import {
   Chip,
   IconButton,
   Tooltip,
+  Grid,
 } from "@mui/material";
 
 import EmailIcon from "@mui/icons-material/Email";
@@ -47,7 +48,7 @@ export default function CvCover() {
         display: "flex",
         justifyContent: "center",
         py: 4,
-        fontFamily: `"Inter", "Roboto", "Helvetica", "Arial", sans-serif`,
+        fontFamily: "Inter, Roboto, Helvetica, Arial, sans-serif",
       }}
     >
       <Paper
@@ -105,27 +106,47 @@ export default function CvCover() {
 
             <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.3)" }} />
 
-            {/* ================= REDES (VERTICAL) ================= */}
-            <Stack spacing={1} alignItems="center">
-              <Social icon={<EmailIcon />} url="mailto:patogol3535@gmail.com" />
-              <Social
-                icon={<WhatsAppIcon />}
-                url="https://wa.me/593997979099"
-              />
-              <Social
-                icon={<LinkedInIcon />}
-                url="https://www.linkedin.com/in/jorge-patricio-santamaría-cherrez-2a73792b2"
-              />
-              <Social icon={<GitHubIcon />} url="https://github.com/Patogol35" />
-              <Social
-                icon={<FacebookIcon />}
-                url="https://www.facebook.com/share/1C9RgHAPvL/"
-              />
-              <Social
-                icon={<InstagramIcon />}
-                url="https://www.instagram.com/jorge_patricio_26"
-              />
-            </Stack>
+            {/* ================= REDES ================= */}
+            <Grid container spacing={1} justifyContent="center">
+              {/* Email + WhatsApp en columna */}
+              <Grid item>
+                <Stack spacing={1}>
+                  <Social
+                    icon={<EmailIcon />}
+                    url="mailto:patogol3535@gmail.com"
+                  />
+                  <Social
+                    icon={<WhatsAppIcon />}
+                    url="https://wa.me/593997979099"
+                  />
+                </Stack>
+              </Grid>
+
+              <Grid item>
+                <Social
+                  icon={<LinkedInIcon />}
+                  url="https://www.linkedin.com/in/jorge-patricio-santamaría-cherrez-2a73792b2"
+                />
+              </Grid>
+              <Grid item>
+                <Social
+                  icon={<GitHubIcon />}
+                  url="https://github.com/Patogol35"
+                />
+              </Grid>
+              <Grid item>
+                <Social
+                  icon={<FacebookIcon />}
+                  url="https://www.facebook.com/share/1C9RgHAPvL/"
+                />
+              </Grid>
+              <Grid item>
+                <Social
+                  icon={<InstagramIcon />}
+                  url="https://www.instagram.com/jorge_patricio_26"
+                />
+              </Grid>
+            </Grid>
 
             {/* ================= QR ================= */}
             <Box
@@ -159,7 +180,7 @@ export default function CvCover() {
         </Box>
 
         {/* ================= CONTENT ================= */}
-        <Box sx={{ flex: 1, p: 4, bgcolor: "#ffffff" }}>
+        <Box sx={{ flex: 1, p: 4 }}>
           <Section title="Áreas de Conocimiento">
             <Block title="Desarrollo de Software">
               {["PHP", "React", "Spring Boot", "Python"].map((s) => (
@@ -228,9 +249,7 @@ export default function CvCover() {
   );
 }
 
-/* =========================
-SUB COMPONENTS
-========================= */
+/* ================= SUBCOMPONENTES ================= */
 
 const Contact = ({ icon, text }) => (
   <Stack direction="row" spacing={1.5} alignItems="center">
@@ -249,7 +268,13 @@ const Social = ({ icon, url }) => (
 
 const Section = ({ title, children }) => (
   <Box mb={4}>
-    <Typography sx={{ fontWeight: 800, fontSize: 18, color: "#0d47a1" }}>
+    <Typography
+      sx={{
+        fontWeight: 800,
+        fontSize: 18,
+        color: "#0d47a1",
+      }}
+    >
       {title}
     </Typography>
     <Divider sx={{ my: 1.5 }} />
