@@ -19,6 +19,7 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
+import DescriptionIcon from "@mui/icons-material/Description";
 
 /* =========================
 SKILL CHIP
@@ -58,7 +59,7 @@ export default function CvCover() {
           borderRadius: 3,
           overflow: "hidden",
           display: "flex",
-          flexDirection: "row", // siempre lado a lado
+          flexDirection: "row",
         }}
       >
         {/* ================= SIDEBAR ================= */}
@@ -110,7 +111,7 @@ export default function CvCover() {
             <Box
               sx={{
                 display: "grid",
-                gridTemplateColumns: "repeat(2, 1fr)", // FIJO
+                gridTemplateColumns: "repeat(2, 1fr)",
                 gap: 1.5,
                 width: "100%",
                 maxWidth: 160,
@@ -125,37 +126,41 @@ export default function CvCover() {
               <Social icon={<InstagramIcon />} url="https://www.instagram.com/jorge_patricio_26" />
             </Box>
 
-            {/* ================= QR ================= */}
+            {/* ================= PORTAFOLIO ================= */}
             <Box
               sx={{
                 mt: 2,
-                bgcolor: "#fff",
-                p: 1.5,
-                borderRadius: 2,
                 textAlign: "center",
               }}
             >
-              <Box
-                component="img"
-                src="/qr-cv.png"
-                alt="QR CV"
-                sx={{
-                  width: 110,
-                  height: 110,
-                  display: "block",
-                  mx: "auto",
-                }}
-              />
+              <Tooltip title="Ver Portafolio Profesional">
+                <IconButton
+                  href="https://portafoliojorgepatriciosantamariach.vercel.app/"
+                  target="_blank"
+                  sx={{
+                    bgcolor: "#ffffff",
+                    color: "#0d47a1",
+                    width: 64,
+                    height: 64,
+                    "&:hover": {
+                      bgcolor: "#e3f2fd",
+                    },
+                  }}
+                >
+                  <DescriptionIcon sx={{ fontSize: 34 }} />
+                </IconButton>
+              </Tooltip>
+
               <Typography
                 sx={{
                   mt: 1,
                   fontSize: 12,
                   fontWeight: 700,
-                  color: "#0d47a1",
                   textTransform: "uppercase",
+                  opacity: 0.95,
                 }}
               >
-                Portafolio Virtual
+                Portafolio Web
               </Typography>
             </Box>
           </Stack>
@@ -261,13 +266,7 @@ const Social = ({ icon, url }) => (
 
 const Section = ({ title, children }) => (
   <Box mb={4}>
-    <Typography
-      sx={{
-        fontWeight: 800,
-        fontSize: 18,
-        color: "#0d47a1",
-      }}
-    >
+    <Typography fontWeight={800} fontSize={18} color="#0d47a1">
       {title}
     </Typography>
     <Divider sx={{ my: 1.5 }} />
