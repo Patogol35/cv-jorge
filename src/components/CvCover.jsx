@@ -156,7 +156,7 @@ export default function CvCover() {
         {/* ================= CONTENT ================= */}
         <Box sx={{ flex: 1, p: 4, bgcolor: "#ffffff" }}>
           <Section title="Áreas de Conocimiento">
-            <Block title="Desarrollo Web Full Stack">
+            <Block title="Desarrollo de Software">
               {[
                 "PHP",
                 "JavaScript",
@@ -179,6 +179,13 @@ export default function CvCover() {
 
             <Block title="Bases de Datos">
               {["MySQL", "PostgreSQL", "MongoDB", "Elasticsearch"].map((s) => (
+                <SkillChip key={s} label={s} />
+              ))}
+            </Block>
+
+
+            <Block title="Otras tecnologías">
+              {["Postman", "Microsoft Office", "Maquinas Virtuales", "Scrum"].map((s) => (
                 <SkillChip key={s} label={s} />
               ))}
             </Block>
