@@ -9,8 +9,11 @@ import {
   Chip,
   IconButton,
   Tooltip,
+  useTheme,
 } from "@mui/material";
+import { styled } from "@mui/material/styles";
 
+// === Icons ===
 import EmailIcon from "@mui/icons-material/Email";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
@@ -21,28 +24,130 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import GitHubIcon from "@mui/icons-material/GitHub";
 
-/* =========================
-CONFIG
-========================= */
+// === Config ===
 const cvUrl = "https://jorge-santamaria.dev/cv";
 
-/* =========================
-SKILL CHIP
-========================= */
+// === Styled Components ===
+const StyledPaper = styled(Paper)(({ theme }) => ({
+  padding: theme.spacing(3),
+  borderRadius: theme.shape.borderRadius * 2,
+  backgroundColor: theme.palette.grey[50],
+  transition: "transform 0.2s, box-shadow 0.2s",
+  "&:hover": {
+    boxShadow: theme.shadows[6],
+  },
+}));
+
 const SkillChip = ({ label }) => (
   <Chip
     label={label}
     size="small"
     sx={{
-      bgcolor: "rgba(25,118,210,.12)",
-      color: "primary.main",
+      bgcolor: "primary.light",
+      color: "primary.dark",
       fontWeight: 600,
-      borderRadius: 1.5,
+      borderRadius: "8px",
+      height: "28px",
+      fontSize: "0.8rem",
     }}
   />
 );
 
+// === Subcomponents (mejorados visualmente) ===
+const ContactItem = ({ icon, text }) => (
+  <Stack direction="row" spacing={1.5} alignItems="center">
+    {icon}
+    <Typography variant="body2" color="white" fontWeight={500}>
+      {text}
+    </Typography>
+  </Stack>
+);
+
+const Social = ({ icon, url }) => (
+  <Tooltip title={url} arrow>
+    <IconButton
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      sx={{
+        color: "#fff",
+        bgcolor: "rgba(255,255,255,0.15)",
+        "&:hover": {
+          bgcolor: "rgba(255,255,255,0.25)",
+          transform: "scale(1.1)",
+        },
+        transition: "all 0.2s ease",
+      }}
+    >
+      {icon}
+    </IconButton>
+  </Tooltip>
+);
+
+const Section = ({ title, children }) => (
+  <Box mb={6}>
+    <Typography variant="h5" fontWeight={700} gutterBottom color="text.primary">
+      {title}
+    </Typography>
+    <Divider sx={{ mb: 3, borderColor: "divider" }} />
+    <Stack spacing={3}>{children}</Stack>
+  </Box>
+);
+
+const CardBlock = ({ title, children }) => (
+  <StyledPaper elevation={2}>
+    <Typography fontWeight={700} variant="subtitle1" mb={1.5}>
+      {title}
+    </Typography>
+    <Stack direction="row" spacing={1.5} flexWrap="wrap" useFlexGap>
+      {children}
+    </Stack>
+  </StyledPaper>
+);
+
+const TimelineItem = ({ title, subtitle, date }) => (
+  <Box display="flex" gap={2} mb={2}>
+    <SchoolIcon color="primary" sx={{ mt: 0.5 }} />
+    <Box>
+      <Typography fontWeight={700} variant="body1">
+        {title}
+      </Typography>
+      <Typography variant="body2" color="text.secondary">
+        {subtitle}
+      </Typography>
+      {date && (
+        <Typography variant="caption" color="text.disabled">
+          {date}
+        </Typography>
+      )}
+    </Box>
+  </Box>
+);
+
+const ExperienceItem = ({ role, company, date, description }) => (
+  <Box display="flex" gap={2} mb={3}>
+    <WorkIcon color="primary" sx={{ mt: 0.5 }} />
+    <Box>
+      <Typography fontWeight={700} variant="body1">
+        {role}
+      </Typography>
+      <Typography variant="body2" color="text.secondary">
+        {company}
+      </Typography>
+      <Typography variant="caption" color="text.disabled">
+        {date}
+      </Typography>
+      <Typography variant="body2" mt={1} color="text.primary">
+        {description}
+      </Typography>
+    </Box>
+  </Box>
+);
+
+// === Main Component ===
 export default function CvCover() {
+  const theme = useTheme();
+
   return (
     <Box
       sx={{
@@ -50,59 +155,59 @@ export default function CvCover() {
         minHeight: "100vh",
         display: "flex",
         justifyContent: "center",
+        backgroundColor: theme.palette.grey[100],
+        p: { xs: 1, md: 2 },
       }}
     >
       <Paper
-        elevation={8}
+        elevation={0}
         sx={{
           width: "100%",
           maxWidth: 1200,
           borderRadius: { xs: 0, md: 4 },
           overflow: "hidden",
+          boxShadow: theme.shadows[8],
         }}
       >
-        <Grid container>
-
-          {/* ================= SIDEBAR ================= */}
+        <Grid container sx={{ minHeight: { md: "80vh" } }}>
+          {/* === SIDEBAR === */}
           <Grid
             item
             xs={12}
             md={4}
             sx={{
               background:
-                "linear-gradient(160deg, #0d47a1 0%, #1976d2 50%, #42a5f5 100%)",
+                "linear-gradient(150deg, #0d47a1 0%, #1565c0 100%)",
               color: "#fff",
-              p: 4,
+              p: { xs: 3, md: 4 },
             }}
           >
-            <Stack spacing={3} alignItems="center">
-
-              {/* AVATAR */}
+            <Stack spacing={4} alignItems="center" width="100%">
               <Box
                 sx={{
-                  p: 0.5,
+                  p: 1,
                   borderRadius: "50%",
-                  background:
-                    "radial-gradient(circle, rgba(255,255,255,.9), rgba(255,255,255,.2))",
-                  boxShadow: "0 0 25px rgba(255,255,255,.6)",
+                  background: "rgba(255,255,255,0.25)",
+                  boxShadow: "0 6px 20px rgba(0,0,0,0.25)",
                 }}
               >
                 <Avatar
                   src="/foto.jpg"
+                  alt="Jorge Patricio Santamaría"
                   sx={{
-                    width: 140,
-                    height: 140,
+                    width: { xs: 120, md: 140 },
+                    height: { xs: 120, md: 140 },
                     border: "4px solid #fff",
+                    boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
                   }}
                 />
               </Box>
 
-              {/* NOMBRE */}
               <Box textAlign="center">
-                <Typography variant="h6" fontWeight={800}>
+                <Typography variant="h5" fontWeight={800} lineHeight={1.2}>
                   Jorge Patricio
                 </Typography>
-                <Typography variant="subtitle1" fontWeight={700}>
+                <Typography variant="h6" fontWeight={700} color="rgba(255,255,255,0.9)">
                   Santamaría Cherrez
                 </Typography>
                 <Typography variant="body2" sx={{ opacity: 0.9, mt: 1 }}>
@@ -111,78 +216,65 @@ export default function CvCover() {
                 </Typography>
               </Box>
 
-              <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.3)" }} />
+              <Divider flexItem sx={{ borderColor: "rgba(255,255,255,0.4)", width: "80%" }} />
 
-              {/* CONTACTO */}
-              <Stack spacing={1} width="100%">
-                <ContactItem icon={<EmailIcon />} text="patricio_jorge@hotmail.es" />
-                <ContactItem icon={<WhatsAppIcon />} text="0997979099" />
-                <ContactItem icon={<LocationOnIcon />} text="Ambato, Ecuador" />
+              <Stack spacing={2} width="100%">
+                <ContactItem icon={<EmailIcon fontSize="small" />} text="patricio_jorge@hotmail.es" />
+                <ContactItem icon={<WhatsAppIcon fontSize="small" />} text="+593 99 797 9099" />
+                <ContactItem icon={<LocationOnIcon fontSize="small" />} text="Ambato, Ecuador" />
               </Stack>
 
-              <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.3)" }} />
+              <Divider flexItem sx={{ borderColor: "rgba(255,255,255,0.4)", width: "80%" }} />
 
-              {/* REDES */}
-              <Stack direction="row" spacing={1}>
-                <Social icon={<LinkedInIcon />} url="https://linkedin.com" />
+              <Stack direction="row" spacing={1.5} justifyContent="center">
+                <Social icon={<LinkedInIcon />} url="https://linkedin.com/in/patogol35" />
+                <Social icon={<GitHubIcon />} url="https://github.com/Patogol35" />
                 <Social icon={<FacebookIcon />} url="https://facebook.com" />
                 <Social icon={<InstagramIcon />} url="https://instagram.com" />
-                <Social icon={<GitHubIcon />} url="https://github.com" />
               </Stack>
 
-              {/* QR */}
               <Box
                 sx={{
                   mt: 2,
-                  bgcolor: "#fff",
-                  p: 1.5,
+                  bgcolor: "rgba(255,255,255,0.95)",
+                  p: 2,
                   borderRadius: 2,
                   textAlign: "center",
+                  boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
                 }}
               >
                 <img
-                  src={`https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=${encodeURIComponent(
-                    cvUrl
-                  )}`}
+                  src={`https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=${encodeURIComponent(cvUrl)}`}
                   alt="QR CV"
                   width={120}
                   height={120}
                 />
-                <Typography variant="caption" color="text.secondary" mt={1}>
-                  CV Online
+                <Typography variant="caption" color="text.secondary" display="block" mt={1}>
+                  Escanea para ver mi CV online
                 </Typography>
               </Box>
             </Stack>
           </Grid>
 
-          {/* ================= CONTENIDO ================= */}
+          {/* === MAIN CONTENT === */}
           <Grid
             item
             xs={12}
             md={8}
             sx={{
-              p: { xs: 3, md: 5 },
-              bgcolor: "#f5f7fa",
+              p: { xs: 2.5, md: 5 },
+              bgcolor: "#ffffff",
             }}
           >
-
-            {/* ÁREAS */}
             <Section title="Áreas de Conocimiento">
               <CardBlock title="Desarrollo Web Full Stack">
-                {[
-                  "PHP",
-                  "JavaScript",
-                  "React",
-                  "Java",
-                  "Spring Boot",
-                  "MySQL",
-                ].map((s) => (
+                {["PHP", "JavaScript", "React", "Java", "Spring Boot", "MySQL"].map((s) => (
                   <SkillChip key={s} label={s} />
                 ))}
               </CardBlock>
 
-              <CardBlock title="Cloud">
-                {["AWS", "Render", "Vercel"].map((s) => (
+              <CardBlock title="Cloud & DevOps">
+                {["AWS", "Render", "Vercel", "Git", "Linux"].map((s) => (
                   <SkillChip key={s} label={s} />
                 ))}
               </CardBlock>
@@ -194,44 +286,37 @@ export default function CvCover() {
               </CardBlock>
             </Section>
 
-            {/* EXPERIENCIA */}
             <Section title="Experiencia Profesional">
               <ExperienceItem
                 role="Desarrollador Full Stack"
-                company="Empresa / Proyecto 1"
+                company="Proyectos Independientes"
                 date="2024 – Actualidad"
-                description="Desarrollo y mantenimiento de aplicaciones web, integración de APIs y despliegue en la nube."
+                description="Desarrollo de aplicaciones web modernas, seguras y escalables con React, Spring Boot y despliegue en Vercel/AWS."
               />
               <ExperienceItem
                 role="Desarrollador Web"
-                company="Empresa / Proyecto 2"
+                company="Startups / Freelance"
                 date="2023 – 2024"
-                description="Implementación de interfaces modernas y optimización de rendimiento."
+                description="Implementación de interfaces responsivas, APIs REST y optimización de rendimiento."
               />
               <ExperienceItem
                 role="Ingeniero de Software"
-                company="Empresa / Proyecto 3"
+                company="Proyectos Académicos & Empresariales"
                 date="2022 – 2023"
-                description="Diseño backend, manejo de bases de datos y control de versiones."
-              />
-              <ExperienceItem
-                role="Practicante de Sistemas"
-                company="Empresa / Proyecto 4"
-                date="2021 – 2022"
-                description="Soporte técnico y desarrollo de módulos internos."
+                description="Arquitectura limpia, bases de datos, pruebas y control de versiones con Git."
               />
             </Section>
 
-            {/* FORMACIÓN */}
             <Section title="Formación Académica">
               <TimelineItem
                 title="Universidad Internacional de La Rioja (UNIR)"
-                subtitle="Maestría en Ingeniería de Software y Sistemas Informáticos"
+                subtitle="Máster en Ingeniería de Software y Sistemas Informáticos"
                 date="2023 – 2024"
               />
               <TimelineItem
                 title="Universidad Indoamérica"
                 subtitle="Ingeniería de Sistemas"
+                date="2017 – 2022"
               />
             </Section>
           </Grid>
@@ -239,75 +324,4 @@ export default function CvCover() {
       </Paper>
     </Box>
   );
-}
-
-/* =========================
-SUBCOMPONENTES
-========================= */
-
-const ContactItem = ({ icon, text }) => (
-  <Stack direction="row" spacing={1} alignItems="center">
-    {icon}
-    <Typography variant="body2">{text}</Typography>
-  </Stack>
-);
-
-const Social = ({ icon, url }) => (
-  <Tooltip title={url}>
-    <IconButton href={url} target="_blank" sx={{ color: "#fff" }}>
-      {icon}
-    </IconButton>
-  </Tooltip>
-);
-
-const Section = ({ title, children }) => (
-  <Box mb={5}>
-    <Typography variant="h6" fontWeight={800} gutterBottom>
-      {title}
-    </Typography>
-    <Divider sx={{ mb: 3 }} />
-    <Stack spacing={3}>{children}</Stack>
-  </Box>
-);
-
-const CardBlock = ({ title, children }) => (
-  <Paper sx={{ p: 3, borderRadius: 3 }}>
-    <Typography fontWeight={700} mb={1}>
-      {title}
-    </Typography>
-    <Stack direction="row" spacing={1} flexWrap="wrap">
-      {children}
-    </Stack>
-  </Paper>
-);
-
-const TimelineItem = ({ title, subtitle, date }) => (
-  <Box display="flex" gap={2}>
-    <SchoolIcon color="primary" />
-    <Box>
-      <Typography fontWeight={700}>{title}</Typography>
-      <Typography variant="body2">{subtitle}</Typography>
-      {date && (
-        <Typography variant="caption" color="text.secondary">
-          {date}
-        </Typography>
-      )}
-    </Box>
-  </Box>
-);
-
-const ExperienceItem = ({ role, company, date, description }) => (
-  <Box display="flex" gap={2}>
-    <WorkIcon color="primary" />
-    <Box>
-      <Typography fontWeight={700}>{role}</Typography>
-      <Typography variant="body2">{company}</Typography>
-      <Typography variant="caption" color="text.secondary">
-        {date}
-      </Typography>
-      <Typography variant="body2" mt={1}>
-        {description}
-      </Typography>
-    </Box>
-  </Box>
-);
+      }
