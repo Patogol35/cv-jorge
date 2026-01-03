@@ -48,34 +48,38 @@ export default function CvCover() {
         display: "flex",
         justifyContent: "center",
         py: 4,
+        fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
       }}
     >
+      {/* Ajuste 2: Reducir maxWidth para eliminar espacio a la derecha */}
       <Paper
         elevation={8}
         sx={{
           width: "100%",
-          maxWidth: 1200, // ancho total correcto
+          maxWidth: 900, // Cambiado de 980 a 900 para ajustar el ancho total
           borderRadius: 3,
           overflow: "hidden",
           display: "flex",
+          flexDirection: "row",
         }}
       >
         {/* ================= SIDEBAR ================= */}
         <Box
           sx={{
-            width: 300,
+            width: { xs: 220, sm: 260, md: 300 },
+            minWidth: { xs: 220, sm: 260 },
             bgcolor: "#0d47a1",
             color: "#fff",
-            p: 4,
+            p: { xs: 2.5, md: 4 },
             flexShrink: 0,
           }}
         >
           <Stack spacing={3} alignItems="center">
             <Avatar
-              src="https://res.cloudinary.com/dqkwc0kf7/image/upload/v1757093856/FB_IMG_1757092624480_hgpu4i.jpg"
+              src="https://res.cloudinary.com/dqkwc0kf7/image/upload/v1757093856/FB_IMG_1757092624480_hgpu4i.jpg "
               sx={{
-                width: 140,
-                height: 140,
+                width: { xs: 110, md: 140 },
+                height: { xs: 110, md: 140 },
                 border: "3px solid #fff",
               }}
             />
@@ -104,6 +108,7 @@ export default function CvCover() {
 
             <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.3)" }} />
 
+            {/* ================= REDES 2 x 3 ================= */}
             <Box
               sx={{
                 display: "grid",
@@ -111,18 +116,43 @@ export default function CvCover() {
                 gap: 1.5,
                 width: "100%",
                 maxWidth: 160,
+                mx: "auto",
               }}
             >
               <Social icon={<EmailIcon />} url="mailto:patogol3535@gmail.com" />
-              <Social icon={<WhatsAppIcon />} url="https://wa.me/593997979099" />
-              <Social icon={<LinkedInIcon />} url="#" />
-              <Social icon={<GitHubIcon />} url="#" />
-              <Social icon={<FacebookIcon />} url="#" />
-              <Social icon={<InstagramIcon />} url="#" />
-              <Social
-                icon={<DescriptionIcon />}
-                url="https://portafoliojorgepatriciosantamariach.vercel.app/"
-              />
+              <Social icon={<WhatsAppIcon />} url="https://wa.me/593997979099 " />
+              <Social icon={<LinkedInIcon />} url="https://www.linkedin.com/in/jorge-patricio-santama ría-cherrez-2a73792b2" />
+              <Social icon={<GitHubIcon />} url="https://github.com/Patogol35 " />
+              <Social icon={<FacebookIcon />} url="https://www.facebook.com/share/1C9RgHAPvL/ " />
+              <Social icon={<InstagramIcon />} url="https://www.instagram.com/jorge_patricio_26 " />
+            </Box>
+
+            {/* ================= PORTAFOLIO ================= */}
+            <Box
+              sx={{
+                mt: 2,
+                textAlign: "center",
+              }}
+            >
+              <Tooltip title="Ver Portafolio Profesional">
+                {/* Ajuste 1: Icono de Portafolio con mismo estilo y sin texto */}
+                <IconButton
+                  href="https://portafoliojorgepatriciosantamariach.vercel.app/ "
+                  target="_blank"
+                  sx={{
+                    color: "#fff", // Mismo color que los otros íconos sociales
+                    width: 42, // Mismo tamaño
+                    height: 42, // Mismo tamaño
+                    "&:hover": {
+                      bgcolor: "#e3f2fd", // Efecto hover similar
+                      color: "#0d47a1", // Color al hacer hover
+                    },
+                  }}
+                >
+                  <DescriptionIcon sx={{ fontSize: 24 }} /> {/* Tamaño del ícono ajustado */}
+                </IconButton>
+              </Tooltip>
+              {/* Texto eliminado */}
             </Box>
           </Stack>
         </Box>
@@ -131,8 +161,9 @@ export default function CvCover() {
         <Box
           sx={{
             flex: 1,
-            bgcolor: "#fff",
-            p: 4, // padding normal
+            /* Ajuste 2: Reducir padding derecho para evitar espacio extra */
+            p: { xs: 2.5, md: 3 }, // Cambiado de 4 a 3 en md para reducir el margen derecho
+            bgcolor: "#ffffff",
           }}
         >
           <Section title="Áreas de Conocimiento">
@@ -219,7 +250,12 @@ const Social = ({ icon, url }) => (
     <IconButton
       href={url}
       target="_blank"
-      sx={{ color: "#fff", width: 42, height: 42 }}
+      sx={{
+        color: "#fff",
+        width: 42,
+        height: 42,
+        mx: "auto",
+      }}
     >
       {icon}
     </IconButton>
