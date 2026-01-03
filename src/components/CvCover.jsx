@@ -17,6 +17,8 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import SchoolIcon from "@mui/icons-material/School";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import InstagramIcon from "@mui/icons-material/Instagram";
 
 const cvUrl = "https://jorge-santamaria.dev/cv";
 
@@ -95,9 +97,24 @@ export default function CvCover() {
 
             <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.3)" }} />
 
+            {/* REDES SOCIALES */}
             <Stack direction="row" spacing={1}>
-              <Social icon={<LinkedInIcon />} url="https://linkedin.com/in/jorge-santamaria" />
-              <Social icon={<GitHubIcon />} url="https://github.com/jorge-santamaria" />
+              <Social
+                icon={<LinkedInIcon />}
+                url="https://www.linkedin.com/in/jorge-patricio-santamaría-cherrez-2a73792b2"
+              />
+              <Social
+                icon={<GitHubIcon />}
+                url="https://github.com/Patogol35"
+              />
+              <Social
+                icon={<FacebookIcon />}
+                url="https://www.facebook.com/share/1CGkkdhgz8/"
+              />
+              <Social
+                icon={<InstagramIcon />}
+                url="https://www.instagram.com/jorge_patricio_26"
+              />
             </Stack>
 
             <Box sx={{ mt: 2, bgcolor: "#fff", p: 1.5, borderRadius: 2 }}>
@@ -125,7 +142,6 @@ export default function CvCover() {
         {/* ================= CONTENIDO ================= */}
         <Grid item xs={12} md={8} sx={{ p: 4, bgcolor: "#fafafa" }}>
 
-          {/* ÁREAS */}
           <Section title="Áreas de Conocimiento">
 
             <Block title="Desarrollo Web Full Stack">
@@ -157,7 +173,6 @@ export default function CvCover() {
 
           </Section>
 
-          {/* FORMACIÓN */}
           <Section title="Formación Académica">
             <EducationItem
               title="Universidad Internacional de La Rioja (UNIR)"
@@ -189,7 +204,12 @@ const ContactItem = ({ icon, text }) => (
 
 const Social = ({ icon, url }) => (
   <Tooltip title={url}>
-    <IconButton href={url} target="_blank" sx={{ color: "#fff" }}>
+    <IconButton
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      sx={{ color: "#fff" }}
+    >
       {icon}
     </IconButton>
   </Tooltip>
