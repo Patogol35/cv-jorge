@@ -39,164 +39,171 @@ const SkillChip = ({ label }) => (
 
 export default function CvCover() {
   return (
-    <Paper
-      elevation={6}
-      sx={{
-        borderRadius: 3,
-        overflow: "hidden",
-        maxWidth: 1100,
-        mx: "auto",
-      }}
-    >
-      <Grid container>
+    <Box sx={{ width: "100%", overflowX: "hidden" }}>
+      <Paper
+        elevation={6}
+        sx={{
+          borderRadius: 3,
+          overflow: "hidden",
+          maxWidth: 980,   // 👈 ancho CV correcto
+          mx: "auto",
+        }}
+      >
+        <Grid container sx={{ width: "100%", m: 0 }}>
 
-        {/* ================= SIDEBAR ================= */}
-        <Grid
-          item
-          xs={12}
-          md={4}
-          sx={{
-            bgcolor: "#0d47a1",
-            color: "#fff",
-            p: 4,
-          }}
-        >
-          <Stack spacing={3} alignItems="center">
-            <Avatar
-              src="https://res.cloudinary.com/dqkwc0kf7/image/upload/v1757093856/FB_IMG_1757092624480_hgpu4i.jpg"
-              sx={{
-                width: 140,
-                height: 140,
-                border: "3px solid #fff",
-              }}
-            />
+          {/* ================= SIDEBAR ================= */}
+          <Grid
+            item
+            xs={12}
+            md={4}
+            sx={{
+              bgcolor: "#0d47a1",
+              color: "#fff",
+              p: 4,
+              boxSizing: "border-box",
+            }}
+          >
+            <Stack spacing={3} alignItems="center">
 
-            <Box textAlign="center">
-              <Typography variant="h6" fontWeight={800}>
-                Jorge Patricio
-              </Typography>
-              <Typography variant="h6" fontWeight={800}>
-                Santamaría Cherrez
-              </Typography>
-
-              <Typography variant="body2" sx={{ mt: 1, opacity: 0.9 }}>
-                Ingeniero de Software <br />
-                Desarrollador Full Stack
-              </Typography>
-            </Box>
-
-            <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.3)" }} />
-
-            <Stack spacing={1} width="100%">
-              <ContactItem
-                icon={<EmailIcon />}
-                text={
-                  <a
-                    href="mailto:patogol3535@gmail.com"
-                    style={{ color: "inherit", textDecoration: "none" }}
-                  >
-                    patogol3535@gmail.com
-                  </a>
-                }
+              <Avatar
+                src="https://res.cloudinary.com/dqkwc0kf7/image/upload/v1757093856/FB_IMG_1757092624480_hgpu4i.jpg"
+                sx={{
+                  width: 140,
+                  height: 140,
+                  border: "3px solid #fff",
+                }}
               />
-              <ContactItem icon={<WhatsAppIcon />} text="0997979099" />
-              <ContactItem icon={<LocationOnIcon />} text="Ambato, Ecuador" />
+
+              <Box textAlign="center">
+                <Typography variant="h6" fontWeight={800}>
+                  Jorge Patricio
+                </Typography>
+                <Typography variant="h6" fontWeight={800}>
+                  Santamaría Cherrez
+                </Typography>
+
+                <Typography variant="body2" sx={{ mt: 1, opacity: 0.9 }}>
+                  Ingeniero de Software <br />
+                  Desarrollador Full Stack
+                </Typography>
+              </Box>
+
+              <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.3)" }} />
+
+              <Stack spacing={1} width="100%">
+                <ContactItem
+                  icon={<EmailIcon />}
+                  text={
+                    <a
+                      href="mailto:patogol3535@gmail.com"
+                      style={{ color: "inherit", textDecoration: "none" }}
+                    >
+                      patogol3535@gmail.com
+                    </a>
+                  }
+                />
+                <ContactItem icon={<WhatsAppIcon />} text="0997979099" />
+                <ContactItem icon={<LocationOnIcon />} text="Ambato, Ecuador" />
+              </Stack>
+
+              <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.3)" }} />
+
+              <Stack direction="row" spacing={1}>
+                <Social icon={<LinkedInIcon />} url="https://www.linkedin.com" />
+                <Social icon={<GitHubIcon />} url="https://github.com/Patogol35" />
+                <Social icon={<FacebookIcon />} url="https://facebook.com" />
+                <Social icon={<InstagramIcon />} url="https://instagram.com" />
+              </Stack>
+
+              {/* QR */}
+              <Box sx={{ mt: 2, bgcolor: "#fff", p: 1.5, borderRadius: 2 }}>
+                <img src="/qr-cv.png" alt="QR CV" width={120} height={120} />
+                <Typography
+                  variant="caption"
+                  color="text.secondary"
+                  display="block"
+                  align="center"
+                  mt={1}
+                >
+                  CV Online
+                </Typography>
+              </Box>
             </Stack>
+          </Grid>
 
-            <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.3)" }} />
+          {/* ================= CONTENIDO ================= */}
+          <Grid
+            item
+            xs={12}
+            md={8}
+            sx={{
+              pl: 4,          // 👈 SOLO izquierda
+              pr: 0,          // ❌ cero derecha
+              py: 4,
+              bgcolor: "#fafafa",
+              boxSizing: "border-box",
+            }}
+          >
+            <Section title="Áreas de Conocimiento">
+              <Block title="Desarrollo Web Full Stack">
+                {[
+                  "PHP",
+                  "JavaScript",
+                  "React",
+                  "Java",
+                  "Spring Boot",
+                  "MySQL",
+                  "Postman",
+                  "Vercel",
+                ].map((s) => (
+                  <SkillChip key={s} label={s} />
+                ))}
+              </Block>
 
-            <Stack direction="row" spacing={1}>
-              <Social icon={<LinkedInIcon />} url="https://www.linkedin.com" />
-              <Social icon={<GitHubIcon />} url="https://github.com/Patogol35" />
-              <Social icon={<FacebookIcon />} url="https://facebook.com" />
-              <Social icon={<InstagramIcon />} url="https://instagram.com" />
-            </Stack>
+              <Block title="Cloud">
+                {["Vercel", "Render", "AWS"].map((s) => (
+                  <SkillChip key={s} label={s} />
+                ))}
+              </Block>
 
-            {/* QR */}
-            <Box sx={{ mt: 2, bgcolor: "#fff", p: 1.5, borderRadius: 2 }}>
-              <img src="/qr-cv.png" alt="QR CV" width={120} height={120} />
-              <Typography
-                variant="caption"
-                color="text.secondary"
-                display="block"
-                align="center"
-                mt={1}
-              >
-                CV Online
-              </Typography>
-            </Box>
-          </Stack>
+              <Block title="Bases de Datos">
+                {["MySQL", "PostgreSQL", "MongoDB", "Elasticsearch"].map((s) => (
+                  <SkillChip key={s} label={s} />
+                ))}
+              </Block>
+            </Section>
+
+            <Section title="Experiencia Profesional">
+              <ExperienceItem
+                title="Docente de Tecnologías de la Información"
+                description="Docencia en programación y desarrollo de software."
+              />
+              <ExperienceItem
+                title="Desarrollador de Intranet"
+                description="Desarrollo de intranet para gestión interna."
+              />
+              <ExperienceItem
+                title="Desarrollador de Aulas Virtuales"
+                description="Implementación de plataformas educativas virtuales."
+              />
+            </Section>
+
+            <Section title="Formación Académica">
+              <EducationItem
+                title="Universidad Internacional de La Rioja (UNIR)"
+                subtitle="Maestría en Ingeniería de Software y Sistemas Informáticos"
+                date="mar. 2023 – abr. 2024"
+              />
+              <EducationItem
+                title="Universidad Indoamérica"
+                subtitle="Ingeniería de Sistemas"
+              />
+            </Section>
+          </Grid>
+
         </Grid>
-
-        {/* ================= CONTENIDO ================= */}
-        <Grid
-          item
-          xs={12}
-          md={8}
-          sx={{
-            px: { xs: 3, md: 4 }, // 👈 padding limpio y parejo
-            py: { xs: 4, md: 5 },
-            bgcolor: "#fafafa",
-          }}
-        >
-          <Section title="Áreas de Conocimiento">
-            <Block title="Desarrollo Web Full Stack">
-              {[
-                "PHP",
-                "JavaScript",
-                "React",
-                "Java",
-                "Spring Boot",
-                "MySQL",
-                "Postman",
-                "Vercel",
-              ].map((s) => (
-                <SkillChip key={s} label={s} />
-              ))}
-            </Block>
-
-            <Block title="Cloud">
-              {["Vercel", "Render", "AWS"].map((s) => (
-                <SkillChip key={s} label={s} />
-              ))}
-            </Block>
-
-            <Block title="Bases de Datos">
-              {["MySQL", "PostgreSQL", "MongoDB", "Elasticsearch"].map((s) => (
-                <SkillChip key={s} label={s} />
-              ))}
-            </Block>
-          </Section>
-
-          <Section title="Experiencia Profesional">
-            <ExperienceItem
-              title="Docente de Tecnologías de la Información"
-              description="Docencia en programación y desarrollo de software."
-            />
-            <ExperienceItem
-              title="Desarrollador de Intranet"
-              description="Desarrollo de intranet para gestión interna."
-            />
-            <ExperienceItem
-              title="Desarrollador de Aulas Virtuales"
-              description="Implementación de plataformas educativas virtuales."
-            />
-          </Section>
-
-          <Section title="Formación Académica">
-            <EducationItem
-              title="Universidad Internacional de La Rioja (UNIR)"
-              subtitle="Maestría en Ingeniería de Software y Sistemas Informáticos"
-              date="mar. 2023 – abr. 2024"
-            />
-            <EducationItem
-              title="Universidad Indoamérica"
-              subtitle="Ingeniería de Sistemas"
-            />
-          </Section>
-        </Grid>
-      </Grid>
-    </Paper>
+      </Paper>
+    </Box>
   );
 }
 
@@ -221,10 +228,10 @@ const Social = ({ icon, url }) => (
 
 const Section = ({ title, children }) => (
   <Box mb={4}>
-    <Typography variant="h6" fontWeight={800} gutterBottom>
+    <Typography variant="h6" fontWeight={800}>
       {title}
     </Typography>
-    <Divider sx={{ mb: 2 }} />
+    <Divider sx={{ my: 2 }} />
     <Stack spacing={2}>{children}</Stack>
   </Box>
 );
