@@ -10,6 +10,7 @@ import {
   IconButton,
   Tooltip,
 } from "@mui/material";
+
 import EmailIcon from "@mui/icons-material/Email";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
@@ -19,67 +20,84 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import GitHubIcon from "@mui/icons-material/GitHub";
 
+import QRCode from "qrcode.react";
+
 const cvUrl = "https://jorge-santamaria.dev/cv";
 
-const qrSrc = `https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=${encodeURIComponent(
-  cvUrl
-)}`;
-
+/* =========================
+SKILL CHIP
+========================= */
 const SkillChip = ({ label }) => (
   <Chip
     label={label}
     size="small"
     sx={{
-      bgcolor: "primary.main",
-      color: "#fff",
-      fontWeight: 500,
+      bgcolor: "rgba(25,118,210,.12)",
+      color: "primary.main",
+      fontWeight: 600,
+      borderRadius: 1.5,
     }}
   />
 );
 
 export default function CvCover() {
   return (
-    <Paper elevation={6} sx={{ borderRadius: 4, overflow: "hidden" }}>
+    <Paper
+      elevation={10}
+      sx={{
+        borderRadius: 4,
+        overflow: "hidden",
+        maxWidth: 1200,
+        mx: "auto",
+      }}
+    >
       <Grid container minHeight="100vh">
-        {/* SIDEBAR */}
+
+        {/* ================= SIDEBAR ================= */}
         <Grid
           item
           xs={12}
           md={4}
           sx={{
             background:
-              "linear-gradient(180deg, #0d47a1 0%, #1565c0 100%)",
+              "linear-gradient(160deg, #0d47a1 0%, #1976d2 50%, #42a5f5 100%)",
             color: "#fff",
             p: 4,
+            position: "relative",
           }}
         >
           <Stack spacing={3} alignItems="center">
-            <Avatar
-              src="/foto.jpg"
-              sx={{
-                width: 150,
-                height: 150,
-                border: "4px solid #fff",
-                boxShadow: "0 8px 24px rgba(0,0,0,.25)",
-              }}
-            />
 
+            {/* AVATAR CON HALO */}
+            <Box
+              sx={{
+                p: 0.5,
+                borderRadius: "50%",
+                background:
+                  "radial-gradient(circle, rgba(255,255,255,.9), rgba(255,255,255,.1))",
+                boxShadow: "0 0 30px rgba(255,255,255,.5)",
+              }}
+            >
+              <Avatar
+                src="/foto.jpg"
+                sx={{
+                  width: 150,
+                  height: 150,
+                  border: "4px solid #fff",
+                }}
+              />
+            </Box>
+
+            {/* NOMBRE */}
             <Box textAlign="center">
-              <Typography variant="h5" fontWeight={700}>
+              <Typography variant="h5" fontWeight={800}>
                 Jorge Patricio
               </Typography>
-              <Typography
-                variant="h6"
-                fontWeight={700}
-                sx={{ letterSpacing: 0.4 }}
-              >
+              <Typography variant="h6" fontWeight={700}>
                 Santamaría Cherrez
               </Typography>
 
-              <Typography
-                variant="body2"
-                sx={{ opacity: 0.9, mt: 1, lineHeight: 1.5 }}
-              >
+              <Typography variant="body2" sx={{ opacity: 0.9, mt: 1 }}>
                 Máster en Ingeniería de Software <br />
                 y Sistemas Informáticos
               </Typography>
@@ -88,46 +106,20 @@ export default function CvCover() {
             <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.3)" }} />
 
             {/* CONTACTO */}
-            <Stack spacing={1.2} width="100%">
-              {[
-                { icon: <EmailIcon fontSize="small" />, text: "patricio_jorge@hotmail.es" },
-                { icon: <WhatsAppIcon fontSize="small" />, text: "0997979099" },
-                { icon: <LocationOnIcon fontSize="small" />, text: "Ambato" },
-              ].map((item, i) => (
-                <Stack key={i} direction="row" spacing={1.2} alignItems="center">
-                  {item.icon}
-                  <Typography variant="body2">{item.text}</Typography>
-                </Stack>
-              ))}
+            <Stack spacing={1} width="100%">
+              <ContactItem icon={<EmailIcon />} text="patricio_jorge@hotmail.es" />
+              <ContactItem icon={<WhatsAppIcon />} text="0997979099" />
+              <ContactItem icon={<LocationOnIcon />} text="Ambato, Ecuador" />
             </Stack>
 
-            {/* REDES SOCIALES */}
             <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.3)" }} />
 
+            {/* REDES */}
             <Stack direction="row" spacing={1}>
-              {[
-                { icon: <LinkedInIcon />, url: "https://linkedin.com/in/jorge-santamaria", label: "LinkedIn" },
-                { icon: <FacebookIcon />, url: "https://facebook.com/jorge.santamaria", label: "Facebook" },
-                { icon: <InstagramIcon />, url: "https://instagram.com/jorge.dev", label: "Instagram" },
-                { icon: <GitHubIcon />, url: "https://github.com/jorge-santamaria", label: "GitHub" },
-              ].map((item, i) => (
-                <Tooltip key={i} title={item.label}>
-                  <IconButton
-                    href={item.url}
-                    target="_blank"
-                    sx={{
-                      color: "#fff",
-                      transition: "transform .2s, background-color .2s",
-                      "&:hover": {
-                        transform: "translateY(-2px)",
-                        bgcolor: "rgba(255,255,255,.15)",
-                      },
-                    }}
-                  >
-                    {item.icon}
-                  </IconButton>
-                </Tooltip>
-              ))}
+              <Social icon={<LinkedInIcon />} url="https://linkedin.com/in/jorge-santamaria" />
+              <Social icon={<FacebookIcon />} url="https://facebook.com/jorge.santamaria" />
+              <Social icon={<InstagramIcon />} url="https://instagram.com/jorge.dev" />
+              <Social icon={<GitHubIcon />} url="https://github.com/jorge-santamaria" />
             </Stack>
 
             {/* QR */}
@@ -135,17 +127,11 @@ export default function CvCover() {
               sx={{
                 mt: 2,
                 bgcolor: "#fff",
-                p: 1,
+                p: 1.5,
                 borderRadius: 2,
-                boxShadow: "0 6px 20px rgba(0,0,0,.25)",
               }}
             >
-              <Box
-                component="img"
-                src={qrSrc}
-                alt="QR CV"
-                sx={{ width: 140, height: 140 }}
-              />
+              <QRCode value={cvUrl} size={120} />
               <Typography
                 variant="caption"
                 color="text.secondary"
@@ -153,61 +139,121 @@ export default function CvCover() {
                 align="center"
                 mt={1}
               >
-                Escanea para ver CV online
+                CV Online
               </Typography>
             </Box>
           </Stack>
         </Grid>
 
-        {/* CONTENIDO */}
-        <Grid item xs={12} md={8} sx={{ p: 5, bgcolor: "#f9fafb" }}>
-          <Typography variant="h5" fontWeight={700} gutterBottom>
-            Áreas de Conocimiento
-          </Typography>
-          <Divider sx={{ mb: 2 }} />
+        {/* ================= CONTENIDO ================= */}
+        <Grid item xs={12} md={8} sx={{ p: 5, bgcolor: "#f5f7fa" }}>
 
-          <Typography variant="body2" color="text.secondary" lineHeight={1.8}>
-            Desarrollo Web Full Stack · Ciberseguridad · Bases de Datos ·
-            Inteligencia Artificial · Linux
-          </Typography>
+          {/* ÁREAS */}
+          <Section title="Áreas de Conocimiento">
+            <CardBlock title="Desarrollo Web Full Stack">
+              {[
+                "PHP",
+                "JavaScript",
+                "React",
+                "Java",
+                "Spring Boot",
+                "MySQL",
+                "Postman",
+                "Vercel",
+              ].map((s) => (
+                <SkillChip key={s} label={s} />
+              ))}
+            </CardBlock>
 
-          <Divider sx={{ my: 4 }} />
+            <CardBlock title="Ciberseguridad Web">
+              <Typography variant="body2" color="text.secondary">
+                OWASP Top 10 · ZAP · Wireshark · Burp Suite · Nmap · Fortify
+              </Typography>
+            </CardBlock>
 
-          <Typography variant="h5" fontWeight={700} gutterBottom>
-            Formación Académica
-          </Typography>
-          <Divider sx={{ mb: 2 }} />
+            <CardBlock title="Bases de Datos">
+              {["MySQL", "PostgreSQL", "MongoDB", "Elasticsearch"].map((s) => (
+                <SkillChip key={s} label={s} />
+              ))}
+            </CardBlock>
+          </Section>
 
-          <Stack spacing={3}>
-            <Box display="flex" gap={2}>
-              <SchoolIcon color="primary" />
-              <Box>
-                <Typography fontWeight={600}>
-                  Universidad Internacional de La Rioja (UNIR)
-                </Typography>
-                <Typography variant="body2">
-                  Maestría en Ingeniería de Software y Sistemas Informáticos
-                </Typography>
-                <Typography variant="caption" color="text.secondary">
-                  mar. 2023 – abr. 2024
-                </Typography>
-              </Box>
-            </Box>
-
-            <Box display="flex" gap={2}>
-              <SchoolIcon color="primary" />
-              <Box>
-                <Typography fontWeight={600}>
-                  Universidad Indoamérica
-                </Typography>
-                <Typography variant="body2">
-                  Ingeniería de Sistemas
-                </Typography>
-              </Box>
-            </Box>
-          </Stack>
+          {/* FORMACIÓN */}
+          <Section title="Formación Académica">
+            <TimelineItem
+              title="Universidad Internacional de La Rioja (UNIR)"
+              subtitle="Maestría en Ingeniería de Software y Sistemas Informáticos"
+              date="mar. 2023 – abr. 2024"
+            />
+            <TimelineItem
+              title="Universidad Indoamérica"
+              subtitle="Ingeniería de Sistemas"
+            />
+          </Section>
         </Grid>
       </Grid>
     </Paper>
   );
 }
+
+/* =========================
+SUB COMPONENTS
+========================= */
+
+const ContactItem = ({ icon, text }) => (
+  <Stack direction="row" spacing={1} alignItems="center">
+    {icon}
+    <Typography variant="body2">{text}</Typography>
+  </Stack>
+);
+
+const Social = ({ icon, url }) => (
+  <Tooltip title={url}>
+    <IconButton href={url} target="_blank" sx={{ color: "#fff" }}>
+      {icon}
+    </IconButton>
+  </Tooltip>
+);
+
+const Section = ({ title, children }) => (
+  <Box mb={5}>
+    <Typography variant="h5" fontWeight={800} gutterBottom>
+      {title}
+    </Typography>
+    <Divider sx={{ mb: 3 }} />
+    <Stack spacing={3}>{children}</Stack>
+  </Box>
+);
+
+const CardBlock = ({ title, children }) => (
+  <Paper
+    elevation={3}
+    sx={{
+      p: 3,
+      borderRadius: 3,
+      bgcolor: "#fff",
+    }}
+  >
+    <Typography fontWeight={700} mb={1}>
+      {title}
+    </Typography>
+    <Stack direction="row" spacing={1} flexWrap="wrap">
+      {children}
+    </Stack>
+  </Paper>
+);
+
+const TimelineItem = ({ title, subtitle, date }) => (
+  <Box display="flex" gap={2}>
+    <SchoolIcon color="primary" />
+    <Box>
+      <Typography fontWeight={700}>{title}</Typography>
+      <Typography variant="body2">{subtitle}</Typography>
+      {date && (
+        <Typography variant="caption" color="text.secondary">
+          {date}
+        </Typography>
+      )}
+    </Box>
+  </Box>
+);
