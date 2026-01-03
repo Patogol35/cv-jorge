@@ -52,15 +52,16 @@ export default function CvCover() {
       }}
     >
       <Paper
-        elevation={8}
-        sx={{
-          width: "100%",
-          maxWidth: 980,
-          borderRadius: 3,
-          overflow: "hidden",
-          display: "flex",
-        }}
-      >
+  elevation={8}
+  sx={{
+    width: "100%",
+    maxWidth: 980,
+    borderRadius: 3,
+    overflow: "hidden",
+    display: "flex",
+    flexDirection: { xs: "column", md: "row" },
+  }}
+>
         {/* ================= SIDEBAR ================= */}
         <Box
           sx={{
