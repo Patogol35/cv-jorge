@@ -59,16 +59,17 @@ export default function CvCover() {
           borderRadius: 3,
           overflow: "hidden",
           display: "flex",
-          flexDirection: { xs: "column", md: "row" },
+          flexDirection: "row", // ✅ SIEMPRE LADO A LADO
         }}
       >
         {/* ================= SIDEBAR ================= */}
         <Box
           sx={{
-            width: 300,
+            width: { xs: 220, sm: 260, md: 300 },
+            minWidth: { xs: 220, sm: 260 },
             bgcolor: "#0d47a1",
             color: "#fff",
-            p: 4,
+            p: { xs: 2.5, md: 4 },
             flexShrink: 0,
           }}
         >
@@ -76,27 +77,20 @@ export default function CvCover() {
             <Avatar
               src="https://res.cloudinary.com/dqkwc0kf7/image/upload/v1757093856/FB_IMG_1757092624480_hgpu4i.jpg"
               sx={{
-                width: 140,
-                height: 140,
+                width: { xs: 110, md: 140 },
+                height: { xs: 110, md: 140 },
                 border: "3px solid #fff",
               }}
             />
 
             <Box textAlign="center">
-              <Typography fontWeight={800} fontSize={20} letterSpacing={0.5}>
+              <Typography fontWeight={800} fontSize={18}>
                 Jorge Patricio
               </Typography>
-              <Typography fontWeight={800} fontSize={20} letterSpacing={0.5}>
+              <Typography fontWeight={800} fontSize={18}>
                 Santamaría Cherrez
               </Typography>
-              <Typography
-                sx={{
-                  mt: 1,
-                  fontSize: 13,
-                  opacity: 0.9,
-                  lineHeight: 1.4,
-                }}
-              >
+              <Typography sx={{ mt: 1, fontSize: 12, opacity: 0.9 }}>
                 Máster en Ingeniería de Software
                 <br />
                 y Sistemas Informáticos
@@ -115,39 +109,12 @@ export default function CvCover() {
 
             {/* ================= REDES ================= */}
             <Grid container spacing={1} justifyContent="center">
-              <Grid item>
-                <Social icon={<EmailIcon />} url="mailto:patogol3535@gmail.com" />
-              </Grid>
-              <Grid item>
-                <Social
-                  icon={<WhatsAppIcon />}
-                  url="https://wa.me/593997979099"
-                />
-              </Grid>
-              <Grid item>
-                <Social
-                  icon={<LinkedInIcon />}
-                  url="https://www.linkedin.com/in/jorge-patricio-santamaría-cherrez-2a73792b2"
-                />
-              </Grid>
-              <Grid item>
-                <Social
-                  icon={<GitHubIcon />}
-                  url="https://github.com/Patogol35"
-                />
-              </Grid>
-              <Grid item>
-                <Social
-                  icon={<FacebookIcon />}
-                  url="https://www.facebook.com/share/1C9RgHAPvL/"
-                />
-              </Grid>
-              <Grid item>
-                <Social
-                  icon={<InstagramIcon />}
-                  url="https://www.instagram.com/jorge_patricio_26"
-                />
-              </Grid>
+              <Grid item><Social icon={<EmailIcon />} url="mailto:patogol3535@gmail.com" /></Grid>
+              <Grid item><Social icon={<WhatsAppIcon />} url="https://wa.me/593997979099" /></Grid>
+              <Grid item><Social icon={<LinkedInIcon />} url="https://www.linkedin.com/in/jorge-patricio-santamaría-cherrez-2a73792b2" /></Grid>
+              <Grid item><Social icon={<GitHubIcon />} url="https://github.com/Patogol35" /></Grid>
+              <Grid item><Social icon={<FacebookIcon />} url="https://www.facebook.com/share/1C9RgHAPvL/" /></Grid>
+              <Grid item><Social icon={<InstagramIcon />} url="https://www.instagram.com/jorge_patricio_26" /></Grid>
             </Grid>
 
             {/* ================= QR ================= */}
@@ -165,8 +132,8 @@ export default function CvCover() {
                 src="/qr-cv.png"
                 alt="QR CV"
                 sx={{
-                  width: 120,
-                  height: 120,
+                  width: 110,
+                  height: 110,
                   display: "block",
                   mx: "auto",
                 }}
@@ -174,10 +141,9 @@ export default function CvCover() {
               <Typography
                 sx={{
                   mt: 1,
-                  fontSize: 13,
-                  fontWeight: 600,
+                  fontSize: 12,
+                  fontWeight: 700,
                   color: "#0d47a1",
-                  letterSpacing: 0.6,
                   textTransform: "uppercase",
                 }}
               >
@@ -188,7 +154,13 @@ export default function CvCover() {
         </Box>
 
         {/* ================= CONTENT ================= */}
-        <Box sx={{ flex: 1, p: 4, bgcolor: "#ffffff" }}>
+        <Box
+          sx={{
+            flex: 1,
+            p: { xs: 2.5, md: 4 },
+            bgcolor: "#ffffff",
+          }}
+        >
           <Section title="Áreas de Conocimiento">
             <Block title="Desarrollo de Software">
               {["PHP", "React", "Spring Boot", "Python"].map((s) => (
@@ -209,47 +181,21 @@ export default function CvCover() {
             </Block>
 
             <Block title="Otras Tecnologías">
-              {[
-                "Postman",
-                "Microsoft Office",
-                "Máquinas Virtuales",
-                "Scrum",
-                "AnyDesk",
-              ].map((s) => (
+              {["Postman", "Microsoft Office", "Máquinas Virtuales", "Scrum", "AnyDesk"].map((s) => (
                 <SkillChip key={s} label={s} />
               ))}
             </Block>
           </Section>
 
           <Section title="Formación Académica">
-            <Item
-              icon={<SchoolIcon color="primary" />}
-              title="Universidad Internacional de La Rioja (UNIR)"
-              desc="Maestría en Ingeniería de Software y Sistemas Informáticos"
-            />
-            <Item
-              icon={<SchoolIcon color="primary" />}
-              title="Universidad Indoamérica"
-              desc="Ingeniería de Sistemas"
-            />
+            <Item icon={<SchoolIcon color="primary" />} title="Universidad Internacional de La Rioja (UNIR)" desc="Maestría en Ingeniería de Software y Sistemas Informáticos" />
+            <Item icon={<SchoolIcon color="primary" />} title="Universidad Indoamérica" desc="Ingeniería de Sistemas" />
           </Section>
 
           <Section title="Experiencia Profesional">
-            <Item
-              icon={<WorkIcon color="primary" />}
-              title="Docente de Informática"
-              desc="Formación técnica en informática y tecnologías digitales."
-            />
-            <Item
-              icon={<WorkIcon color="primary" />}
-              title="Desarrollador de Aplicaciones"
-              desc="Diseño y desarrollo de soluciones digitales eficientes."
-            />
-            <Item
-              icon={<WorkIcon color="primary" />}
-              title="Desarrollador de Aulas Virtuales"
-              desc="Desarrollo e implementación de plataformas educativas virtuales."
-            />
+            <Item icon={<WorkIcon color="primary" />} title="Docente de Informática" desc="Formación técnica en informática y tecnologías digitales." />
+            <Item icon={<WorkIcon color="primary" />} title="Desarrollador de Aplicaciones" desc="Diseño y desarrollo de soluciones digitales eficientes." />
+            <Item icon={<WorkIcon color="primary" />} title="Desarrollador de Aulas Virtuales" desc="Desarrollo e implementación de plataformas educativas virtuales." />
           </Section>
         </Box>
       </Paper>
@@ -264,15 +210,7 @@ SUB COMPONENTS
 const Contact = ({ icon, text }) => (
   <Stack direction="row" spacing={1.5} alignItems="center">
     {icon}
-    <Typography
-      sx={{
-        fontSize: 13,
-        fontWeight: 500,
-        opacity: 0.95,
-      }}
-    >
-      {text}
-    </Typography>
+    <Typography sx={{ fontSize: 12.5 }}>{text}</Typography>
   </Stack>
 );
 
@@ -286,14 +224,7 @@ const Social = ({ icon, url }) => (
 
 const Section = ({ title, children }) => (
   <Box mb={4}>
-    <Typography
-      sx={{
-        fontWeight: 800,
-        fontSize: 18,
-        letterSpacing: 0.8,
-        color: "#0d47a1",
-      }}
-    >
+    <Typography sx={{ fontWeight: 800, fontSize: 18, color: "#0d47a1" }}>
       {title}
     </Typography>
     <Divider sx={{ my: 1.5 }} />
@@ -303,29 +234,17 @@ const Section = ({ title, children }) => (
 
 const Block = ({ title, children }) => (
   <Box>
-    <Typography fontWeight={700} mb={1}>
-      {title}
-    </Typography>
-    <Stack direction="row" spacing={1} flexWrap="wrap">
-      {children}
-    </Stack>
+    <Typography fontWeight={700} mb={1}>{title}</Typography>
+    <Stack direction="row" spacing={1} flexWrap="wrap">{children}</Stack>
   </Box>
 );
 
 const Item = ({ icon, title, desc }) => (
-  <Stack direction="row" spacing={1.5} alignItems="flex-start">
+  <Stack direction="row" spacing={1.5}>
     {icon}
     <Box>
       <Typography fontWeight={700}>{title}</Typography>
-      <Typography
-        sx={{
-          fontSize: 13.5,
-          color: "#37474f",
-          lineHeight: 1.5,
-        }}
-      >
-        {desc}
-      </Typography>
+      <Typography sx={{ fontSize: 13.5, color: "#37474f" }}>{desc}</Typography>
     </Box>
   </Stack>
 );
