@@ -159,7 +159,7 @@ export default function CvCover() {
             <Block title="Desarrollo de Software">
               {[
                 "PHP",
-                "JavaScript",
+            
                 "React",
               
                 "Spring Boot",
