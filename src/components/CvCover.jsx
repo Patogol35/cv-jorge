@@ -18,12 +18,9 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import QRCode from "qrcode.react";
 
 const cvUrl = "https://jorge-santamaria.dev/cv";
-
-const qrSrc = `https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=${encodeURIComponent(
-  cvUrl
-)}`;
 
 const SkillChip = ({ label }) => (
   <Chip
@@ -152,12 +149,7 @@ export default function CvCover() {
                 borderRadius: 2,
               }}
             >
-              <Box
-                component="img"
-                src={qrSrc}
-                alt="QR CV"
-                sx={{ width: 140, height: 140 }}
-              />
+              <QRCode value={cvUrl} size={120} />
               <Typography
                 variant="caption"
                 color="text.secondary"
@@ -173,51 +165,92 @@ export default function CvCover() {
 
         {/* CONTENIDO */}
         <Grid item xs={12} md={8} sx={{ p: 5, bgcolor: "#f9fafb" }}>
-          <Typography variant="h5" fontWeight={700} gutterBottom>
-            Áreas de Conocimiento
-          </Typography>
-          <Divider sx={{ mb: 2 }} />
+          {/* ÁREAS */}
+          <Box mb={4}>
+            <Typography variant="h5" fontWeight={700} gutterBottom>
+              Áreas de Conocimiento
+            </Typography>
+            <Divider sx={{ mb: 2 }} />
 
-          <Typography variant="body2" color="text.secondary">
-            Desarrollo Web Full Stack · Ciberseguridad · Bases de Datos ·
-            Inteligencia Artificial · Linux
-          </Typography>
-
-          <Divider sx={{ my: 4 }} />
-
-          <Typography variant="h5" fontWeight={700} gutterBottom>
-            Formación Académica
-          </Typography>
-          <Divider sx={{ mb: 2 }} />
-
-          <Stack spacing={3}>
-            <Box display="flex" gap={2}>
-              <SchoolIcon color="primary" />
+            <Stack spacing={3}>
               <Box>
                 <Typography fontWeight={600}>
-                  Universidad Internacional de La Rioja (UNIR)
+                  Desarrollo Web Full Stack
                 </Typography>
-                <Typography variant="body2">
-                  Maestría en Ingeniería de Software y Sistemas Informáticos
-                </Typography>
-                <Typography variant="caption" color="text.secondary">
-                  mar. 2023 – abr. 2024
-                </Typography>
+                <Stack direction="row" spacing={1} flexWrap="wrap" mt={1}>
+                  {[
+                    "PHP",
+                    "JavaScript",
+                    "React",
+                    "Java",
+                    "MySQL",
+                    "Postman",
+                    "Vercel",
+                    "Spring Boot",
+                  ].map((s) => (
+                    <SkillChip key={s} label={s} />
+                  ))}
+                </Stack>
               </Box>
-            </Box>
 
-            <Box display="flex" gap={2}>
-              <SchoolIcon color="primary" />
               <Box>
                 <Typography fontWeight={600}>
-                  Universidad Indoamérica
+                  Ciberseguridad Web
                 </Typography>
-                <Typography variant="body2">
-                  Ingeniería de Sistemas
+                <Typography variant="body2" color="text.secondary">
+                  OWASP Top 10, OWASP ZAP, Wireshark, Burp Suite, Nmap, Fortify
                 </Typography>
               </Box>
-            </Box>
-          </Stack>
+
+              <Box>
+                <Typography fontWeight={600}>Bases de Datos</Typography>
+                <Stack direction="row" spacing={1} flexWrap="wrap" mt={1}>
+                  {["MySQL", "PostgreSQL", "MongoDB", "Elasticsearch"].map(
+                    (s) => (
+                      <SkillChip key={s} label={s} />
+                    )
+                  )}
+                </Stack>
+              </Box>
+            </Stack>
+          </Box>
+
+          {/* FORMACIÓN */}
+          <Box>
+            <Typography variant="h5" fontWeight={700} gutterBottom>
+              Formación Académica
+            </Typography>
+            <Divider sx={{ mb: 2 }} />
+
+            <Stack spacing={3}>
+              <Box display="flex" gap={2}>
+                <SchoolIcon color="primary" />
+                <Box>
+                  <Typography fontWeight={600}>
+                    Universidad Internacional de La Rioja (UNIR)
+                  </Typography>
+                  <Typography variant="body2">
+                    Maestría en Ingeniería de Software y Sistemas Informáticos
+                  </Typography>
+                  <Typography variant="caption" color="text.secondary">
+                    mar. 2023 – abr. 2024
+                  </Typography>
+                </Box>
+              </Box>
+
+              <Box display="flex" gap={2}>
+                <SchoolIcon color="primary" />
+                <Box>
+                  <Typography fontWeight={600}>
+                    Universidad Indoamérica
+                  </Typography>
+                  <Typography variant="body2">
+                    Ingeniería de Sistemas
+                  </Typography>
+                </Box>
+              </Box>
+            </Stack>
+          </Box>
         </Grid>
       </Grid>
     </Paper>
