@@ -46,21 +46,24 @@ export default function CvCover() {
         minHeight: "100vh",
         bgcolor: "#f1f5f9",
         display: "flex",
-        justifyContent: "center",
+        justifyContent: "center", // Centra horizontalmente el contenido
         py: 4,
         fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
       }}
     >
-      {/* Ajuste 2: Reducir maxWidth para eliminar espacio a la derecha */}
+      {/* Ajuste: Eliminar maxWidth y usar margin: 'auto' para centrar */}
       <Paper
         elevation={8}
         sx={{
-          width: "100%",
-          maxWidth: 900, // Cambiado de 980 a 900 para ajustar el ancho total
+          width: "100%", // Ocupa todo el ancho disponible
+          maxWidth: "none", // Elimina el límite de ancho
           borderRadius: 3,
           overflow: "hidden",
           display: "flex",
           flexDirection: "row",
+          margin: "auto", // Centra la tarjeta horizontalmente
+          // Añadimos un padding mínimo para evitar que toque los bordes de la pantalla
+          px: { xs: 1, sm: 2 },
         }}
       >
         {/* ================= SIDEBAR ================= */}
@@ -135,24 +138,23 @@ export default function CvCover() {
               }}
             >
               <Tooltip title="Ver Portafolio Profesional">
-                {/* Ajuste 1: Icono de Portafolio con mismo estilo y sin texto */}
+                {/* Icono de Portafolio con mismo estilo y sin texto */}
                 <IconButton
                   href="https://portafoliojorgepatriciosantamariach.vercel.app/ "
                   target="_blank"
                   sx={{
-                    color: "#fff", // Mismo color que los otros íconos sociales
-                    width: 42, // Mismo tamaño
-                    height: 42, // Mismo tamaño
+                    color: "#fff",
+                    width: 42,
+                    height: 42,
                     "&:hover": {
-                      bgcolor: "#e3f2fd", // Efecto hover similar
-                      color: "#0d47a1", // Color al hacer hover
+                      bgcolor: "#e3f2fd",
+                      color: "#0d47a1",
                     },
                   }}
                 >
-                  <DescriptionIcon sx={{ fontSize: 24 }} /> {/* Tamaño del ícono ajustado */}
+                  <DescriptionIcon sx={{ fontSize: 24 }} />
                 </IconButton>
               </Tooltip>
-              {/* Texto eliminado */}
             </Box>
           </Stack>
         </Box>
@@ -161,8 +163,7 @@ export default function CvCover() {
         <Box
           sx={{
             flex: 1,
-            /* Ajuste 2: Reducir padding derecho para evitar espacio extra */
-            p: { xs: 2.5, md: 3 }, // Cambiado de 4 a 3 en md para reducir el margen derecho
+            p: { xs: 2.5, md: 3 }, // Padding interior del contenido
             bgcolor: "#ffffff",
           }}
         >
