@@ -97,7 +97,6 @@ export default function CvCover() {
 
             <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.3)" }} />
 
-            {/* CONTACTO */}
             <Stack spacing={1} width="100%">
               <Contact icon={<EmailIcon />} text="patogol3535@gmail.com" />
               <Contact icon={<WhatsAppIcon />} text="0997979099" />
@@ -107,11 +106,8 @@ export default function CvCover() {
             <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.3)" }} />
 
             {/* ================= REDES (VERTICAL) ================= */}
-            <Stack spacing={1.2} alignItems="center">
-              <Social
-                icon={<EmailIcon />}
-                url="mailto:patogol3535@gmail.com"
-              />
+            <Stack spacing={1} alignItems="center">
+              <Social icon={<EmailIcon />} url="mailto:patogol3535@gmail.com" />
               <Social
                 icon={<WhatsAppIcon />}
                 url="https://wa.me/593997979099"
@@ -120,10 +116,7 @@ export default function CvCover() {
                 icon={<LinkedInIcon />}
                 url="https://www.linkedin.com/in/jorge-patricio-santamaría-cherrez-2a73792b2"
               />
-              <Social
-                icon={<GitHubIcon />}
-                url="https://github.com/Patogol35"
-              />
+              <Social icon={<GitHubIcon />} url="https://github.com/Patogol35" />
               <Social
                 icon={<FacebookIcon />}
                 url="https://www.facebook.com/share/1C9RgHAPvL/"
@@ -248,15 +241,7 @@ const Contact = ({ icon, text }) => (
 
 const Social = ({ icon, url }) => (
   <Tooltip title={url}>
-    <IconButton
-      href={url}
-      target="_blank"
-      sx={{
-        color: "#fff",
-        transition: "0.3s",
-        "&:hover": { transform: "scale(1.15)", bgcolor: "rgba(255,255,255,.15)" },
-      }}
-    >
+    <IconButton href={url} target="_blank" sx={{ color: "#fff" }}>
       {icon}
     </IconButton>
   </Tooltip>
