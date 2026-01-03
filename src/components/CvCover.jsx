@@ -191,24 +191,6 @@ export default function CvCover() {
             </Block>
           </Section>
 
-          <Section title="Experiencia Profesional">
-            <Item
-              icon={<WorkIcon color="primary" />}
-              title="Docente de Informática"
-              desc="Enseñanza de informática y sistemas para formación técnica."
-            />
-            <Item
-              icon={<WorkIcon color="primary" />}
-              title="Desarrollador de Aplicaciones"
-              desc="Desarrollo de soluciones digitales."
-            />
-            <Item
-              icon={<WorkIcon color="primary" />}
-              title="Desarrollador de Aulas Virtuales"
-              desc="Administración y configuración de plataformas educativas virtuales."
-            />
-          </Section>
-
           <Section title="Formación Académica">
             <Item
               icon={<SchoolIcon color="primary" />}
@@ -221,6 +203,26 @@ export default function CvCover() {
               desc="Ingeniería de Sistemas"
             />
           </Section>
+
+          <Section title="Experiencia Profesional">
+            <Item
+              icon={<WorkIcon color="primary" />}
+              title="Docente de Informática"
+              desc="Formación técnica en informática y tecnologías digitales."
+            />
+            <Item
+              icon={<WorkIcon color="primary" />}
+              title="Desarrollador de Aplicaciones"
+              desc="Diseño y desarrollo de soluciones digitales eficientes."
+            />
+            <Item
+              icon={<WorkIcon color="primary" />}
+              title="Desarrollador de Aulas Virtuales"
+              desc="Desarrollo e implementación de plataformas educativas virtuales."
+            />
+          </Section>
+
+          
         </Box>
       </Paper>
     </Box>
