@@ -15,6 +15,7 @@ import EmailIcon from "@mui/icons-material/Email";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import SchoolIcon from "@mui/icons-material/School";
+import WorkIcon from "@mui/icons-material/Work";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -119,13 +120,14 @@ export default function CvCover() {
               <Social icon={<GitHubIcon />} url="https://github.com/jorge-santamaria" />
             </Stack>
 
-            {/* QR SIN LIBRERÍA */}
+            {/* QR */}
             <Box
               sx={{
                 mt: 2,
                 bgcolor: "#fff",
                 p: 1.5,
                 borderRadius: 2,
+                textAlign: "center",
               }}
             >
               <img
@@ -136,13 +138,7 @@ export default function CvCover() {
                 width={120}
                 height={120}
               />
-              <Typography
-                variant="caption"
-                color="text.secondary"
-                display="block"
-                align="center"
-                mt={1}
-              >
+              <Typography variant="caption" color="text.secondary" mt={1}>
                 CV Online
               </Typography>
             </Box>
@@ -152,7 +148,7 @@ export default function CvCover() {
         {/* ================= CONTENIDO ================= */}
         <Grid item xs={12} md={8} sx={{ p: 5, bgcolor: "#f5f7fa" }}>
 
-          {/* ÁREAS */}
+          {/* ÁREAS DE CONOCIMIENTO */}
           <Section title="Áreas de Conocimiento">
             <CardBlock title="Desarrollo Web Full Stack">
               {[
@@ -162,17 +158,15 @@ export default function CvCover() {
                 "Java",
                 "Spring Boot",
                 "MySQL",
-                "Postman",
-                "Vercel",
               ].map((s) => (
                 <SkillChip key={s} label={s} />
               ))}
             </CardBlock>
 
-            <CardBlock title="Ciberseguridad Web">
-              <Typography variant="body2" color="text.secondary">
-                OWASP Top 10 · ZAP · Wireshark · Burp Suite · Nmap · Fortify
-              </Typography>
+            <CardBlock title="Cloud">
+              {["AWS", "Render", "Vercel"].map((s) => (
+                <SkillChip key={s} label={s} />
+              ))}
             </CardBlock>
 
             <CardBlock title="Bases de Datos">
@@ -180,6 +174,37 @@ export default function CvCover() {
                 <SkillChip key={s} label={s} />
               ))}
             </CardBlock>
+          </Section>
+
+          {/* EXPERIENCIA PROFESIONAL */}
+          <Section title="Experiencia Profesional">
+            <ExperienceItem
+              role="Desarrollador Full Stack"
+              company="Empresa / Proyecto 1"
+              date="2024 – Actualidad"
+              description="Desarrollo y mantenimiento de aplicaciones web, integración de APIs, despliegue en la nube."
+            />
+
+            <ExperienceItem
+              role="Desarrollador Web"
+              company="Empresa / Proyecto 2"
+              date="2023 – 2024"
+              description="Implementación de interfaces modernas, optimización de rendimiento y experiencia de usuario."
+            />
+
+            <ExperienceItem
+              role="Ingeniero de Software"
+              company="Empresa / Proyecto 3"
+              date="2022 – 2023"
+              description="Diseño de arquitectura backend, manejo de bases de datos y control de versiones."
+            />
+
+            <ExperienceItem
+              role="Practicante de Sistemas"
+              company="Empresa / Proyecto 4"
+              date="2021 – 2022"
+              description="Soporte técnico, desarrollo de módulos internos y documentación técnica."
+            />
           </Section>
 
           {/* FORMACIÓN */}
@@ -258,6 +283,22 @@ const TimelineItem = ({ title, subtitle, date }) => (
           {date}
         </Typography>
       )}
+    </Box>
+  </Box>
+);
+
+const ExperienceItem = ({ role, company, date, description }) => (
+  <Box display="flex" gap={2}>
+    <WorkIcon color="primary" />
+    <Box>
+      <Typography fontWeight={700}>{role}</Typography>
+      <Typography variant="body2">{company}</Typography>
+      <Typography variant="caption" color="text.secondary">
+        {date}
+      </Typography>
+      <Typography variant="body2" mt={1}>
+        {description}
+      </Typography>
     </Box>
   </Box>
 );
