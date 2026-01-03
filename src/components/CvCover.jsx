@@ -87,8 +87,16 @@ export default function CvCover() {
               <Typography fontWeight={800} fontSize={20} letterSpacing={0.5}>
                 Santamaría Cherrez
               </Typography>
-              <Typography variant="body2" sx={{ mt: 1, opacity: 0.9 }}>
-                Máster en Ingeniería de Software<br />
+              <Typography
+                sx={{
+                  mt: 1,
+                  fontSize: 13,
+                  opacity: 0.9,
+                  lineHeight: 1.4,
+                }}
+              >
+                Máster en Ingeniería de Software
+                <br />
                 y Sistemas Informáticos
               </Typography>
             </Box>
@@ -146,18 +154,18 @@ export default function CvCover() {
                   mx: "auto",
                 }}
               />
-            <Typography
-  sx={{
-    mt: 1,
-    fontSize: 13,
-    fontWeight: 600,
-    color: "#0d47a1",
-    letterSpacing: 0.6,
-    textTransform: "uppercase",
-  }}
->
-  Portafolio Virtual
-</Typography>
+              <Typography
+                sx={{
+                  mt: 1,
+                  fontSize: 13,
+                  fontWeight: 600,
+                  color: "#0d47a1",
+                  letterSpacing: 0.6,
+                  textTransform: "uppercase",
+                }}
+              >
+                Portafolio Virtual
+              </Typography>
             </Box>
           </Stack>
         </Box>
@@ -166,16 +174,7 @@ export default function CvCover() {
         <Box sx={{ flex: 1, p: 4, bgcolor: "#ffffff" }}>
           <Section title="Áreas de Conocimiento">
             <Block title="Desarrollo de Software">
-              {[
-                "PHP",
-            
-                "React",
-              
-                "Spring Boot",
-                "Python",
-        
-            
-              ].map((s) => (
+              {["PHP", "React", "Spring Boot", "Python"].map((s) => (
                 <SkillChip key={s} label={s} />
               ))}
             </Block>
@@ -192,9 +191,14 @@ export default function CvCover() {
               ))}
             </Block>
 
-
-            <Block title="Otras tecnologías">
-              {["Postman", "Microsoft Office", "Maquinas Virtuales", "Scrum", "AnyDesk"].map((s) => (
+            <Block title="Otras Tecnologías">
+              {[
+                "Postman",
+                "Microsoft Office",
+                "Máquinas Virtuales",
+                "Scrum",
+                "AnyDesk",
+              ].map((s) => (
                 <SkillChip key={s} label={s} />
               ))}
             </Block>
@@ -230,8 +234,6 @@ export default function CvCover() {
               desc="Desarrollo e implementación de plataformas educativas virtuales."
             />
           </Section>
-
-          
         </Box>
       </Paper>
     </Box>
@@ -245,7 +247,15 @@ SUB COMPONENTS
 const Contact = ({ icon, text }) => (
   <Stack direction="row" spacing={1.5} alignItems="center">
     {icon}
-    <Typography variant="body2">{text}</Typography>
+    <Typography
+      sx={{
+        fontSize: 13,
+        fontWeight: 500,
+        opacity: 0.95,
+      }}
+    >
+      {text}
+    </Typography>
   </Stack>
 );
 
@@ -259,7 +269,14 @@ const Social = ({ icon, url }) => (
 
 const Section = ({ title, children }) => (
   <Box mb={4}>
-    <Typography fontWeight={800} fontSize={18} letterSpacing={0.4}>
+    <Typography
+      sx={{
+        fontWeight: 800,
+        fontSize: 18,
+        letterSpacing: 0.8,
+        color: "#0d47a1",
+      }}
+    >
       {title}
     </Typography>
     <Divider sx={{ my: 1.5 }} />
@@ -283,7 +300,13 @@ const Item = ({ icon, title, desc }) => (
     {icon}
     <Box>
       <Typography fontWeight={700}>{title}</Typography>
-      <Typography variant="body2" color="text.secondary">
+      <Typography
+        sx={{
+          fontSize: 13.5,
+          color: "#37474f",
+          lineHeight: 1.5,
+        }}
+      >
         {desc}
       </Typography>
     </Box>
