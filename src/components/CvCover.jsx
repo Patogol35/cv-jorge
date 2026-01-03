@@ -56,13 +56,12 @@ export default function CvCover() {
           xs={12}
           md={4}
           sx={{
-            backgroundColor: "#0d47a1",
+            bgcolor: "#0d47a1",
             color: "#fff",
             p: 4,
           }}
         >
           <Stack spacing={3} alignItems="center">
-
             <Avatar
               src="https://res.cloudinary.com/dqkwc0kf7/image/upload/v1757093856/FB_IMG_1757092624480_hgpu4i.jpg"
               sx={{
@@ -107,20 +106,25 @@ export default function CvCover() {
             <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.3)" }} />
 
             <Stack direction="row" spacing={1}>
-              <Social icon={<LinkedInIcon />} url="https://www.linkedin.com/in/jorge-patricio-santamaría-cherrez-2a73792b2" />
+              <Social icon={<LinkedInIcon />} url="https://www.linkedin.com" />
               <Social icon={<GitHubIcon />} url="https://github.com/Patogol35" />
-              <Social icon={<FacebookIcon />} url="https://www.facebook.com/share/1CGkkdhgz8/" />
-              <Social icon={<InstagramIcon />} url="https://www.instagram.com/jorge_patricio_26" />
+              <Social icon={<FacebookIcon />} url="https://facebook.com" />
+              <Social icon={<InstagramIcon />} url="https://instagram.com" />
             </Stack>
 
             {/* QR */}
             <Box sx={{ mt: 2, bgcolor: "#fff", p: 1.5, borderRadius: 2 }}>
               <img src="/qr-cv.png" alt="QR CV" width={120} height={120} />
-              <Typography variant="caption" color="text.secondary" align="center" display="block" mt={1}>
+              <Typography
+                variant="caption"
+                color="text.secondary"
+                display="block"
+                align="center"
+                mt={1}
+              >
                 CV Online
               </Typography>
             </Box>
-
           </Stack>
         </Grid>
 
@@ -130,28 +134,35 @@ export default function CvCover() {
           xs={12}
           md={8}
           sx={{
-            pl: { xs: 3, md: 3 }, // separación del azul
-            pr: 0,               // ❌ NO espacio feo a la derecha
+            px: { xs: 3, md: 4 }, // 👈 padding limpio y parejo
             py: { xs: 4, md: 5 },
             bgcolor: "#fafafa",
           }}
         >
-
           <Section title="Áreas de Conocimiento">
             <Block title="Desarrollo Web Full Stack">
-              {["PHP","JavaScript","React","Java","Spring Boot","MySQL","Postman","Vercel"].map(s => (
+              {[
+                "PHP",
+                "JavaScript",
+                "React",
+                "Java",
+                "Spring Boot",
+                "MySQL",
+                "Postman",
+                "Vercel",
+              ].map((s) => (
                 <SkillChip key={s} label={s} />
               ))}
             </Block>
 
             <Block title="Cloud">
-              {["Vercel","Render","AWS"].map(s => (
+              {["Vercel", "Render", "AWS"].map((s) => (
                 <SkillChip key={s} label={s} />
               ))}
             </Block>
 
             <Block title="Bases de Datos">
-              {["MySQL","PostgreSQL","MongoDB","Elasticsearch"].map(s => (
+              {["MySQL", "PostgreSQL", "MongoDB", "Elasticsearch"].map((s) => (
                 <SkillChip key={s} label={s} />
               ))}
             </Block>
@@ -183,7 +194,6 @@ export default function CvCover() {
               subtitle="Ingeniería de Sistemas"
             />
           </Section>
-
         </Grid>
       </Grid>
     </Paper>
