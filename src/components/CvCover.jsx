@@ -48,7 +48,6 @@ export default function CvCover() {
         display: "flex",
         justifyContent: "center",
         py: 4,
-        fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
       }}
     >
       <Paper
@@ -59,7 +58,7 @@ export default function CvCover() {
           borderRadius: 3,
           overflow: "hidden",
           display: "flex",
-          flexDirection: "row", // ✅ SIEMPRE LADO A LADO
+          flexDirection: "row",
         }}
       >
         {/* ================= SIDEBAR ================= */}
@@ -107,14 +106,20 @@ export default function CvCover() {
 
             <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.3)" }} />
 
-            {/* ================= REDES ================= */}
-            <Grid container spacing={1} justifyContent="center">
-              <Grid item><Social icon={<EmailIcon />} url="mailto:patogol3535@gmail.com" /></Grid>
-              <Grid item><Social icon={<WhatsAppIcon />} url="https://wa.me/593997979099" /></Grid>
-              <Grid item><Social icon={<LinkedInIcon />} url="https://www.linkedin.com/in/jorge-patricio-santamaría-cherrez-2a73792b2" /></Grid>
-              <Grid item><Social icon={<GitHubIcon />} url="https://github.com/Patogol35" /></Grid>
-              <Grid item><Social icon={<FacebookIcon />} url="https://www.facebook.com/share/1C9RgHAPvL/" /></Grid>
-              <Grid item><Social icon={<InstagramIcon />} url="https://www.instagram.com/jorge_patricio_26" /></Grid>
+            {/* ================= REDES 2x2 ================= */}
+            <Grid container spacing={1.5} justifyContent="center">
+              {[
+                { icon: <EmailIcon />, url: "mailto:patogol3535@gmail.com" },
+                { icon: <WhatsAppIcon />, url: "https://wa.me/593997979099" },
+                { icon: <LinkedInIcon />, url: "https://www.linkedin.com/in/jorge-patricio-santamaría-cherrez-2a73792b2" },
+                { icon: <GitHubIcon />, url: "https://github.com/Patogol35" },
+                { icon: <FacebookIcon />, url: "https://www.facebook.com/share/1C9RgHAPvL/" },
+                { icon: <InstagramIcon />, url: "https://www.instagram.com/jorge_patricio_26" },
+              ].map((s, i) => (
+                <Grid item xs={6} key={i} sx={{ textAlign: "center" }}>
+                  <Social icon={s.icon} url={s.url} />
+                </Grid>
+              ))}
             </Grid>
 
             {/* ================= QR ================= */}
@@ -134,8 +139,8 @@ export default function CvCover() {
                 sx={{
                   width: 110,
                   height: 110,
-                  display: "block",
                   mx: "auto",
+                  display: "block",
                 }}
               />
               <Typography
@@ -203,9 +208,7 @@ export default function CvCover() {
   );
 }
 
-/* =========================
-SUB COMPONENTS
-========================= */
+/* ================= SUB COMPONENTS ================= */
 
 const Contact = ({ icon, text }) => (
   <Stack direction="row" spacing={1.5} alignItems="center">
@@ -216,7 +219,15 @@ const Contact = ({ icon, text }) => (
 
 const Social = ({ icon, url }) => (
   <Tooltip title={url}>
-    <IconButton href={url} target="_blank" sx={{ color: "#fff" }}>
+    <IconButton
+      href={url}
+      target="_blank"
+      sx={{
+        color: "#fff",
+        width: 42,
+        height: 42,
+      }}
+    >
       {icon}
     </IconButton>
   </Tooltip>
