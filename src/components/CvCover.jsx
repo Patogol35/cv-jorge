@@ -54,19 +54,16 @@ export default function CvCover() {
       <Paper
         elevation={8}
         sx={{
-          width: "100%",
-          maxWidth: 980,
+          width: "100%",        // ✅ ocupa todo
           borderRadius: 3,
           overflow: "hidden",
           display: "flex",
-          flexDirection: "row",
         }}
       >
         {/* ================= SIDEBAR ================= */}
         <Box
           sx={{
             width: { xs: 220, sm: 260, md: 300 },
-            minWidth: { xs: 220, sm: 260 },
             bgcolor: "#0d47a1",
             color: "#fff",
             p: { xs: 2.5, md: 4 },
@@ -107,7 +104,6 @@ export default function CvCover() {
 
             <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.3)" }} />
 
-            {/* ================= REDES 2 x 3 ================= */}
             <Box
               sx={{
                 display: "grid",
@@ -120,21 +116,10 @@ export default function CvCover() {
             >
               <Social icon={<EmailIcon />} url="mailto:patogol3535@gmail.com" />
               <Social icon={<WhatsAppIcon />} url="https://wa.me/593997979099" />
-              <Social
-                icon={<LinkedInIcon />}
-                url="https://www.linkedin.com/in/jorge-patricio-santamaría-cherrez-2a73792b2"
-              />
-              <Social icon={<GitHubIcon />} url="https://github.com/Patogol35" />
-              <Social
-                icon={<FacebookIcon />}
-                url="https://www.facebook.com/share/1C9RgHAPvL/"
-              />
-              <Social
-                icon={<InstagramIcon />}
-                url="https://www.instagram.com/jorge_patricio_26"
-              />
-
-              {/* ===== PORTAFOLIO (MISMO ESTILO) ===== */}
+              <Social icon={<LinkedInIcon />} url="https://linkedin.com" />
+              <Social icon={<GitHubIcon />} url="https://github.com" />
+              <Social icon={<FacebookIcon />} url="https://facebook.com" />
+              <Social icon={<InstagramIcon />} url="https://instagram.com" />
               <Social
                 icon={<DescriptionIcon />}
                 url="https://portafoliojorgepatriciosantamariach.vercel.app/"
@@ -147,73 +132,83 @@ export default function CvCover() {
         <Box
           sx={{
             flex: 1,
-            px: { xs: 2, md: 3 },
-            py: { xs: 2.5, md: 4 },
-            bgcolor: "#ffffff",
+            display: "flex",
+            justifyContent: "center",
+            bgcolor: "#fff",
           }}
         >
-          <Section title="Áreas de Conocimiento">
-            <Block title="Desarrollo de Software">
-              {["PHP", "React", "Spring Boot", "Python"].map((s) => (
-                <SkillChip key={s} label={s} />
-              ))}
-            </Block>
+          {/* CONTENEDOR REAL DEL TEXTO */}
+          <Box
+            sx={{
+              width: "100%",
+              maxWidth: 720,        // ✅ ancho ideal del contenido
+              px: 3,
+              py: 4,
+            }}
+          >
+            <Section title="Áreas de Conocimiento">
+              <Block title="Desarrollo de Software">
+                {["PHP", "React", "Spring Boot", "Python"].map((s) => (
+                  <SkillChip key={s} label={s} />
+                ))}
+              </Block>
 
-            <Block title="Cloud">
-              {["Vercel", "Render", "AWS"].map((s) => (
-                <SkillChip key={s} label={s} />
-              ))}
-            </Block>
+              <Block title="Cloud">
+                {["Vercel", "Render", "AWS"].map((s) => (
+                  <SkillChip key={s} label={s} />
+                ))}
+              </Block>
 
-            <Block title="Bases de Datos">
-              {["MySQL", "PostgreSQL", "MongoDB", "Elasticsearch"].map((s) => (
-                <SkillChip key={s} label={s} />
-              ))}
-            </Block>
+              <Block title="Bases de Datos">
+                {["MySQL", "PostgreSQL", "MongoDB", "Elasticsearch"].map((s) => (
+                  <SkillChip key={s} label={s} />
+                ))}
+              </Block>
 
-            <Block title="Otras Tecnologías">
-              {[
-                "Postman",
-                "Microsoft Office",
-                "Máquinas Virtuales",
-                "Scrum",
-                "AnyDesk",
-              ].map((s) => (
-                <SkillChip key={s} label={s} />
-              ))}
-            </Block>
-          </Section>
+              <Block title="Otras Tecnologías">
+                {[
+                  "Postman",
+                  "Microsoft Office",
+                  "Máquinas Virtuales",
+                  "Scrum",
+                  "AnyDesk",
+                ].map((s) => (
+                  <SkillChip key={s} label={s} />
+                ))}
+              </Block>
+            </Section>
 
-          <Section title="Formación Académica">
-            <Item
-              icon={<SchoolIcon color="primary" />}
-              title="Universidad Internacional de La Rioja (UNIR)"
-              desc="Maestría en Ingeniería de Software y Sistemas Informáticos"
-            />
-            <Item
-              icon={<SchoolIcon color="primary" />}
-              title="Universidad Indoamérica"
-              desc="Ingeniería de Sistemas"
-            />
-          </Section>
+            <Section title="Formación Académica">
+              <Item
+                icon={<SchoolIcon color="primary" />}
+                title="Universidad Internacional de La Rioja (UNIR)"
+                desc="Maestría en Ingeniería de Software y Sistemas Informáticos"
+              />
+              <Item
+                icon={<SchoolIcon color="primary" />}
+                title="Universidad Indoamérica"
+                desc="Ingeniería de Sistemas"
+              />
+            </Section>
 
-          <Section title="Experiencia Profesional">
-            <Item
-              icon={<WorkIcon color="primary" />}
-              title="Docente de Informática"
-              desc="Formación técnica en informática y tecnologías digitales."
-            />
-            <Item
-              icon={<WorkIcon color="primary" />}
-              title="Desarrollador de Aplicaciones"
-              desc="Diseño y desarrollo de soluciones digitales eficientes."
-            />
-            <Item
-              icon={<WorkIcon color="primary" />}
-              title="Desarrollador de Aulas Virtuales"
-              desc="Desarrollo e implementación de plataformas educativas virtuales."
-            />
-          </Section>
+            <Section title="Experiencia Profesional">
+              <Item
+                icon={<WorkIcon color="primary" />}
+                title="Docente de Informática"
+                desc="Formación técnica en informática y tecnologías digitales."
+              />
+              <Item
+                icon={<WorkIcon color="primary" />}
+                title="Desarrollador de Aplicaciones"
+                desc="Diseño y desarrollo de soluciones digitales eficientes."
+              />
+              <Item
+                icon={<WorkIcon color="primary" />}
+                title="Desarrollador de Aulas Virtuales"
+                desc="Desarrollo e implementación de plataformas educativas virtuales."
+              />
+            </Section>
+          </Box>
         </Box>
       </Paper>
     </Box>
@@ -236,12 +231,7 @@ const Social = ({ icon, url }) => (
     <IconButton
       href={url}
       target="_blank"
-      sx={{
-        color: "#fff",
-        width: 42,
-        height: 42,
-        mx: "auto",
-      }}
+      sx={{ color: "#fff", width: 42, height: 42, mx: "auto" }}
     >
       {icon}
     </IconButton>
