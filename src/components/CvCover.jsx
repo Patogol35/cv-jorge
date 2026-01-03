@@ -146,9 +146,18 @@ export default function CvCover() {
                   mx: "auto",
                 }}
               />
-              <Typography variant="caption" color="text.secondary" mt={1}>
-                Portafolio Virtual
-              </Typography>
+            <Typography
+  sx={{
+    mt: 1,
+    fontSize: 13,
+    fontWeight: 600,
+    color: "#0d47a1",
+    letterSpacing: 0.6,
+    textTransform: "uppercase",
+  }}
+>
+  Portafolio Virtual
+</Typography>
             </Box>
           </Stack>
         </Box>
