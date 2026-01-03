@@ -89,7 +89,17 @@ export default function CvCover() {
             <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.3)" }} />
 
             <Stack spacing={1} width="100%">
-              <ContactItem icon={<EmailIcon />} text="patricio_jorge@hotmail.es" />
+              <ContactItem
+  icon={<EmailIcon />}
+  text={
+    <a
+      href="mailto:patogol3535@gmail.com"
+      style={{ color: "inherit", textDecoration: "none" }}
+    >
+      patogol3535@gmail.com
+    </a>
+  }
+/>
               <ContactItem icon={<WhatsAppIcon />} text="0997979099" />
               <ContactItem icon={<LocationOnIcon />} text="Ambato, Ecuador" />
             </Stack>
@@ -183,6 +193,11 @@ export default function CvCover() {
   <ExperienceItem
     title="Desarrollador de Intranet"
     description="Desarrollo de intranet para gestión interna."
+  />
+
+  <ExperienceItem
+    title="Desarrollador de Aulas Virtuales"
+    description="Implementación y personalización de plataformas educativas."
   />
 </Section>
 
