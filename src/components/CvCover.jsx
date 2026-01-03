@@ -25,30 +25,21 @@ const qrSrc = `https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=${e
   cvUrl
 )}`;
 
-const SectionTitle = ({ children }) => (
-  <Typography
-    variant="h5"
-    fontWeight={800}
+const SkillChip = ({ label }) => (
+  <Chip
+    label={label}
+    size="small"
     sx={{
-      letterSpacing: 0.3,
-      mb: 1,
+      bgcolor: "primary.main",
+      color: "#fff",
+      fontWeight: 500,
     }}
-  >
-    {children}
-  </Typography>
+  />
 );
 
 export default function CvCover() {
   return (
-    <Paper
-      elevation={8}
-      sx={{
-        borderRadius: 4,
-        overflow: "hidden",
-        maxWidth: 1200,
-        mx: "auto",
-      }}
-    >
+    <Paper elevation={6} sx={{ borderRadius: 4, overflow: "hidden" }}>
       <Grid container minHeight="100vh">
         {/* SIDEBAR */}
         <Grid
@@ -56,9 +47,8 @@ export default function CvCover() {
           xs={12}
           md={4}
           sx={{
-            position: "relative",
             background:
-              "linear-gradient(180deg, #0b2d5c 0%, #0d47a1 50%, #1565c0 100%)",
+              "linear-gradient(180deg, #0d47a1 0%, #1565c0 100%)",
             color: "#fff",
             p: 4,
           }}
@@ -67,22 +57,21 @@ export default function CvCover() {
             <Avatar
               src="/foto.jpg"
               sx={{
-                width: 155,
-                height: 155,
-                border: "4px solid rgba(255,255,255,.85)",
-                boxShadow: "0 12px 30px rgba(0,0,0,.35)",
-                bgcolor: "transparent",
+                width: 150,
+                height: 150,
+                border: "4px solid #fff",
+                boxShadow: "0 8px 24px rgba(0,0,0,.25)",
               }}
             />
 
             <Box textAlign="center">
-              <Typography variant="h5" fontWeight={800}>
+              <Typography variant="h5" fontWeight={700}>
                 Jorge Patricio
               </Typography>
               <Typography
                 variant="h6"
-                fontWeight={800}
-                sx={{ letterSpacing: 0.5 }}
+                fontWeight={700}
+                sx={{ letterSpacing: 0.4 }}
               >
                 Santamaría Cherrez
               </Typography>
@@ -96,23 +85,14 @@ export default function CvCover() {
               </Typography>
             </Box>
 
-            <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.25)" }} />
+            <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.3)" }} />
 
             {/* CONTACTO */}
             <Stack spacing={1.2} width="100%">
               {[
-                {
-                  icon: <EmailIcon fontSize="small" />,
-                  text: "patricio_jorge@hotmail.es",
-                },
-                {
-                  icon: <WhatsAppIcon fontSize="small" />,
-                  text: "0997979099",
-                },
-                {
-                  icon: <LocationOnIcon fontSize="small" />,
-                  text: "Ambato, Ecuador",
-                },
+                { icon: <EmailIcon fontSize="small" />, text: "patricio_jorge@hotmail.es" },
+                { icon: <WhatsAppIcon fontSize="small" />, text: "0997979099" },
+                { icon: <LocationOnIcon fontSize="small" />, text: "Ambato" },
               ].map((item, i) => (
                 <Stack key={i} direction="row" spacing={1.2} alignItems="center">
                   {item.icon}
@@ -121,31 +101,15 @@ export default function CvCover() {
               ))}
             </Stack>
 
-            <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.25)" }} />
+            {/* REDES SOCIALES */}
+            <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.3)" }} />
 
-            {/* REDES */}
             <Stack direction="row" spacing={1}>
               {[
-                {
-                  icon: <LinkedInIcon />,
-                  url: "https://linkedin.com/in/jorge-santamaria",
-                  label: "LinkedIn",
-                },
-                {
-                  icon: <FacebookIcon />,
-                  url: "https://facebook.com/jorge.santamaria",
-                  label: "Facebook",
-                },
-                {
-                  icon: <InstagramIcon />,
-                  url: "https://instagram.com/jorge.dev",
-                  label: "Instagram",
-                },
-                {
-                  icon: <GitHubIcon />,
-                  url: "https://github.com/jorge-santamaria",
-                  label: "GitHub",
-                },
+                { icon: <LinkedInIcon />, url: "https://linkedin.com/in/jorge-santamaria", label: "LinkedIn" },
+                { icon: <FacebookIcon />, url: "https://facebook.com/jorge.santamaria", label: "Facebook" },
+                { icon: <InstagramIcon />, url: "https://instagram.com/jorge.dev", label: "Instagram" },
+                { icon: <GitHubIcon />, url: "https://github.com/jorge-santamaria", label: "GitHub" },
               ].map((item, i) => (
                 <Tooltip key={i} title={item.label}>
                   <IconButton
@@ -153,9 +117,9 @@ export default function CvCover() {
                     target="_blank"
                     sx={{
                       color: "#fff",
-                      transition: "all .3s",
+                      transition: "transform .2s, background-color .2s",
                       "&:hover": {
-                        transform: "translateY(-3px)",
+                        transform: "translateY(-2px)",
                         bgcolor: "rgba(255,255,255,.15)",
                       },
                     }}
@@ -171,9 +135,9 @@ export default function CvCover() {
               sx={{
                 mt: 2,
                 bgcolor: "#fff",
-                p: 1.5,
+                p: 1,
                 borderRadius: 2,
-                boxShadow: "0 10px 25px rgba(0,0,0,.25)",
+                boxShadow: "0 6px 20px rgba(0,0,0,.25)",
               }}
             >
               <Box
@@ -196,16 +160,10 @@ export default function CvCover() {
         </Grid>
 
         {/* CONTENIDO */}
-        <Grid
-          item
-          xs={12}
-          md={8}
-          sx={{
-            p: { xs: 3, md: 5 },
-            bgcolor: "#f5f7fb",
-          }}
-        >
-          <SectionTitle>Áreas de Conocimiento</SectionTitle>
+        <Grid item xs={12} md={8} sx={{ p: 5, bgcolor: "#f9fafb" }}>
+          <Typography variant="h5" fontWeight={700} gutterBottom>
+            Áreas de Conocimiento
+          </Typography>
           <Divider sx={{ mb: 2 }} />
 
           <Typography variant="body2" color="text.secondary" lineHeight={1.8}>
@@ -215,46 +173,38 @@ export default function CvCover() {
 
           <Divider sx={{ my: 4 }} />
 
-          <SectionTitle>Formación Académica</SectionTitle>
-          <Divider sx={{ mb: 3 }} />
+          <Typography variant="h5" fontWeight={700} gutterBottom>
+            Formación Académica
+          </Typography>
+          <Divider sx={{ mb: 2 }} />
 
           <Stack spacing={3}>
-            <Paper
-              elevation={3}
-              sx={{ p: 3, borderRadius: 3, bgcolor: "#fff" }}
-            >
-              <Box display="flex" gap={2}>
-                <SchoolIcon color="primary" />
-                <Box>
-                  <Typography fontWeight={700}>
-                    Universidad Internacional de La Rioja (UNIR)
-                  </Typography>
-                  <Typography variant="body2">
-                    Maestría en Ingeniería de Software y Sistemas Informáticos
-                  </Typography>
-                  <Typography variant="caption" color="text.secondary">
-                    mar. 2023 – abr. 2024
-                  </Typography>
-                </Box>
+            <Box display="flex" gap={2}>
+              <SchoolIcon color="primary" />
+              <Box>
+                <Typography fontWeight={600}>
+                  Universidad Internacional de La Rioja (UNIR)
+                </Typography>
+                <Typography variant="body2">
+                  Maestría en Ingeniería de Software y Sistemas Informáticos
+                </Typography>
+                <Typography variant="caption" color="text.secondary">
+                  mar. 2023 – abr. 2024
+                </Typography>
               </Box>
-            </Paper>
+            </Box>
 
-            <Paper
-              elevation={3}
-              sx={{ p: 3, borderRadius: 3, bgcolor: "#fff" }}
-            >
-              <Box display="flex" gap={2}>
-                <SchoolIcon color="primary" />
-                <Box>
-                  <Typography fontWeight={700}>
-                    Universidad Indoamérica
-                  </Typography>
-                  <Typography variant="body2">
-                    Ingeniería de Sistemas
-                  </Typography>
-                </Box>
+            <Box display="flex" gap={2}>
+              <SchoolIcon color="primary" />
+              <Box>
+                <Typography fontWeight={600}>
+                  Universidad Indoamérica
+                </Typography>
+                <Typography variant="body2">
+                  Ingeniería de Sistemas
+                </Typography>
               </Box>
-            </Paper>
+            </Box>
           </Stack>
         </Grid>
       </Grid>
