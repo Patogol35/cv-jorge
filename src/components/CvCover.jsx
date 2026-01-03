@@ -20,8 +20,6 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import GitHubIcon from "@mui/icons-material/GitHub";
 
-import QRCode from "qrcode.react";
-
 const cvUrl = "https://jorge-santamaria.dev/cv";
 
 /* =========================
@@ -63,7 +61,6 @@ export default function CvCover() {
               "linear-gradient(160deg, #0d47a1 0%, #1976d2 50%, #42a5f5 100%)",
             color: "#fff",
             p: 4,
-            position: "relative",
           }}
         >
           <Stack spacing={3} alignItems="center">
@@ -122,7 +119,7 @@ export default function CvCover() {
               <Social icon={<GitHubIcon />} url="https://github.com/jorge-santamaria" />
             </Stack>
 
-            {/* QR */}
+            {/* QR SIN LIBRERÍA */}
             <Box
               sx={{
                 mt: 2,
@@ -131,7 +128,14 @@ export default function CvCover() {
                 borderRadius: 2,
               }}
             >
-              <QRCode value={cvUrl} size={120} />
+              <img
+                src={`https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=${encodeURIComponent(
+                  cvUrl
+                )}`}
+                alt="QR CV"
+                width={120}
+                height={120}
+              />
               <Typography
                 variant="caption"
                 color="text.secondary"
