@@ -21,6 +21,9 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import GitHubIcon from "@mui/icons-material/GitHub";
 
+/* =========================
+CONFIG
+========================= */
 const cvUrl = "https://jorge-santamaria.dev/cv";
 
 /* =========================
@@ -42,15 +45,16 @@ const SkillChip = ({ label }) => (
 export default function CvCover() {
   return (
     <Paper
-      elevation={10}
+      elevation={8}
       sx={{
-        borderRadius: 4,
-        overflow: "hidden",
+        width: "100%",
         maxWidth: 1200,
         mx: "auto",
+        borderRadius: { xs: 0, md: 4 },
+        overflow: "hidden",
       }}
     >
-      <Grid container minHeight="100vh">
+      <Grid container>
 
         {/* ================= SIDEBAR ================= */}
         <Grid
@@ -66,21 +70,21 @@ export default function CvCover() {
         >
           <Stack spacing={3} alignItems="center">
 
-            {/* AVATAR CON HALO */}
+            {/* AVATAR */}
             <Box
               sx={{
                 p: 0.5,
                 borderRadius: "50%",
                 background:
-                  "radial-gradient(circle, rgba(255,255,255,.9), rgba(255,255,255,.1))",
-                boxShadow: "0 0 30px rgba(255,255,255,.5)",
+                  "radial-gradient(circle, rgba(255,255,255,.9), rgba(255,255,255,.2))",
+                boxShadow: "0 0 25px rgba(255,255,255,.6)",
               }}
             >
               <Avatar
                 src="/foto.jpg"
                 sx={{
-                  width: 150,
-                  height: 150,
+                  width: 140,
+                  height: 140,
                   border: "4px solid #fff",
                 }}
               />
@@ -88,13 +92,12 @@ export default function CvCover() {
 
             {/* NOMBRE */}
             <Box textAlign="center">
-              <Typography variant="h5" fontWeight={800}>
+              <Typography variant="h6" fontWeight={800}>
                 Jorge Patricio
               </Typography>
-              <Typography variant="h6" fontWeight={700}>
+              <Typography variant="subtitle1" fontWeight={700}>
                 Santamaría Cherrez
               </Typography>
-
               <Typography variant="body2" sx={{ opacity: 0.9, mt: 1 }}>
                 Máster en Ingeniería de Software <br />
                 y Sistemas Informáticos
@@ -114,10 +117,10 @@ export default function CvCover() {
 
             {/* REDES */}
             <Stack direction="row" spacing={1}>
-              <Social icon={<LinkedInIcon />} url="https://linkedin.com/in/jorge-santamaria" />
-              <Social icon={<FacebookIcon />} url="https://facebook.com/jorge.santamaria" />
-              <Social icon={<InstagramIcon />} url="https://instagram.com/jorge.dev" />
-              <Social icon={<GitHubIcon />} url="https://github.com/jorge-santamaria" />
+              <Social icon={<LinkedInIcon />} url="https://linkedin.com" />
+              <Social icon={<FacebookIcon />} url="https://facebook.com" />
+              <Social icon={<InstagramIcon />} url="https://instagram.com" />
+              <Social icon={<GitHubIcon />} url="https://github.com" />
             </Stack>
 
             {/* QR */}
@@ -146,9 +149,17 @@ export default function CvCover() {
         </Grid>
 
         {/* ================= CONTENIDO ================= */}
-        <Grid item xs={12} md={8} sx={{ p: 5, bgcolor: "#f5f7fa" }}>
+        <Grid
+          item
+          xs={12}
+          md={8}
+          sx={{
+            p: { xs: 3, md: 5 },
+            bgcolor: "#f5f7fa",
+          }}
+        >
 
-          {/* ÁREAS DE CONOCIMIENTO */}
+          {/* ÁREAS */}
           <Section title="Áreas de Conocimiento">
             <CardBlock title="Desarrollo Web Full Stack">
               {[
@@ -176,34 +187,31 @@ export default function CvCover() {
             </CardBlock>
           </Section>
 
-          {/* EXPERIENCIA PROFESIONAL */}
+          {/* EXPERIENCIA */}
           <Section title="Experiencia Profesional">
             <ExperienceItem
               role="Desarrollador Full Stack"
               company="Empresa / Proyecto 1"
               date="2024 – Actualidad"
-              description="Desarrollo y mantenimiento de aplicaciones web, integración de APIs, despliegue en la nube."
+              description="Desarrollo y mantenimiento de aplicaciones web, integración de APIs y despliegue en la nube."
             />
-
             <ExperienceItem
               role="Desarrollador Web"
               company="Empresa / Proyecto 2"
               date="2023 – 2024"
-              description="Implementación de interfaces modernas, optimización de rendimiento y experiencia de usuario."
+              description="Implementación de interfaces modernas y optimización de rendimiento."
             />
-
             <ExperienceItem
               role="Ingeniero de Software"
               company="Empresa / Proyecto 3"
               date="2022 – 2023"
-              description="Diseño de arquitectura backend, manejo de bases de datos y control de versiones."
+              description="Diseño backend, manejo de bases de datos y control de versiones."
             />
-
             <ExperienceItem
               role="Practicante de Sistemas"
               company="Empresa / Proyecto 4"
               date="2021 – 2022"
-              description="Soporte técnico, desarrollo de módulos internos y documentación técnica."
+              description="Soporte técnico y desarrollo de módulos internos."
             />
           </Section>
 
@@ -212,7 +220,7 @@ export default function CvCover() {
             <TimelineItem
               title="Universidad Internacional de La Rioja (UNIR)"
               subtitle="Maestría en Ingeniería de Software y Sistemas Informáticos"
-              date="mar. 2023 – abr. 2024"
+              date="2023 – 2024"
             />
             <TimelineItem
               title="Universidad Indoamérica"
@@ -226,7 +234,7 @@ export default function CvCover() {
 }
 
 /* =========================
-SUB COMPONENTS
+SUBCOMPONENTES
 ========================= */
 
 const ContactItem = ({ icon, text }) => (
@@ -246,7 +254,7 @@ const Social = ({ icon, url }) => (
 
 const Section = ({ title, children }) => (
   <Box mb={5}>
-    <Typography variant="h5" fontWeight={800} gutterBottom>
+    <Typography variant="h6" fontWeight={800} gutterBottom>
       {title}
     </Typography>
     <Divider sx={{ mb: 3 }} />
@@ -255,14 +263,7 @@ const Section = ({ title, children }) => (
 );
 
 const CardBlock = ({ title, children }) => (
-  <Paper
-    elevation={3}
-    sx={{
-      p: 3,
-      borderRadius: 3,
-      bgcolor: "#fff",
-    }}
-  >
+  <Paper sx={{ p: 3, borderRadius: 3 }}>
     <Typography fontWeight={700} mb={1}>
       {title}
     </Typography>
