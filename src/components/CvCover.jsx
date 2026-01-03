@@ -14,9 +14,8 @@ import {
 import EmailIcon from "@mui/icons-material/Email";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import SchoolIcon from "@mui/icons-material/School";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import InstagramIcon from "@mui/icons-material/Instagram";
 import GitHubIcon from "@mui/icons-material/GitHub";
 
 const cvUrl = "https://jorge-santamaria.dev/cv";
@@ -29,7 +28,7 @@ const SkillChip = ({ label }) => (
     label={label}
     size="small"
     sx={{
-      bgcolor: "rgba(25,118,210,.08)",
+      bgcolor: "#e3f2fd",
       color: "primary.main",
       fontWeight: 600,
       borderRadius: 1,
@@ -40,15 +39,15 @@ const SkillChip = ({ label }) => (
 export default function CvCover() {
   return (
     <Paper
-      elevation={8}
+      elevation={6}
       sx={{
-        borderRadius: 4,
+        borderRadius: 3,
         overflow: "hidden",
-        maxWidth: 1200,
+        maxWidth: 1100,
         mx: "auto",
       }}
     >
-      <Grid container minHeight="100vh">
+      <Grid container>
 
         {/* ================= SIDEBAR ================= */}
         <Grid
@@ -56,58 +55,38 @@ export default function CvCover() {
           xs={12}
           md={4}
           sx={{
-            background:
-              "linear-gradient(160deg, #0d47a1 0%, #1976d2 50%, #42a5f5 100%)",
+            backgroundColor: "#0d47a1",
             color: "#fff",
             p: 4,
           }}
         >
           <Stack spacing={3} alignItems="center">
 
-            {/* AVATAR */}
-            <Box
+            <Avatar
+              src="/foto.jpg"
               sx={{
-                p: 0.5,
-                borderRadius: "50%",
-                background:
-                  "radial-gradient(circle, rgba(255,255,255,.9), rgba(255,255,255,.1))",
-                boxShadow: "0 0 30px rgba(255,255,255,.4)",
+                width: 140,
+                height: 140,
+                border: "3px solid #fff",
               }}
-            >
-              <Avatar
-                src="/foto.jpg"
-                sx={{
-                  width: 150,
-                  height: 150,
-                  border: "4px solid #fff",
-                }}
-              />
-            </Box>
+            />
 
-            {/* NOMBRE */}
             <Box textAlign="center">
-              <Typography variant="h5" fontWeight={900} letterSpacing={0.5}>
+              <Typography variant="h6" fontWeight={800}>
                 Jorge Patricio
               </Typography>
               <Typography variant="h6" fontWeight={800}>
                 Santamaría Cherrez
               </Typography>
 
-              <Typography
-                variant="body2"
-                sx={{ opacity: 0.85, mt: 1, fontStyle: "italic" }}
-              >
-                Ingeniero de Software · Full Stack
-              </Typography>
-
-              <Typography variant="caption" sx={{ opacity: 0.8, mt: 0.5 }}>
-                Máster en Ingeniería de Software y Sistemas Informáticos
+              <Typography variant="body2" sx={{ mt: 1, opacity: 0.9 }}>
+                Ingeniero de Software <br />
+                Desarrollador Full Stack
               </Typography>
             </Box>
 
             <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.3)" }} />
 
-            {/* CONTACTO */}
             <Stack spacing={1} width="100%">
               <ContactItem icon={<EmailIcon />} text="patricio_jorge@hotmail.es" />
               <ContactItem icon={<WhatsAppIcon />} text="0997979099" />
@@ -116,23 +95,12 @@ export default function CvCover() {
 
             <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.3)" }} />
 
-            {/* REDES */}
             <Stack direction="row" spacing={1}>
               <Social icon={<LinkedInIcon />} url="https://linkedin.com/in/jorge-santamaria" />
-              <Social icon={<FacebookIcon />} url="https://facebook.com/jorge.santamaria" />
-              <Social icon={<InstagramIcon />} url="https://instagram.com/jorge.dev" />
               <Social icon={<GitHubIcon />} url="https://github.com/jorge-santamaria" />
             </Stack>
 
-            {/* QR */}
-            <Box
-              sx={{
-                mt: 2,
-                bgcolor: "#fff",
-                p: 1.5,
-                borderRadius: 2,
-              }}
-            >
+            <Box sx={{ mt: 2, bgcolor: "#fff", p: 1.5, borderRadius: 2 }}>
               <img
                 src={`https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=${encodeURIComponent(
                   cvUrl
@@ -155,11 +123,12 @@ export default function CvCover() {
         </Grid>
 
         {/* ================= CONTENIDO ================= */}
-        <Grid item xs={12} md={8} sx={{ p: { xs: 3, md: 5 }, bgcolor: "#f4f6f8" }}>
+        <Grid item xs={12} md={8} sx={{ p: 4, bgcolor: "#fafafa" }}>
 
           {/* ÁREAS */}
           <Section title="Áreas de Conocimiento">
-            <CardBlock title="Desarrollo Web Full Stack">
+
+            <Block title="Desarrollo Web Full Stack">
               {[
                 "PHP",
                 "JavaScript",
@@ -172,33 +141,35 @@ export default function CvCover() {
               ].map((s) => (
                 <SkillChip key={s} label={s} />
               ))}
-            </CardBlock>
+            </Block>
 
-            <CardBlock title="Ciberseguridad Web">
-              <Typography variant="body2" color="text.secondary">
+            <Block title="Ciberseguridad Web">
+              <Typography variant="body2">
                 OWASP Top 10 · ZAP · Wireshark · Burp Suite · Nmap · Fortify
               </Typography>
-            </CardBlock>
+            </Block>
 
-            <CardBlock title="Bases de Datos">
+            <Block title="Bases de Datos">
               {["MySQL", "PostgreSQL", "MongoDB", "Elasticsearch"].map((s) => (
                 <SkillChip key={s} label={s} />
               ))}
-            </CardBlock>
+            </Block>
+
           </Section>
 
           {/* FORMACIÓN */}
           <Section title="Formación Académica">
-            <TimelineItem
+            <EducationItem
               title="Universidad Internacional de La Rioja (UNIR)"
               subtitle="Maestría en Ingeniería de Software y Sistemas Informáticos"
               date="mar. 2023 – abr. 2024"
             />
-            <TimelineItem
+            <EducationItem
               title="Universidad Indoamérica"
               subtitle="Ingeniería de Sistemas"
             />
           </Section>
+
         </Grid>
       </Grid>
     </Paper>
@@ -211,10 +182,8 @@ SUB COMPONENTS
 
 const ContactItem = ({ icon, text }) => (
   <Stack direction="row" spacing={1.5} alignItems="center">
-    <Box sx={{ opacity: 0.8 }}>{icon}</Box>
-    <Typography variant="body2" sx={{ opacity: 0.9 }}>
-      {text}
-    </Typography>
+    {icon}
+    <Typography variant="body2">{text}</Typography>
   </Stack>
 );
 
@@ -227,75 +196,29 @@ const Social = ({ icon, url }) => (
 );
 
 const Section = ({ title, children }) => (
-  <Box mb={6}>
-    <Typography
-      variant="overline"
-      sx={{ color: "primary.main", fontWeight: 700, letterSpacing: 1 }}
-    >
+  <Box mb={4}>
+    <Typography variant="h6" fontWeight={800} gutterBottom>
       {title}
     </Typography>
-
-    <Divider sx={{ my: 2 }} />
-
-    <Stack spacing={3}>{children}</Stack>
+    <Divider sx={{ mb: 2 }} />
+    <Stack spacing={2}>{children}</Stack>
   </Box>
 );
 
-const CardBlock = ({ title, children }) => (
-  <Paper
-    elevation={0}
-    sx={{
-      p: 3,
-      borderRadius: 3,
-      bgcolor: "#fff",
-      border: "1px solid #e0e0e0",
-      transition: "all .3s",
-      "&:hover": {
-        boxShadow: "0 8px 24px rgba(0,0,0,.08)",
-        transform: "translateY(-2px)",
-      },
-    }}
-  >
+const Block = ({ title, children }) => (
+  <Box>
     <Typography fontWeight={700} mb={1}>
       {title}
     </Typography>
-
     <Stack direction="row" spacing={1} flexWrap="wrap">
       {children}
     </Stack>
-  </Paper>
+  </Box>
 );
 
-const TimelineItem = ({ title, subtitle, date }) => (
+const EducationItem = ({ title, subtitle, date }) => (
   <Box display="flex" gap={2}>
-    <Box
-      sx={{
-        width: 12,
-        position: "relative",
-        "&::before": {
-          content: '""',
-          position: "absolute",
-          top: 0,
-          left: "50%",
-          width: 2,
-          height: "100%",
-          bgcolor: "primary.main",
-          transform: "translateX(-50%)",
-        },
-      }}
-    >
-      <Box
-        sx={{
-          width: 10,
-          height: 10,
-          bgcolor: "primary.main",
-          borderRadius: "50%",
-          position: "relative",
-          zIndex: 1,
-        }}
-      />
-    </Box>
-
+    <SchoolIcon color="primary" />
     <Box>
       <Typography fontWeight={700}>{title}</Typography>
       <Typography variant="body2">{subtitle}</Typography>
