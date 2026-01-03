@@ -48,7 +48,7 @@ export default function CvCover() {
         display: "flex",
         justifyContent: "center",
         py: 4,
-        fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
+        fontFamily: '"Inter","Roboto","Helvetica","Arial",sans-serif',
       }}
     >
       <Paper
@@ -115,53 +115,23 @@ export default function CvCover() {
                 gap: 1.5,
                 width: "100%",
                 maxWidth: 160,
-                mx: "auto",
               }}
             >
               <Social icon={<EmailIcon />} url="mailto:patogol3535@gmail.com" />
               <Social icon={<WhatsAppIcon />} url="https://wa.me/593997979099" />
-              <Social icon={<LinkedInIcon />} url="https://www.linkedin.com/in/jorge-patricio-santamaría-cherrez-2a73792b2" />
+              <Social
+                icon={<LinkedInIcon />}
+                url="https://www.linkedin.com/in/jorge-patricio-santamaría-cherrez-2a73792b2"
+              />
               <Social icon={<GitHubIcon />} url="https://github.com/Patogol35" />
-              <Social icon={<FacebookIcon />} url="https://www.facebook.com/share/1C9RgHAPvL/" />
-              <Social icon={<InstagramIcon />} url="https://www.instagram.com/jorge_patricio_26" />
-            </Box>
-
-            {/* ================= PORTAFOLIO ================= */}
-            <Box
-              sx={{
-                mt: 2,
-                textAlign: "center",
-              }}
-            >
-              <Tooltip title="Ver Portafolio Profesional">
-                <IconButton
-                  href="https://portafoliojorgepatriciosantamariach.vercel.app/"
-                  target="_blank"
-                  sx={{
-                    bgcolor: "#ffffff",
-                    color: "#0d47a1",
-                    width: 64,
-                    height: 64,
-                    "&:hover": {
-                      bgcolor: "#e3f2fd",
-                    },
-                  }}
-                >
-                  <DescriptionIcon sx={{ fontSize: 34 }} />
-                </IconButton>
-              </Tooltip>
-
-              <Typography
-                sx={{
-                  mt: 1,
-                  fontSize: 12,
-                  fontWeight: 700,
-                  textTransform: "uppercase",
-                  opacity: 0.95,
-                }}
-              >
-                Portafolio Web
-              </Typography>
+              <Social
+                icon={<FacebookIcon />}
+                url="https://www.facebook.com/share/1C9RgHAPvL/"
+              />
+              <Social
+                icon={<DescriptionIcon />}
+                url="https://portafoliojorgepatriciosantamariach.vercel.app/"
+              />
             </Box>
           </Stack>
         </Box>
@@ -194,7 +164,13 @@ export default function CvCover() {
             </Block>
 
             <Block title="Otras Tecnologías">
-              {["Postman", "Microsoft Office", "Máquinas Virtuales", "Scrum", "AnyDesk"].map((s) => (
+              {[
+                "Postman",
+                "Microsoft Office",
+                "Máquinas Virtuales",
+                "Scrum",
+                "AnyDesk",
+              ].map((s) => (
                 <SkillChip key={s} label={s} />
               ))}
             </Block>
