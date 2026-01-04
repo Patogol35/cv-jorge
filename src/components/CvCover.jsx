@@ -20,36 +20,36 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import GitHubIcon from "@mui/icons-material/GitHub";
 
 /* =========================
-SKILL CHIP
+SKILL CHIP – REFINADO
 ========================= */
 const SkillChip = ({ label }) => (
   <Chip
     label={label}
     size="small"
     sx={{
-      bgcolor: "#eef6ff",
-      color: "#0d47a1",
+      bgcolor: "#e6f0ff",
+      color: "#0f4c99",
       fontWeight: 600,
-      borderRadius: "8px",
-      height: 28,
-      fontSize: 13,
-      px: 1,
+      borderRadius: "10px",
+      height: 30,
+      fontSize: 13.5,
+      px: 1.2,
+      boxShadow: "0 1px 2px rgba(0,0,0,0.03)",
     }}
   />
 );
 
 /* =========================
-HORIZONTAL LINE COMPONENT
+SEPARATOR – LÍNEA SUAVE Y MODERNA
 ========================= */
-const SectionDivider = ({ width = "70%" }) => (
+const SectionSeparator = ({ width = "70%" }) => (
   <Box
     sx={{
       height: "1px",
       width: width,
-      bgcolor: "#cbdff0",
-      my: 2.8,
+      background: "linear-gradient(to right, transparent, #cbd5e1, transparent)",
+      my: 3,
       mx: "auto",
-      borderRadius: "1px",
     }}
   />
 );
@@ -59,124 +59,150 @@ export default function CvCover() {
     <Box
       sx={{
         minHeight: "100vh",
-        bgcolor: "#f8fafc",
+        bgcolor: "#f9fbfd",
         display: "flex",
         justifyContent: "center",
-        py: 7,
-        fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
+        py: 8,
+        px: 2,
+        fontFamily: '"Inter", sans-serif',
+        color: "#1e293b",
       }}
     >
       <Paper
-        elevation={6}
+        elevation={0}
         sx={{
           width: "100%",
-          maxWidth: 920,
-          borderRadius: 3,
+          maxWidth: 940,
+          borderRadius: 4,
           overflow: "hidden",
           display: "flex",
-          flexDirection: "row",
-          minHeight: "135vh",
-          boxShadow: "0 6px 20px rgba(0,0,0,0.06)",
+          flexDirection: { xs: "column", md: "row" },
+          minHeight: "140vh",
+          border: "1px solid #e2e8f0",
+          boxShadow: "0 10px 40px rgba(0, 0, 0, 0.08)",
         }}
       >
         {/* ================= SIDEBAR ================= */}
         <Box
           sx={{
-            width: { xs: 220, sm: 260, md: 300 },
-            minWidth: { xs: 220, sm: 260 },
-            bgcolor: "#0d47a1",
-            color: "#fff",
-            p: { xs: 3.8, md: 5.5 },
+            width: { xs: "100%", md: 280 },
+            bgcolor: "#0f4c99",
+            color: "#f1f5f9",
+            p: { xs: 3, md: 5 },
             flexShrink: 0,
           }}
         >
-          <Stack spacing={5.6} alignItems="center">
+          <Stack spacing={5.5} alignItems="center">
             <Avatar
               src="https://res.cloudinary.com/dqkwc0kf7/image/upload/v1757093856/FB_IMG_1757092624480_hgpu4i.jpg"
               sx={{
-                width: { xs: 110, md: 140 },
-                height: { xs: 110, md: 140 },
-                border: "3px solid #fff",
-                boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+                width: 140,
+                height: 140,
+                border: "4px solid rgba(255,255,255,0.92)",
+                boxShadow: "0 6px 20px rgba(0,0,0,0.25)",
+                mb: 1.5,
               }}
             />
 
-            <Box textAlign="center" sx={{ lineHeight: 1.35 }}>
-              <Typography fontWeight={800} fontSize={20.5} sx={{ mb: 0.6 }}>
+            <Box textAlign="center">
+              <Typography
+                fontWeight={800}
+                fontSize={{ xs: 19, md: 21 }}
+                lineHeight={1.2}
+                sx={{ mb: 0.5, letterSpacing: "0.3px" }}
+              >
                 Jorge Patricio
               </Typography>
-              <Typography fontWeight={800} fontSize={20.5} sx={{ mb: 1.6 }}>
+              <Typography
+                fontWeight={800}
+                fontSize={{ xs: 19, md: 21 }}
+                lineHeight={1.2}
+                sx={{ mb: 1.8, letterSpacing: "0.3px" }}
+              >
                 Santamaría Cherrez
               </Typography>
-              <Typography sx={{ fontSize: 14, opacity: 0.94, lineHeight: 1.55 }}>
+              <Typography
+                sx={{
+                  fontSize: 14,
+                  opacity: 0.92,
+                  lineHeight: 1.5,
+                  fontWeight: 500,
+                }}
+              >
                 Máster en Ingeniería de Software
                 <br />
                 y Sistemas Informáticos
               </Typography>
             </Box>
 
-            {/* Línea sutil en sidebar */}
-            <Box sx={{ height: "1px", width: "85%", bgcolor: "rgba(255,255,255,0.35)", my: 1.3 }} />
+            {/* Separador suave */}
+            <Box sx={{ height: "1px", width: "80%", bgcolor: "rgba(255,255,255,0.25)", my: 1.4 }} />
 
-            <Stack spacing={3.6} width="100%" alignItems="center">
+            {/* Contactos */}
+            <Stack spacing={3.2} width="100%" alignItems="center">
               <Contact icon={<EmailIcon />} text="patogol3535@gmail.com" />
-              <Contact icon={<WhatsAppIcon />} text="0997979099" />
+              <Contact icon={<WhatsAppIcon />} text="+593 99 797 9099" />
               <Contact icon={<LocationOnIcon />} text="Ambato, Ecuador" />
-              <Contact icon={<FacebookIcon />} text="facebook.com/jorge.patricio.12" />
-              <Contact icon={<InstagramIcon />} text="instagram.com/jorge_patricio_26" />
-              <Contact icon={<GitHubIcon />} text="github.com/Patogol35" />
+              <Contact icon={<FacebookIcon />} text="jorge.patricio.12" />
+              <Contact icon={<InstagramIcon />} text="@jorge_patricio_26" />
+              <Contact icon={<GitHubIcon />} text="Patogol35" />
             </Stack>
 
-            <Box sx={{ height: "1px", width: "85%", bgcolor: "rgba(255,255,255,0.35)", my: 1.3 }} />
+            <Box sx={{ height: "1px", width: "80%", bgcolor: "rgba(255,255,255,0.25)", my: 1.4 }} />
 
+            {/* QR + Portafolio */}
             <Typography
-              variant="body2"
               sx={{
                 fontWeight: 600,
                 textAlign: "center",
-                color: "#fff",
-                opacity: 0.93,
-                mt: 2.8,
-                px: 1,
+                opacity: 0.9,
                 fontSize: 14,
+                mt: 2.5,
               }}
             >
               Portafolio Profesional
             </Typography>
-            <Tooltip title="Escanear para ver Portafolio">
+            <Tooltip title="Escanear para acceder a mi portafolio">
               <Box
                 component="a"
                 href="https://portafoliojorgepatriciosantamariach.vercel.app/"
                 target="_blank"
-                sx={{ display: "block", mt: 2.4 }}
+                sx={{
+                  display: "block",
+                  mt: 2,
+                  borderRadius: 2,
+                  overflow: "hidden",
+                  border: "2px solid rgba(255,255,255,0.85)",
+                  boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+                }}
               >
                 <Box
                   component="img"
                   src="/qr-cv.png"
-                  alt="QR Portafolio"
+                  alt="QR – Portafolio"
                   sx={{
-                    width: 120,
-                    height: 120,
-                    borderRadius: 2,
-                    bgcolor: "#fff",
-                    p: 1,
-                    boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+                    width: 110,
+                    height: 110,
+                    display: "block",
                   }}
                 />
               </Box>
             </Tooltip>
 
-            <Box sx={{ mt: 2.8, textAlign: "center" }}>
-              <Tooltip title="Ver Portafolio">
+            <Box sx={{ mt: 2.5, textAlign: "center" }}>
+              <Tooltip title="Visitar portafolio">
                 <IconButton
+                  component="a"
                   href="https://portafoliojorgepatriciosantamariach.vercel.app/"
                   target="_blank"
                   sx={{
-                    color: "#fff",
-                    width: 48,
-                    height: 48,
+                    color: "#e2e8f0",
+                    bgcolor: "rgba(255,255,255,0.15)",
+                    width: 50,
+                    height: 50,
+                    borderRadius: "50%",
                     "&:hover": {
-                      bgcolor: "rgba(255,255,255,0.15)",
+                      bgcolor: "rgba(255,255,255,0.25)",
                     },
                   }}
                 >
@@ -187,88 +213,109 @@ export default function CvCover() {
           </Stack>
         </Box>
 
-        {/* ================= CONTENT ================= */}
+        {/* ================= CONTENT (DERECHA) ================= */}
         <Box
           sx={{
             flex: 1,
-            p: { xs: 4.5, md: 6.4 },
+            p: { xs: 4, md: 6 },
             bgcolor: "#ffffff",
-            pb: 9.5,
+            pb: 10,
           }}
         >
-          <Stack spacing={7.8} alignItems="center" sx={{ width: "100%" }}>
-            {/* ===== ÁREAS DE CONOCIMIENTO ===== */}
-            <Box sx={{ width: "100%", maxWidth: 600 }}>
-              <Typography fontWeight={800} fontSize={21.5} color="#0d47a1" align="center" sx={{ mb: 1.8 }}>
+          <Stack spacing={8} alignItems="center" sx={{ width: "100%" }}>
+            {/* ÁREAS DE CONOCIMIENTO */}
+            <Box sx={{ width: "100%", maxWidth: 620 }}>
+              <Typography
+                variant="h4"
+                fontWeight={800}
+                fontSize={{ xs: 22, md: 23 }}
+                color="#0f4c99"
+                align="center"
+                sx={{ mb: 2 }}
+              >
                 Áreas de Conocimiento
               </Typography>
-              <SectionDivider width="70%" />
-              <Stack spacing={5.2} sx={{ width: "100%" }} alignItems="flex-start">
-                <BlockLeftAligned title="Desarrollo de Software">
-                  {["PHP", "React", "Spring Boot", "Python"].map((s) => (
+              <SectionSeparator width="72%" />
+              <Stack spacing={5.5} sx={{ width: "100%" }} alignItems="flex-start">
+                <Block title="Desarrollo Web & Mobile">
+                  {["React", "Spring Boot", "Python", "PHP"].map((s) => (
                     <SkillChip key={s} label={s} />
                   ))}
-                </BlockLeftAligned>
+                </Block>
 
-                <BlockLeftAligned title="Cloud & Hosting">
-                  {["Vercel", "Render", "AWS"].map((s) => (
+                <Block title="Infraestructura en la Nube">
+                  {["AWS", "Vercel", "Render"].map((s) => (
                     <SkillChip key={s} label={s} />
                   ))}
-                </BlockLeftAligned>
+                </Block>
 
-                <BlockLeftAligned title="Bases de Datos">
-                  {["MySQL", "PostgreSQL", "MongoDB", "Elasticsearch"].map((s) => (
+                <Block title="Bases de Datos">
+                  {["PostgreSQL", "MySQL", "MongoDB", "Elasticsearch"].map((s) => (
                     <SkillChip key={s} label={s} />
                   ))}
-                </BlockLeftAligned>
+                </Block>
 
-                <BlockLeftAligned title="Otras Tecnologías">
-                  {["Postman", "Linux", "Scrum", "AnyDesk", "VM"].map((s) => (
+                <Block title="Herramientas & Metodologías">
+                  {["Postman", "Linux", "Scrum", "Git", "VM", "AnyDesk"].map((s) => (
                     <SkillChip key={s} label={s} />
                   ))}
-                </BlockLeftAligned>
+                </Block>
               </Stack>
             </Box>
 
-            {/* ===== FORMACIÓN ACADÉMICA ===== */}
-            <Box sx={{ width: "100%", maxWidth: 600 }}>
-              <Typography fontWeight={800} fontSize={21.5} color="#0d47a1" align="center" sx={{ mb: 1.8 }}>
+            {/* FORMACIÓN ACADÉMICA */}
+            <Box sx={{ width: "100%", maxWidth: 620 }}>
+              <Typography
+                variant="h4"
+                fontWeight={800}
+                fontSize={{ xs: 22, md: 23 }}
+                color="#0f4c99"
+                align="center"
+                sx={{ mb: 2 }}
+              >
                 Formación Académica
               </Typography>
-              <SectionDivider width="70%" />
-              <Stack spacing={4.4} sx={{ width: "100%" }} alignItems="flex-start">
-                <ItemLeftAligned
-                  icon={<SchoolIcon color="primary" />}
-                  title="Universidad Internacional de La Rioja (UNIR)"
+              <SectionSeparator width="72%" />
+              <Stack spacing={4.5} sx={{ width: "100%" }} alignItems="flex-start">
+                <Item
+                  icon={<SchoolIcon sx={{ color: "#0f4c99", fontSize: 26 }} />}
+                  title="Universidad Internacional de La Rioja (UNIR) – España"
                   desc="Máster en Ingeniería de Software y Sistemas Informáticos"
                 />
-                <ItemLeftAligned
-                  icon={<SchoolIcon color="primary" />}
-                  title="Universidad Indoamérica"
+                <Item
+                  icon={<SchoolIcon sx={{ color: "#0f4c99", fontSize: 26 }} />}
+                  title="Universidad Indoamérica – Ecuador"
                   desc="Ingeniería de Sistemas"
                 />
               </Stack>
             </Box>
 
-            {/* ===== EXPERIENCIA PROFESIONAL ===== */}
-            <Box sx={{ width: "100%", maxWidth: 600 }}>
-              <Typography fontWeight={800} fontSize={21.5} color="#0d47a1" align="center" sx={{ mb: 1.8 }}>
+            {/* EXPERIENCIA PROFESIONAL */}
+            <Box sx={{ width: "100%", maxWidth: 620 }}>
+              <Typography
+                variant="h4"
+                fontWeight={800}
+                fontSize={{ xs: 22, md: 23 }}
+                color="#0f4c99"
+                align="center"
+                sx={{ mb: 2 }}
+              >
                 Experiencia Profesional
               </Typography>
-              <SectionDivider width="70%" />
-              <Stack spacing={4.4} sx={{ width: "100%" }} alignItems="flex-start">
-                <ItemLeftAligned
-                  icon={<WorkIcon color="primary" />}
+              <SectionSeparator width="72%" />
+              <Stack spacing={4.5} sx={{ width: "100%" }} alignItems="flex-start">
+                <Item
+                  icon={<WorkIcon sx={{ color: "#0f4c99", fontSize: 26 }} />}
                   title="Docente de Informática"
                   desc="Formación técnica en informática y tecnologías digitales."
                 />
-                <ItemLeftAligned
-                  icon={<WorkIcon color="primary" />}
+                <Item
+                  icon={<WorkIcon sx={{ color: "#0f4c99", fontSize: 26 }} />}
                   title="Desarrollador de Aplicaciones"
                   desc="Diseño y desarrollo de soluciones digitales eficientes."
                 />
-                <ItemLeftAligned
-                  icon={<WorkIcon color="primary" />}
+                <Item
+                  icon={<WorkIcon sx={{ color: "#0f4c99", fontSize: 26 }} />}
                   title="Desarrollador de Aulas Virtuales"
                   desc="Desarrollo e implementación de plataformas educativas virtuales."
                 />
@@ -282,43 +329,69 @@ export default function CvCover() {
 }
 
 /* =========================
-SUB COMPONENTS
+SUB COMPONENTS REFINED
 ========================= */
 
 const Contact = ({ icon, text }) => (
   <Stack
     direction="row"
-    spacing={1.9}
+    spacing={1.8}
     alignItems="center"
     justifyContent="center"
     sx={{ width: "100%" }}
   >
-    {icon}
-    <Typography sx={{ fontSize: 14.5, textAlign: "center", wordBreak: "break-word", lineHeight: 1.6, opacity: 0.95 }}>
+    <Box sx={{ color: "white", opacity: 0.95, display: "flex" }}>{icon}</Box>
+    <Typography
+      sx={{
+        fontSize: 14.5,
+        textAlign: "center",
+        lineHeight: 1.5,
+        opacity: 0.96,
+        fontWeight: 500,
+        maxWidth: "85%",
+      }}
+    >
       {text}
     </Typography>
   </Stack>
 );
 
-const BlockLeftAligned = ({ title, children }) => (
-  <Box sx={{ width: "100%", mb: 2.3 }}>
-    <Typography fontWeight={700} mb={2} fontSize={16} color="#1e3a8a">
+const Block = ({ title, children }) => (
+  <Box sx={{ width: "100%", mb: 2.5 }}>
+    <Typography
+      fontWeight={700}
+      fontSize={16.5}
+      color="#0f4c99"
+      sx={{ mb: 2, letterSpacing: "0.2px" }}
+    >
       {title}
     </Typography>
-    <Stack direction="row" flexWrap="wrap" gap={1.7}>
+    <Stack direction="row" flexWrap="wrap" gap={1.8}>
       {children}
     </Stack>
   </Box>
 );
 
-const ItemLeftAligned = ({ icon, title, desc }) => (
-  <Stack direction="row" spacing={2.4} alignItems="flex-start" sx={{ maxWidth: 540 }}>
+const Item = ({ icon, title, desc }) => (
+  <Stack direction="row" spacing={2.5} alignItems="flex-start"} sx={{ maxWidth: 560 }}>
     {icon}
     <Box>
-      <Typography fontWeight={700} fontSize={15.5} color="#1e3a8a">
+      <Typography
+        fontWeight={700}
+        fontSize={15.5}
+        color="#0f4c99"
+        sx={{ lineHeight: 1.35, mb: 0.4 }}
+      >
         {title}
       </Typography>
-      <Typography sx={{ fontSize: 14.5, color: "#475569", mt: 0.6, lineHeight: 1.65 }}>
+      <Typography
+        sx={{
+          fontSize: 14.5,
+          color: "#475569",
+          lineHeight: 1.6,
+          fontWeight: 400,
+        }}
+      >
         {desc}
       </Typography>
     </Box>
