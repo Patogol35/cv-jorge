@@ -266,7 +266,13 @@ const Contact = ({ icon, text, link }) => {
   if (link) {
     return (
       <Tooltip title={`Ir a ${text}`}>
-        <Box component="a" href={link} target="_blank" sx={{ textDecoration: "none", color: "inherit" }}>
+        <Box
+          component="a"
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+          sx={{ textDecoration: "none", color: "inherit", display: "flex", alignItems: "center" }}
+        >
           {content}
         </Box>
       </Tooltip>
