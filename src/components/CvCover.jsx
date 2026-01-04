@@ -107,6 +107,7 @@ export default function CvCover() {
 
             <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.3)" }} />
 
+            {/* ===== ICONOS (SE MANTIENEN TAL CUAL) ===== */}
             <Box
               sx={{
                 display: "grid",
@@ -119,10 +120,32 @@ export default function CvCover() {
             >
               <Social icon={<EmailIcon />} url="mailto:patogol3535@gmail.com" />
               <Social icon={<WhatsAppIcon />} url="https://wa.me/593997979099" />
-              <Social icon={<LinkedInIcon />} url="https://www.linkedin.com/in/jorge-patricio-santamaria-cherrez-2a73792b2" />
+              <Social
+                icon={<LinkedInIcon />}
+                url="https://www.linkedin.com/in/jorge-patricio-santamaria-cherrez-2a73792b2"
+              />
               <Social icon={<GitHubIcon />} url="https://github.com/Patogol35" />
-              <Social icon={<FacebookIcon />} url="https://www.facebook.com/share/1C9RgHAPvL/" />
-              <Social icon={<InstagramIcon />} url="https://www.instagram.com/jorge_patricio_26" />
+              <Social
+                icon={<FacebookIcon />}
+                url="https://www.facebook.com/share/1C9RgHAPvL/"
+              />
+              <Social
+                icon={<InstagramIcon />}
+                url="https://www.instagram.com/jorge_patricio_26"
+              />
+            </Box>
+
+            {/* ===== NUEVO BLOQUE: TEXTO DIRECTO (NO BORRA NADA) ===== */}
+            <Box sx={{ width: "100%", mt: 1 }}>
+              <Typography fontWeight={700} fontSize={13} mb={0.5}>
+                Redes y Enlaces
+              </Typography>
+
+              <InfoLine label="LinkedIn:" text="linkedin.com/in/jorge-patricio-santamaria-cherrez-2a73792b2" />
+              <InfoLine label="GitHub:" text="github.com/Patogol35" />
+              <InfoLine label="Portafolio:" text="portafoliojorgepatriciosantamariach.vercel.app" />
+              <InfoLine label="Instagram:" text="instagram.com/jorge_patricio_26" />
+              <InfoLine label="Facebook:" text="facebook.com/share/1C9RgHAPvL" />
             </Box>
 
             <Box sx={{ mt: 2, textAlign: "center" }}>
@@ -147,20 +170,9 @@ export default function CvCover() {
           </Stack>
         </Box>
 
-        {/* ================= CONTENT (CENTRADO) ================= */}
-        <Box
-          sx={{
-            flex: 1,
-            p: { xs: 2.5, md: 3 },
-            bgcolor: "#ffffff",
-          }}
-        >
-          {/* Envuelve todo en un Stack centrado */}
-          <Stack
-            spacing={4}
-            alignItems="center" // ← Centra todo horizontalmente
-            sx={{ width: "100%" }}
-          >
+        {/* ================= CONTENT ================= */}
+        <Box sx={{ flex: 1, p: { xs: 2.5, md: 3 }, bgcolor: "#ffffff" }}>
+          <Stack spacing={4} alignItems="center" sx={{ width: "100%" }}>
             <SectionCentered title="Áreas de Conocimiento">
               <BlockCentered title="Desarrollo de Software">
                 {["PHP", "React", "Spring Boot", "Python"].map((s) => (
@@ -181,13 +193,7 @@ export default function CvCover() {
               </BlockCentered>
 
               <BlockCentered title="Otras Tecnologías">
-                {[
-                  "Postman",
-                  "Microsoft Office",
-                  "Máquinas Virtuales",
-                  "Scrum",
-                  "AnyDesk",
-                ].map((s) => (
+                {["Postman", "Microsoft Office", "Máquinas Virtuales", "Scrum", "AnyDesk"].map((s) => (
                   <SkillChip key={s} label={s} />
                 ))}
               </BlockCentered>
@@ -231,7 +237,7 @@ export default function CvCover() {
 }
 
 /* =========================
-SUB COMPONENTS CENTRADOS
+SUB COMPONENTS
 ========================= */
 
 const Contact = ({ icon, text }) => (
@@ -246,19 +252,19 @@ const Social = ({ icon, url }) => (
     <IconButton
       href={url}
       target="_blank"
-      sx={{
-        color: "#fff",
-        width: 42,
-        height: 42,
-        mx: "auto",
-      }}
+      sx={{ color: "#fff", width: 42, height: 42, mx: "auto" }}
     >
       {icon}
     </IconButton>
   </Tooltip>
 );
 
-// Sección centrada
+const InfoLine = ({ label, text }) => (
+  <Typography sx={{ fontSize: 11.5, opacity: 0.9 }}>
+    <strong>{label}</strong> {text}
+  </Typography>
+);
+
 const SectionCentered = ({ title, children }) => (
   <Box sx={{ width: "100%", maxWidth: 600 }}>
     <Typography fontWeight={800} fontSize={18} color="#0d47a1" align="center">
@@ -271,7 +277,6 @@ const SectionCentered = ({ title, children }) => (
   </Box>
 );
 
-// Bloque centrado
 const BlockCentered = ({ title, children }) => (
   <Box sx={{ width: "100%" }}>
     <Typography fontWeight={700} mb={1} align="center">
@@ -283,7 +288,6 @@ const BlockCentered = ({ title, children }) => (
   </Box>
 );
 
-// Ítem centrado
 const ItemCentered = ({ icon, title, desc }) => (
   <Stack direction="row" spacing={1.5} alignItems="flex-start" sx={{ maxWidth: 500 }}>
     {icon}
