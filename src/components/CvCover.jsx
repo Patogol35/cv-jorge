@@ -108,7 +108,21 @@ export default function CvCover() {
 
             <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.3)" }} />
 
-            {/* ======== QR CODE ======== */}
+            {/* ======== QR CODE – MÁS PEQUEÑO + TÍTULO ======== */}
+            <Typography
+              variant="body2"
+              sx={{
+                fontWeight: 600,
+                textAlign: "center",
+                color: "#fff",
+                opacity: 0.95,
+                mt: 1.5,
+                px: 1,
+                fontSize: 13,
+              }}
+            >
+              Portafolio Profesional Virtual
+            </Typography>
             <Tooltip title="Escanear para ver Portafolio">
               <Box
                 component="a"
@@ -121,8 +135,8 @@ export default function CvCover() {
                   src="/qr-cv.png"
                   alt="QR Portafolio"
                   sx={{
-                    width: 140,
-                    height: 140,
+                    width: 120,
+                    height: 120,
                     borderRadius: 2,
                     bgcolor: "#fff",
                     p: 1,
@@ -131,7 +145,7 @@ export default function CvCover() {
               </Box>
             </Tooltip>
 
-            <Box sx={{ mt: 2, textAlign: "center" }}>
+            <Box sx={{ mt: 1.5, textAlign: "center" }}>
               <Tooltip title="Ver Portafolio Profesional">
                 <IconButton
                   href="https://portafoliojorgepatriciosantamariach.vercel.app/"
