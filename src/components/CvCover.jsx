@@ -46,7 +46,7 @@ export default function CvCover() {
         bgcolor: "#f1f5f9",
         display: "flex",
         justifyContent: "center",
-        py: 6, // ↑ aumentado de 4 a 6
+        py: 6,
         fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
       }}
     >
@@ -59,7 +59,7 @@ export default function CvCover() {
           overflow: "hidden",
           display: "flex",
           flexDirection: "row",
-          minHeight: "110vh", // ↑ fuerza altura mínima mayor
+          minHeight: "120vh", // ↑ más alto
         }}
       >
         {/* ================= SIDEBAR ================= */}
@@ -69,11 +69,11 @@ export default function CvCover() {
             minWidth: { xs: 220, sm: 260 },
             bgcolor: "#0d47a1",
             color: "#fff",
-            p: { xs: 2.5, md: 4 },
+            p: { xs: 3, md: 4.5 }, // ↑ más padding
             flexShrink: 0,
           }}
         >
-          <Stack spacing={3} alignItems="center">
+          <Stack spacing={4} alignItems="center"> {/* ↑ más espacio en sidebar */}
             <Avatar
               src="https://res.cloudinary.com/dqkwc0kf7/image/upload/v1757093856/FB_IMG_1757092624480_hgpu4i.jpg"
               sx={{
@@ -89,16 +89,16 @@ export default function CvCover() {
               <Typography fontWeight={800} fontSize={18}>
                 Santamaría Cherrez
               </Typography>
-              <Typography sx={{ mt: 1, fontSize: 12, opacity: 0.9 }}>
+              <Typography sx={{ mt: 1.5, fontSize: 12, opacity: 0.95 }}>
                 Máster en Ingeniería de Software
                 <br />
                 y Sistemas Informáticos
               </Typography>
             </Box>
-            <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.3)" }} />
+            <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.4)", width: "80%" }} />
 
-            {/* ===== CONTACTOS – SEPARACIÓN AUMENTADA ===== */}
-            <Stack spacing={2.6} width="100%" alignItems="center">
+            {/* ===== CONTACTOS – MÁS SEPARADOS ===== */}
+            <Stack spacing={2.8} width="100%" alignItems="center">
               <Contact icon={<EmailIcon />} text="patogol3535@gmail.com" />
               <Contact icon={<WhatsAppIcon />} text="0997979099" />
               <Contact icon={<LocationOnIcon />} text="Ambato, Ecuador" />
@@ -107,9 +107,9 @@ export default function CvCover() {
               <Contact icon={<GitHubIcon />} text="https://github.com/Patogol35" />
             </Stack>
 
-            <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.3)" }} />
+            <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.4)", width: "80%" }} />
 
-            {/* ======== QR CODE – MÁS PEQUEÑO + TÍTULO ======== */}
+            {/* ======== QR CODE – CON MÁS ESPACIO ======== */}
             <Typography
               variant="body2"
               sx={{
@@ -117,7 +117,7 @@ export default function CvCover() {
                 textAlign: "center",
                 color: "#fff",
                 opacity: 0.95,
-                mt: 1.5,
+                mt: 2,
                 px: 1,
                 fontSize: 13,
               }}
@@ -129,7 +129,7 @@ export default function CvCover() {
                 component="a"
                 href="https://portafoliojorgepatriciosantamariach.vercel.app/"
                 target="_blank"
-                sx={{ display: "block", mt: 1 }}
+                sx={{ display: "block", mt: 1.5 }}
               >
                 <Box
                   component="img"
@@ -146,22 +146,22 @@ export default function CvCover() {
               </Box>
             </Tooltip>
 
-            <Box sx={{ mt: 1.5, textAlign: "center" }}>
+            <Box sx={{ mt: 2, textAlign: "center" }}>
               <Tooltip title="Ver Portafolio Profesional">
                 <IconButton
                   href="https://portafoliojorgepatriciosantamariach.vercel.app/"
                   target="_blank"
                   sx={{
                     color: "#fff",
-                    width: 42,
-                    height: 42,
+                    width: 44,
+                    height: 44,
                     "&:hover": {
                       bgcolor: "#e3f2fd",
                       color: "#0d47a1",
                     },
                   }}
                 >
-                  <DescriptionIcon sx={{ fontSize: 24 }} />
+                  <DescriptionIcon sx={{ fontSize: 26 }} />
                 </IconButton>
               </Tooltip>
             </Box>
@@ -172,19 +172,19 @@ export default function CvCover() {
         <Box
           sx={{
             flex: 1,
-            p: { xs: 3, md: 4 }, // ↑ aumentado padding interno
+            p: { xs: 3.5, md: 5 }, // ↑ mucho más padding
             bgcolor: "#ffffff",
-            pb: 4, // ↑ margen inferior adicional
+            pb: 6, // margen inferior generoso
           }}
         >
-          <Stack spacing={5} alignItems="center" sx={{ width: "100%" }}> {/* ↑ spacing de 4 a 5 */}
-            {/* ===== ÁREAS DE CONOCIMIENTO - ALINEADO A LA IZQUIERDA ===== */}
+          <Stack spacing={6} alignItems="center" sx={{ width: "100%" }}> {/* ↑ separación máxima entre secciones */}
+            {/* ===== ÁREAS DE CONOCIMIENTO ===== */}
             <Box sx={{ width: "100%", maxWidth: 600 }}>
-              <Typography fontWeight={800} fontSize={18} color="#0d47a1" align="center">
+              <Typography fontWeight={800} fontSize={19} color="#0d47a1" align="center" sx={{ mb: 2 }}>
                 Áreas de Conocimiento
               </Typography>
-              <Divider sx={{ my: 1.5, width: "60%", mx: "auto" }} />
-              <Stack spacing={2.5} sx={{ width: "100%" }} alignItems="flex-start">
+              <Divider sx={{ my: 2, width: "60%", mx: "auto" }} />
+              <Stack spacing={3.5} sx={{ width: "100%" }} alignItems="flex-start"> {/* ↑ más espacio entre bloques */}
                 <BlockLeftAligned title="Desarrollo de Software">
                   {["PHP", "React", "Spring Boot", "Python"].map((s) => (
                     <SkillChip key={s} label={s} />
@@ -211,13 +211,13 @@ export default function CvCover() {
               </Stack>
             </Box>
 
-            {/* ===== FORMACIÓN ACADÉMICA - ALINEADO A LA IZQUIERDA ===== */}
+            {/* ===== FORMACIÓN ACADÉMICA ===== */}
             <Box sx={{ width: "100%", maxWidth: 600 }}>
-              <Typography fontWeight={800} fontSize={18} color="#0d47a1" align="center">
+              <Typography fontWeight={800} fontSize={19} color="#0d47a1" align="center" sx={{ mb: 2 }}>
                 Formación Académica
               </Typography>
-              <Divider sx={{ my: 1.5, width: "60%", mx: "auto" }} />
-              <Stack spacing={2.5} sx={{ width: "100%" }} alignItems="flex-start">
+              <Divider sx={{ my: 2, width: "60%", mx: "auto" }} />
+              <Stack spacing={3} sx={{ width: "100%" }} alignItems="flex-start">
                 <ItemLeftAligned
                   icon={<SchoolIcon color="primary" />}
                   title="Universidad Internacional de La Rioja (UNIR)"
@@ -231,13 +231,13 @@ export default function CvCover() {
               </Stack>
             </Box>
 
-            {/* ===== EXPERIENCIA PROFESIONAL - YA AJUSTADO ANTERIORMENTE ===== */}
+            {/* ===== EXPERIENCIA PROFESIONAL ===== */}
             <Box sx={{ width: "100%", maxWidth: 600 }}>
-              <Typography fontWeight={800} fontSize={18} color="#0d47a1" align="center">
+              <Typography fontWeight={800} fontSize={19} color="#0d47a1" align="center" sx={{ mb: 2 }}>
                 Experiencia Profesional
               </Typography>
-              <Divider sx={{ my: 1.5, width: "60%", mx: "auto" }} />
-              <Stack spacing={2.5} sx={{ width: "100%" }} alignItems="flex-start">
+              <Divider sx={{ my: 2, width: "60%", mx: "auto" }} />
+              <Stack spacing={3} sx={{ width: "100%" }} alignItems="flex-start">
                 <ItemLeftAligned
                   icon={<WorkIcon color="primary" />}
                   title="Docente de Informática"
@@ -266,41 +266,40 @@ export default function CvCover() {
 SUB COMPONENTS
 ========================= */
 
-// Componente Contacto SIN enlaces – solo ícono + texto
 const Contact = ({ icon, text }) => (
   <Stack
     direction="row"
-    spacing={1.2}
+    spacing={1.4}
     alignItems="center"
     justifyContent="center"
     sx={{ width: "100%" }}
   >
     {icon}
-    <Typography sx={{ fontSize: 13, textAlign: "center", wordBreak: "break-all" }}>
+    <Typography sx={{ fontSize: 13.5, textAlign: "center", wordBreak: "break-word", lineHeight: 1.4 }}>
       {text}
     </Typography>
   </Stack>
 );
 
-// Bloque de habilidades alineado a la izquierda
 const BlockLeftAligned = ({ title, children }) => (
-  <Box sx={{ width: "100%" }}>
-    <Typography fontWeight={700} mb={1}>
+  <Box sx={{ width: "100%", mb: 1.5 }}>
+    <Typography fontWeight={700} mb={1.5} fontSize={15}>
       {title}
     </Typography>
-    <Stack direction="row" spacing={1} flexWrap="wrap" sx={{ gap: '4px' }}>
+    <Stack direction="row" flexWrap="wrap" gap={1}>
       {children}
     </Stack>
   </Box>
 );
 
-// Ítem educativo/profesional alineado a la izquierda
 const ItemLeftAligned = ({ icon, title, desc }) => (
-  <Stack direction="row" spacing={1.5} alignItems="flex-start" sx={{ maxWidth: 500 }}>
+  <Stack direction="row" spacing={1.8} alignItems="flex-start" sx={{ maxWidth: 520 }}>
     {icon}
     <Box>
-      <Typography fontWeight={700}>{title}</Typography>
-      <Typography sx={{ fontSize: 13.5, color: "#37474f" }}>
+      <Typography fontWeight={700} fontSize={14.5}>
+        {title}
+      </Typography>
+      <Typography sx={{ fontSize: 13.5, color: "#37474f", mt: 0.3, lineHeight: 1.5 }}>
         {desc}
       </Typography>
     </Box>
