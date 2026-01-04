@@ -16,6 +16,9 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import SchoolIcon from "@mui/icons-material/School";
 import WorkIcon from "@mui/icons-material/Work";
 import DescriptionIcon from "@mui/icons-material/Description";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import GitHubIcon from "@mui/icons-material/GitHub";
 
 /* =========================
 SKILL CHIP
@@ -78,7 +81,6 @@ export default function CvCover() {
                 border: "3px solid #fff",
               }}
             />
-
             <Box textAlign="center">
               <Typography fontWeight={800} fontSize={18}>
                 Jorge Patricio
@@ -92,7 +94,6 @@ export default function CvCover() {
                 y Sistemas Informáticos
               </Typography>
             </Box>
-
             <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.3)" }} />
 
             {/* ===== CONTACTOS CENTRADOS ===== */}
@@ -100,6 +101,21 @@ export default function CvCover() {
               <Contact icon={<EmailIcon />} text="patogol3535@gmail.com" />
               <Contact icon={<WhatsAppIcon />} text="0997979099" />
               <Contact icon={<LocationOnIcon />} text="Ambato, Ecuador" />
+              <Contact
+                icon={<LinkedInIcon />}
+                text="LinkedIn"
+                link="https://www.linkedin.com/in/jorge-patricio-santamar%C3%ADa-cherrez-2a73792b2"
+              />
+              <Contact
+                icon={<InstagramIcon />}
+                text="Instagram"
+                link="https://www.instagram.com/jorge_patricio_26"
+              />
+              <Contact
+                icon={<GitHubIcon />}
+                text="GitHub"
+                link="https://github.com/Patogol35"
+              />
             </Stack>
 
             <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.3)" }} />
@@ -231,20 +247,34 @@ export default function CvCover() {
 SUB COMPONENTS
 ========================= */
 
-const Contact = ({ icon, text }) => (
-  <Stack
-    direction="row"
-    spacing={1.2}
-    alignItems="center"
-    justifyContent="center"
-    sx={{ width: "100%" }}
-  >
-    {icon}
-    <Typography sx={{ fontSize: 13, textAlign: "center" }}>
-      {text}
-    </Typography>
-  </Stack>
-);
+const Contact = ({ icon, text, link }) => {
+  const content = (
+    <Stack
+      direction="row"
+      spacing={1.2}
+      alignItems="center"
+      justifyContent="center"
+      sx={{ width: "100%" }}
+    >
+      {icon}
+      <Typography sx={{ fontSize: 13, textAlign: "center" }}>
+        {text}
+      </Typography>
+    </Stack>
+  );
+
+  if (link) {
+    return (
+      <Tooltip title={`Ir a ${text}`}>
+        <Box component="a" href={link} target="_blank" sx={{ textDecoration: "none", color: "inherit" }}>
+          {content}
+        </Box>
+      </Tooltip>
+    );
+  }
+
+  return content;
+};
 
 const SectionCentered = ({ title, children }) => (
   <Box sx={{ width: "100%", maxWidth: 600 }}>
