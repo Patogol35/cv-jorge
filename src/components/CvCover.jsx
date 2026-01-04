@@ -373,7 +373,7 @@ const Block = ({ title, children }) => (
 );
 
 const Item = ({ icon, title, desc }) => (
-  <Stack direction="row" spacing={2.5} alignItems="flex-start"} sx={{ maxWidth: 560 }}>
+  <Stack direction="row" spacing={2.5} alignItems="flex-start" sx={{ maxWidth: 560 }}>
     {icon}
     <Box>
       <Typography
