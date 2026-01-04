@@ -46,7 +46,7 @@ export default function CvCover() {
         bgcolor: "#f1f5f9",
         display: "flex",
         justifyContent: "center",
-        py: 4,
+        py: 6, // ↑ aumentado de 4 a 6
         fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
       }}
     >
@@ -59,6 +59,7 @@ export default function CvCover() {
           overflow: "hidden",
           display: "flex",
           flexDirection: "row",
+          minHeight: "110vh", // ↑ fuerza altura mínima mayor
         }}
       >
         {/* ================= SIDEBAR ================= */}
@@ -171,11 +172,12 @@ export default function CvCover() {
         <Box
           sx={{
             flex: 1,
-            p: { xs: 2.5, md: 3 },
+            p: { xs: 3, md: 4 }, // ↑ aumentado padding interno
             bgcolor: "#ffffff",
+            pb: 4, // ↑ margen inferior adicional
           }}
         >
-          <Stack spacing={4} alignItems="center" sx={{ width: "100%" }}>
+          <Stack spacing={5} alignItems="center" sx={{ width: "100%" }}> {/* ↑ spacing de 4 a 5 */}
             {/* ===== ÁREAS DE CONOCIMIENTO - ALINEADO A LA IZQUIERDA ===== */}
             <Box sx={{ width: "100%", maxWidth: 600 }}>
               <Typography fontWeight={800} fontSize={18} color="#0d47a1" align="center">
