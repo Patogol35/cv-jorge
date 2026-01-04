@@ -96,26 +96,14 @@ export default function CvCover() {
             </Box>
             <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.3)" }} />
 
-            {/* ===== CONTACTOS CENTRADOS ===== */}
+            {/* ===== CONTACTOS CENTRADOS (solo texto, sin enlaces) ===== */}
             <Stack spacing={1.8} width="100%" alignItems="center">
               <Contact icon={<EmailIcon />} text="patogol3535@gmail.com" />
               <Contact icon={<WhatsAppIcon />} text="0997979099" />
               <Contact icon={<LocationOnIcon />} text="Ambato, Ecuador" />
-              <Contact
-                icon={<LinkedInIcon />}
-                text="LinkedIn"
-                link="https://www.linkedin.com/in/jorge-patricio-santamar%C3%ADa-cherrez-2a73792b2"
-              />
-              <Contact
-                icon={<InstagramIcon />}
-                text="Instagram"
-                link="https://www.instagram.com/jorge_patricio_26"
-              />
-              <Contact
-                icon={<GitHubIcon />}
-                text="GitHub"
-                link="https://github.com/Patogol35"
-              />
+              <Contact icon={<LinkedInIcon />} text="https://www.linkedin.com/in/jorge-patricio-santamar%C3%ADa-cherrez-2a73792b2" />
+              <Contact icon={<InstagramIcon />} text="https://www.instagram.com/jorge_patricio_26" />
+              <Contact icon={<GitHubIcon />} text="https://github.com/Patogol35" />
             </Stack>
 
             <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.3)" }} />
@@ -247,40 +235,21 @@ export default function CvCover() {
 SUB COMPONENTS
 ========================= */
 
-const Contact = ({ icon, text, link }) => {
-  const content = (
-    <Stack
-      direction="row"
-      spacing={1.2}
-      alignItems="center"
-      justifyContent="center"
-      sx={{ width: "100%" }}
-    >
-      {icon}
-      <Typography sx={{ fontSize: 13, textAlign: "center" }}>
-        {text}
-      </Typography>
-    </Stack>
-  );
-
-  if (link) {
-    return (
-      <Tooltip title={`Ir a ${text}`}>
-        <Box
-          component="a"
-          href={link}
-          target="_blank"
-          rel="noopener noreferrer"
-          sx={{ textDecoration: "none", color: "inherit", display: "flex", alignItems: "center" }}
-        >
-          {content}
-        </Box>
-      </Tooltip>
-    );
-  }
-
-  return content;
-};
+// Componente Contacto SIN enlaces – solo ícono + texto
+const Contact = ({ icon, text }) => (
+  <Stack
+    direction="row"
+    spacing={1.2}
+    alignItems="center"
+    justifyContent="center"
+    sx={{ width: "100%" }}
+  >
+    {icon}
+    <Typography sx={{ fontSize: 13, textAlign: "center", wordBreak: "break-all" }}>
+      {text}
+    </Typography>
+  </Stack>
+);
 
 const SectionCentered = ({ title, children }) => (
   <Box sx={{ width: "100%", maxWidth: 600 }}>
