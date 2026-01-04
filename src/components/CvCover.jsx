@@ -15,10 +15,6 @@ import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import SchoolIcon from "@mui/icons-material/School";
 import WorkIcon from "@mui/icons-material/Work";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import InstagramIcon from "@mui/icons-material/Instagram";
 import DescriptionIcon from "@mui/icons-material/Description";
 
 /* =========================
@@ -107,46 +103,31 @@ export default function CvCover() {
 
             <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.3)" }} />
 
-            {/* ===== ICONOS (SE MANTIENEN TAL CUAL) ===== */}
-            <Box
-              sx={{
-                display: "grid",
-                gridTemplateColumns: "repeat(2, 1fr)",
-                gap: 1.5,
-                width: "100%",
-                maxWidth: 160,
-                mx: "auto",
-              }}
-            >
-              <Social icon={<EmailIcon />} url="mailto:patogol3535@gmail.com" />
-              <Social icon={<WhatsAppIcon />} url="https://wa.me/593997979099" />
-              <Social
-                icon={<LinkedInIcon />}
-                url="https://www.linkedin.com/in/jorge-patricio-santamaria-cherrez-2a73792b2"
-              />
-              <Social icon={<GitHubIcon />} url="https://github.com/Patogol35" />
-              <Social
-                icon={<FacebookIcon />}
-                url="https://www.facebook.com/share/1C9RgHAPvL/"
-              />
-              <Social
-                icon={<InstagramIcon />}
-                url="https://www.instagram.com/jorge_patricio_26"
-              />
-            </Box>
-
-            {/* ===== NUEVO BLOQUE: TEXTO DIRECTO (NO BORRA NADA) ===== */}
-            <Box sx={{ width: "100%", mt: 1 }}>
-              <Typography fontWeight={700} fontSize={13} mb={0.5}>
-                Redes y Enlaces
-              </Typography>
-
-              <InfoLine label="LinkedIn:" text="linkedin.com/in/jorge-patricio-santamaria-cherrez-2a73792b2" />
-              <InfoLine label="GitHub:" text="github.com/Patogol35" />
-              <InfoLine label="Portafolio:" text="portafoliojorgepatriciosantamariach.vercel.app" />
-              <InfoLine label="Instagram:" text="instagram.com/jorge_patricio_26" />
-              <InfoLine label="Facebook:" text="facebook.com/share/1C9RgHAPvL" />
-            </Box>
+            {/* ======== QR CODE ======== */}
+            <Tooltip title="Escanear para ver Portafolio">
+              <Box
+                component="a"
+                href="https://portafoliojorgepatriciosantamariach.vercel.app/"
+                target="_blank"
+                sx={{
+                  display: "block",
+                  mt: 1,
+                }}
+              >
+                <Box
+                  component="img"
+                  src="/qr-cv.png"
+                  alt="QR Portafolio"
+                  sx={{
+                    width: 140,
+                    height: 140,
+                    borderRadius: 2,
+                    bgcolor: "#fff",
+                    p: 1,
+                  }}
+                />
+              </Box>
+            </Tooltip>
 
             <Box sx={{ mt: 2, textAlign: "center" }}>
               <Tooltip title="Ver Portafolio Profesional">
@@ -171,7 +152,13 @@ export default function CvCover() {
         </Box>
 
         {/* ================= CONTENT ================= */}
-        <Box sx={{ flex: 1, p: { xs: 2.5, md: 3 }, bgcolor: "#ffffff" }}>
+        <Box
+          sx={{
+            flex: 1,
+            p: { xs: 2.5, md: 3 },
+            bgcolor: "#ffffff",
+          }}
+        >
           <Stack spacing={4} alignItems="center" sx={{ width: "100%" }}>
             <SectionCentered title="Áreas de Conocimiento">
               <BlockCentered title="Desarrollo de Software">
@@ -193,7 +180,13 @@ export default function CvCover() {
               </BlockCentered>
 
               <BlockCentered title="Otras Tecnologías">
-                {["Postman", "Microsoft Office", "Máquinas Virtuales", "Scrum", "AnyDesk"].map((s) => (
+                {[
+                  "Postman",
+                  "Microsoft Office",
+                  "Máquinas Virtuales",
+                  "Scrum",
+                  "AnyDesk",
+                ].map((s) => (
                   <SkillChip key={s} label={s} />
                 ))}
               </BlockCentered>
@@ -247,24 +240,6 @@ const Contact = ({ icon, text }) => (
   </Stack>
 );
 
-const Social = ({ icon, url }) => (
-  <Tooltip title={url}>
-    <IconButton
-      href={url}
-      target="_blank"
-      sx={{ color: "#fff", width: 42, height: 42, mx: "auto" }}
-    >
-      {icon}
-    </IconButton>
-  </Tooltip>
-);
-
-const InfoLine = ({ label, text }) => (
-  <Typography sx={{ fontSize: 11.5, opacity: 0.9 }}>
-    <strong>{label}</strong> {text}
-  </Typography>
-);
-
 const SectionCentered = ({ title, children }) => (
   <Box sx={{ width: "100%", maxWidth: 600 }}>
     <Typography fontWeight={800} fontSize={18} color="#0d47a1" align="center">
@@ -289,7 +264,12 @@ const BlockCentered = ({ title, children }) => (
 );
 
 const ItemCentered = ({ icon, title, desc }) => (
-  <Stack direction="row" spacing={1.5} alignItems="flex-start" sx={{ maxWidth: 500 }}>
+  <Stack
+    direction="row"
+    spacing={1.5}
+    alignItems="flex-start"
+    sx={{ maxWidth: 500 }}
+  >
     {icon}
     <Box>
       <Typography fontWeight={700}>{title}</Typography>
