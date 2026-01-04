@@ -96,8 +96,8 @@ export default function CvCover() {
             </Box>
             <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.3)" }} />
 
-            {/* ===== CONTACTOS CENTRADOS (solo texto, sin enlaces) – con más separación ===== */}
-            <Stack spacing={2.2} width="100%" alignItems="center">
+            {/* ===== CONTACTOS – SEPARACIÓN AUMENTADA ===== */}
+            <Stack spacing={2.6} width="100%" alignItems="center">
               <Contact icon={<EmailIcon />} text="patogol3535@gmail.com" />
               <Contact icon={<WhatsAppIcon />} text="0997979099" />
               <Contact icon={<LocationOnIcon />} text="Ambato, Ecuador" />
