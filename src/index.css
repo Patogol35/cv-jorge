@@ -71,23 +71,3 @@ button:focus-visible {
   }
 
 
-@media print {
-  html,
-  body {
-    background: white !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-
-  /* Mantener colores SOLO en el CV */
-  #cv-root,
-  #cv-root * {
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
-
-  /* Quitar sombras MUI */
-  .MuiPaper-root {
-    box-shadow: none !important;
-  }
-}
