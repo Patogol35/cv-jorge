@@ -109,10 +109,7 @@ export default function CvCover() {
                 component="a"
                 href="https://portafoliojorgepatriciosantamariach.vercel.app/"
                 target="_blank"
-                sx={{
-                  display: "block",
-                  mt: 1,
-                }}
+                sx={{ display: "block", mt: 1 }}
               >
                 <Box
                   component="img"
@@ -129,22 +126,14 @@ export default function CvCover() {
               </Box>
             </Tooltip>
 
-            <Box sx={{ mt: 2, textAlign: "center" }}>
+            {/* ICONO OCULTO, NO ELIMINADO */}
+            <Box sx={{ mt: 2, textAlign: "center", display: "none" }}>
               <Tooltip title="Ver Portafolio Profesional">
                 <IconButton
                   href="https://portafoliojorgepatriciosantamariach.vercel.app/"
                   target="_blank"
-                  sx={{
-                    color: "#fff",
-                    width: 42,
-                    height: 42,
-                    "&:hover": {
-                      bgcolor: "#e3f2fd",
-                      color: "#0d47a1",
-                    },
-                  }}
                 >
-                  <DescriptionIcon sx={{ fontSize: 24 }} />
+                  <DescriptionIcon />
                 </IconButton>
               </Tooltip>
             </Box>
@@ -263,14 +252,17 @@ const BlockCentered = ({ title, children }) => (
   </Box>
 );
 
+/* 🔧 SOLO ALINEACIÓN, NADA MÁS */
 const ItemCentered = ({ icon, title, desc }) => (
   <Stack
     direction="row"
     spacing={1.5}
-    alignItems="flex-start"
+    alignItems="center"
     sx={{ maxWidth: 500 }}
   >
-    {icon}
+    <Box sx={{ width: 32, display: "flex", justifyContent: "center" }}>
+      {icon}
+    </Box>
     <Box>
       <Typography fontWeight={700}>{title}</Typography>
       <Typography sx={{ fontSize: 13.5, color: "#37474f" }}>
