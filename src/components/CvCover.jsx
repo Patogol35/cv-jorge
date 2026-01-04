@@ -43,18 +43,19 @@ export default function CvCover() {
   return (
     <Box
       sx={{
+        minHeight: "100vh",
         bgcolor: "#f1f5f9",
         display: "flex",
         justifyContent: "center",
         py: 4,
-        fontFamily: '"Inter","Roboto","Helvetica","Arial",sans-serif',
+        fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
       }}
     >
       <Paper
         elevation={8}
         sx={{
-          width: "210mm",            // A4 REAL
-          minHeight: "297mm",        // A4 REAL
+          width: "100%",
+          maxWidth: 900,
           borderRadius: 3,
           overflow: "hidden",
           display: "flex",
@@ -64,10 +65,11 @@ export default function CvCover() {
         {/* ================= SIDEBAR ================= */}
         <Box
           sx={{
-            width: 300,
+            width: { xs: 220, sm: 260, md: 300 },
+            minWidth: { xs: 220, sm: 260 },
             bgcolor: "#0d47a1",
             color: "#fff",
-            p: 4,
+            p: { xs: 2.5, md: 4 },
             flexShrink: 0,
           }}
         >
@@ -75,8 +77,8 @@ export default function CvCover() {
             <Avatar
               src="https://res.cloudinary.com/dqkwc0kf7/image/upload/v1757093856/FB_IMG_1757092624480_hgpu4i.jpg"
               sx={{
-                width: 140,
-                height: 140,
+                width: { xs: 110, md: 140 },
+                height: { xs: 110, md: 140 },
                 border: "3px solid #fff",
               }}
             />
@@ -123,29 +125,42 @@ export default function CvCover() {
               <Social icon={<InstagramIcon />} url="https://www.instagram.com/jorge_patricio_26" />
             </Box>
 
-            <Tooltip title="Ver Portafolio Profesional">
-              <IconButton
-                href="https://portafoliojorgepatriciosantamariach.vercel.app/"
-                target="_blank"
-                sx={{
-                  color: "#fff",
-                  width: 42,
-                  height: 42,
-                  "&:hover": {
-                    bgcolor: "#e3f2fd",
-                    color: "#0d47a1",
-                  },
-                }}
-              >
-                <DescriptionIcon />
-              </IconButton>
-            </Tooltip>
+            <Box sx={{ mt: 2, textAlign: "center" }}>
+              <Tooltip title="Ver Portafolio Profesional">
+                <IconButton
+                  href="https://portafoliojorgepatriciosantamariach.vercel.app/"
+                  target="_blank"
+                  sx={{
+                    color: "#fff",
+                    width: 42,
+                    height: 42,
+                    "&:hover": {
+                      bgcolor: "#e3f2fd",
+                      color: "#0d47a1",
+                    },
+                  }}
+                >
+                  <DescriptionIcon sx={{ fontSize: 24 }} />
+                </IconButton>
+              </Tooltip>
+            </Box>
           </Stack>
         </Box>
 
-        {/* ================= CONTENIDO ================= */}
-        <Box sx={{ flex: 1, p: 3, bgcolor: "#fff" }}>
-          <Stack spacing={4} alignItems="center">
+        {/* ================= CONTENT (CENTRADO) ================= */}
+        <Box
+          sx={{
+            flex: 1,
+            p: { xs: 2.5, md: 3 },
+            bgcolor: "#ffffff",
+          }}
+        >
+          {/* Envuelve todo en un Stack centrado */}
+          <Stack
+            spacing={4}
+            alignItems="center" // ← Centra todo horizontalmente
+            sx={{ width: "100%" }}
+          >
             <SectionCentered title="Áreas de Conocimiento">
               <BlockCentered title="Desarrollo de Software">
                 {["PHP", "React", "Spring Boot", "Python"].map((s) => (
@@ -166,7 +181,13 @@ export default function CvCover() {
               </BlockCentered>
 
               <BlockCentered title="Otras Tecnologías">
-                {["Postman", "Scrum", "AnyDesk"].map((s) => (
+                {[
+                  "Postman",
+                  "Microsoft Office",
+                  "Máquinas Virtuales",
+                  "Scrum",
+                  "AnyDesk",
+                ].map((s) => (
                   <SkillChip key={s} label={s} />
                 ))}
               </BlockCentered>
@@ -196,6 +217,11 @@ export default function CvCover() {
                 title="Desarrollador de Aplicaciones"
                 desc="Diseño y desarrollo de soluciones digitales eficientes."
               />
+              <ItemCentered
+                icon={<WorkIcon color="primary" />}
+                title="Desarrollador de Aulas Virtuales"
+                desc="Desarrollo e implementación de plataformas educativas virtuales."
+              />
             </SectionCentered>
           </Stack>
         </Box>
@@ -205,7 +231,7 @@ export default function CvCover() {
 }
 
 /* =========================
-SUB COMPONENTS
+SUB COMPONENTS CENTRADOS
 ========================= */
 
 const Contact = ({ icon, text }) => (
@@ -216,13 +242,25 @@ const Contact = ({ icon, text }) => (
 );
 
 const Social = ({ icon, url }) => (
-  <IconButton href={url} target="_blank" sx={{ color: "#fff" }}>
-    {icon}
-  </IconButton>
+  <Tooltip title={url}>
+    <IconButton
+      href={url}
+      target="_blank"
+      sx={{
+        color: "#fff",
+        width: 42,
+        height: 42,
+        mx: "auto",
+      }}
+    >
+      {icon}
+    </IconButton>
+  </Tooltip>
 );
 
+// Sección centrada
 const SectionCentered = ({ title, children }) => (
-  <Box sx={{ width: "100%", maxWidth: 550 }}>
+  <Box sx={{ width: "100%", maxWidth: 600 }}>
     <Typography fontWeight={800} fontSize={18} color="#0d47a1" align="center">
       {title}
     </Typography>
@@ -233,8 +271,9 @@ const SectionCentered = ({ title, children }) => (
   </Box>
 );
 
+// Bloque centrado
 const BlockCentered = ({ title, children }) => (
-  <Box>
+  <Box sx={{ width: "100%" }}>
     <Typography fontWeight={700} mb={1} align="center">
       {title}
     </Typography>
@@ -244,12 +283,13 @@ const BlockCentered = ({ title, children }) => (
   </Box>
 );
 
+// Ítem centrado
 const ItemCentered = ({ icon, title, desc }) => (
-  <Stack direction="row" spacing={1.5} sx={{ maxWidth: 480 }}>
+  <Stack direction="row" spacing={1.5} alignItems="flex-start" sx={{ maxWidth: 500 }}>
     {icon}
     <Box>
       <Typography fontWeight={700}>{title}</Typography>
-      <Typography fontSize={13.5} color="#37474f">
+      <Typography sx={{ fontSize: 13.5, color: "#37474f" }}>
         {desc}
       </Typography>
     </Box>
