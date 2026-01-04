@@ -16,7 +16,7 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import SchoolIcon from "@mui/icons-material/School";
 import WorkIcon from "@mui/icons-material/Work";
 import DescriptionIcon from "@mui/icons-material/Description";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import GitHubIcon from "@mui/icons-material/GitHub";
 
@@ -101,7 +101,7 @@ export default function CvCover() {
               <Contact icon={<EmailIcon />} text="patogol3535@gmail.com" />
               <Contact icon={<WhatsAppIcon />} text="0997979099" />
               <Contact icon={<LocationOnIcon />} text="Ambato, Ecuador" />
-              <Contact icon={<LinkedInIcon />} text="https://www.linkedin.com/in/jorge-patricio-santamar%C3%ADa-cherrez-2a73792b2" />
+              <Contact icon={<FacebookIcon />} text="https://www.facebook.com/jorge.patricio.12" />
               <Contact icon={<InstagramIcon />} text="https://www.instagram.com/jorge_patricio_26" />
               <Contact icon={<GitHubIcon />} text="https://github.com/Patogol35" />
             </Stack>
