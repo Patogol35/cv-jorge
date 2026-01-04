@@ -162,69 +162,77 @@ export default function CvCover() {
           }}
         >
           <Stack spacing={4} alignItems="center" sx={{ width: "100%" }}>
-            <SectionCentered title="Áreas de Conocimiento">
-              <BlockCentered title="Desarrollo de Software">
-                {["PHP", "React", "Spring Boot", "Python"].map((s) => (
-                  <SkillChip key={s} label={s} />
-                ))}
-              </BlockCentered>
+            {/* ===== ÁREAS DE CONOCIMIENTO - ALINEADO A LA IZQUIERDA ===== */}
+            <Box sx={{ width: "100%", maxWidth: 600 }}>
+              <Typography fontWeight={800} fontSize={18} color="#0d47a1" align="center">
+                Áreas de Conocimiento
+              </Typography>
+              <Divider sx={{ my: 1.5, width: "60%", mx: "auto" }} />
+              <Stack spacing={2.5} sx={{ width: "100%" }} alignItems="flex-start">
+                <BlockLeftAligned title="Desarrollo de Software">
+                  {["PHP", "React", "Spring Boot", "Python"].map((s) => (
+                    <SkillChip key={s} label={s} />
+                  ))}
+                </BlockLeftAligned>
 
-              <BlockCentered title="Cloud">
-                {["Vercel", "Render", "AWS"].map((s) => (
-                  <SkillChip key={s} label={s} />
-                ))}
-              </BlockCentered>
+                <BlockLeftAligned title="Cloud">
+                  {["Vercel", "Render", "AWS"].map((s) => (
+                    <SkillChip key={s} label={s} />
+                  ))}
+                </BlockLeftAligned>
 
-              <BlockCentered title="Bases de Datos">
-                {["MySQL", "PostgreSQL", "MongoDB", "Elasticsearch"].map((s) => (
-                  <SkillChip key={s} label={s} />
-                ))}
-              </BlockCentered>
+                <BlockLeftAligned title="Bases de Datos">
+                  {["MySQL", "PostgreSQL", "MongoDB", "Elasticsearch"].map((s) => (
+                    <SkillChip key={s} label={s} />
+                  ))}
+                </BlockLeftAligned>
 
-              <BlockCentered title="Otras Tecnologías">
-                {[
-                  "Postman",
-                  "Microsoft Office",
-                  "Máquinas Virtuales",
-                  "Scrum",
-                  "AnyDesk",
-                ].map((s) => (
-                  <SkillChip key={s} label={s} />
-                ))}
-              </BlockCentered>
-            </SectionCentered>
+                <BlockLeftAligned title="Otras Tecnologías">
+                  {["Postman", "Microsoft Office", "Máquinas Virtuales", "Scrum", "AnyDesk"].map((s) => (
+                    <SkillChip key={s} label={s} />
+                  ))}
+                </BlockLeftAligned>
+              </Stack>
+            </Box>
 
-            <SectionCentered title="Formación Académica">
-              <ItemCentered
-                icon={<SchoolIcon color="primary" />}
-                title="Universidad Internacional de La Rioja (UNIR)"
-                desc="Maestría en Ingeniería de Software y Sistemas Informáticos"
-              />
-              <ItemCentered
-                icon={<SchoolIcon color="primary" />}
-                title="Universidad Indoamérica"
-                desc="Ingeniería de Sistemas"
-              />
-            </SectionCentered>
+            {/* ===== FORMACIÓN ACADÉMICA - ALINEADO A LA IZQUIERDA ===== */}
+            <Box sx={{ width: "100%", maxWidth: 600 }}>
+              <Typography fontWeight={800} fontSize={18} color="#0d47a1" align="center">
+                Formación Académica
+              </Typography>
+              <Divider sx={{ my: 1.5, width: "60%", mx: "auto" }} />
+              <Stack spacing={2.5} sx={{ width: "100%" }} alignItems="flex-start">
+                <ItemLeftAligned
+                  icon={<SchoolIcon color="primary" />}
+                  title="Universidad Internacional de La Rioja (UNIR)"
+                  desc="Maestría en Ingeniería de Software y Sistemas Informáticos"
+                />
+                <ItemLeftAligned
+                  icon={<SchoolIcon color="primary" />}
+                  title="Universidad Indoamérica"
+                  desc="Ingeniería de Sistemas"
+                />
+              </Stack>
+            </Box>
 
-            {/* ===== EXPERIENCIA PROFESIONAL - ALINEADO A LA IZQUIERDA ===== */}
+            {/* ===== EXPERIENCIA PROFESIONAL - YA AJUSTADO ANTERIORMENTE ===== */}
             <Box sx={{ width: "100%", maxWidth: 600 }}>
               <Typography fontWeight={800} fontSize={18} color="#0d47a1" align="center">
                 Experiencia Profesional
               </Typography>
               <Divider sx={{ my: 1.5, width: "60%", mx: "auto" }} />
               <Stack spacing={2.5} sx={{ width: "100%" }} alignItems="flex-start">
-                <ItemCentered
+                <ItemLeftAligned
                   icon={<WorkIcon color="primary" />}
                   title="Docente de Informática"
                   desc="Formación técnica en informática y tecnologías digitales."
                 />
-                <ItemCentered
+                <ItemLeftAligned
                   icon={<WorkIcon color="primary" />}
                   title="Desarrollador de Aplicaciones"
                   desc="Diseño y desarrollo de soluciones digitales eficientes."
                 />
-                <ItemCentered
+                <ItemLeftAligned
                   icon={<WorkIcon color="primary" />}
                   title="Desarrollador de Aulas Virtuales"
                   desc="Desarrollo e implementación de plataformas educativas virtuales."
@@ -258,30 +266,20 @@ const Contact = ({ icon, text }) => (
   </Stack>
 );
 
-const SectionCentered = ({ title, children }) => (
-  <Box sx={{ width: "100%", maxWidth: 600 }}>
-    <Typography fontWeight={800} fontSize={18} color="#0d47a1" align="center">
-      {title}
-    </Typography>
-    <Divider sx={{ my: 1.5, width: "60%", mx: "auto" }} />
-    <Stack spacing={2} alignItems="center">
-      {children}
-    </Stack>
-  </Box>
-);
-
-const BlockCentered = ({ title, children }) => (
+// Bloque de habilidades alineado a la izquierda
+const BlockLeftAligned = ({ title, children }) => (
   <Box sx={{ width: "100%" }}>
-    <Typography fontWeight={700} mb={1} align="center">
+    <Typography fontWeight={700} mb={1}>
       {title}
     </Typography>
-    <Stack direction="row" spacing={1} flexWrap="wrap" justifyContent="center">
+    <Stack direction="row" spacing={1} flexWrap="wrap" sx={{ gap: '4px' }}>
       {children}
     </Stack>
   </Box>
 );
 
-const ItemCentered = ({ icon, title, desc }) => (
+// Ítem educativo/profesional alineado a la izquierda
+const ItemLeftAligned = ({ icon, title, desc }) => (
   <Stack direction="row" spacing={1.5} alignItems="flex-start" sx={{ maxWidth: 500 }}>
     {icon}
     <Box>
