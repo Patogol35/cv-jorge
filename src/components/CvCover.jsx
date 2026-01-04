@@ -95,7 +95,8 @@ export default function CvCover() {
 
             <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.3)" }} />
 
-            <Stack spacing={1} width="100%">
+            {/* ===== CONTACTOS CENTRADOS ===== */}
+            <Stack spacing={1.8} width="100%" alignItems="center">
               <Contact icon={<EmailIcon />} text="patogol3535@gmail.com" />
               <Contact icon={<WhatsAppIcon />} text="0997979099" />
               <Contact icon={<LocationOnIcon />} text="Ambato, Ecuador" />
@@ -126,14 +127,22 @@ export default function CvCover() {
               </Box>
             </Tooltip>
 
-            {/* ICONO OCULTO, NO ELIMINADO */}
-            <Box sx={{ mt: 2, textAlign: "center", display: "none" }}>
+            <Box sx={{ mt: 2, textAlign: "center" }}>
               <Tooltip title="Ver Portafolio Profesional">
                 <IconButton
                   href="https://portafoliojorgepatriciosantamariach.vercel.app/"
                   target="_blank"
+                  sx={{
+                    color: "#fff",
+                    width: 42,
+                    height: 42,
+                    "&:hover": {
+                      bgcolor: "#e3f2fd",
+                      color: "#0d47a1",
+                    },
+                  }}
                 >
-                  <DescriptionIcon />
+                  <DescriptionIcon sx={{ fontSize: 24 }} />
                 </IconButton>
               </Tooltip>
             </Box>
@@ -223,9 +232,17 @@ SUB COMPONENTS
 ========================= */
 
 const Contact = ({ icon, text }) => (
-  <Stack direction="row" spacing={1.5} alignItems="center">
+  <Stack
+    direction="row"
+    spacing={1.2}
+    alignItems="center"
+    justifyContent="center"
+    sx={{ width: "100%" }}
+  >
     {icon}
-    <Typography sx={{ fontSize: 12.5 }}>{text}</Typography>
+    <Typography sx={{ fontSize: 13, textAlign: "center" }}>
+      {text}
+    </Typography>
   </Stack>
 );
 
@@ -252,17 +269,9 @@ const BlockCentered = ({ title, children }) => (
   </Box>
 );
 
-/* 🔧 SOLO ALINEACIÓN, NADA MÁS */
 const ItemCentered = ({ icon, title, desc }) => (
-  <Stack
-    direction="row"
-    spacing={1.5}
-    alignItems="center"
-    sx={{ maxWidth: 500 }}
-  >
-    <Box sx={{ width: 32, display: "flex", justifyContent: "center" }}>
-      {icon}
-    </Box>
+  <Stack direction="row" spacing={1.5} alignItems="flex-start" sx={{ maxWidth: 500 }}>
+    {icon}
     <Box>
       <Typography fontWeight={700}>{title}</Typography>
       <Typography sx={{ fontSize: 13.5, color: "#37474f" }}>
