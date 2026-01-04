@@ -46,7 +46,7 @@ export default function CvCover() {
         bgcolor: "#f1f5f9",
         display: "flex",
         justifyContent: "center",
-        py: 6,
+        py: 7,
         fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
       }}
     >
@@ -59,7 +59,7 @@ export default function CvCover() {
           overflow: "hidden",
           display: "flex",
           flexDirection: "row",
-          minHeight: "125vh",
+          minHeight: "135vh",
         }}
       >
         {/* ================= SIDEBAR ================= */}
@@ -69,11 +69,11 @@ export default function CvCover() {
             minWidth: { xs: 220, sm: 260 },
             bgcolor: "#0d47a1",
             color: "#fff",
-            p: { xs: 3.2, md: 4.8 },
+            p: { xs: 3.5, md: 5.2 },
             flexShrink: 0,
           }}
         >
-          <Stack spacing={4.2} alignItems="center">
+          <Stack spacing={5} alignItems="center">
             <Avatar
               src="https://res.cloudinary.com/dqkwc0kf7/image/upload/v1757093856/FB_IMG_1757092624480_hgpu4i.jpg"
               sx={{
@@ -83,21 +83,21 @@ export default function CvCover() {
               }}
             />
             <Box textAlign="center">
-              <Typography fontWeight={800} fontSize={18}>
+              <Typography fontWeight={800} fontSize={19}>
                 Jorge Patricio
               </Typography>
-              <Typography fontWeight={800} fontSize={18}>
+              <Typography fontWeight={800} fontSize={19}>
                 Santamaría Cherrez
               </Typography>
-              <Typography sx={{ mt: 1.6, fontSize: 12.5, opacity: 0.95, lineHeight: 1.4 }}>
+              <Typography sx={{ mt: 2, fontSize: 13, opacity: 0.95, lineHeight: 1.5 }}>
                 Máster en Ingeniería de Software
                 <br />
                 y Sistemas Informáticos
               </Typography>
             </Box>
-            <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.4)", width: "80%", my: 0.8 }} />
+            <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.45)", width: "85%", my: 1 }} />
 
-            <Stack spacing={2.9} width="100%" alignItems="center">
+            <Stack spacing={3.2} width="100%" alignItems="center">
               <Contact icon={<EmailIcon />} text="patogol3535@gmail.com" />
               <Contact icon={<WhatsAppIcon />} text="0997979099" />
               <Contact icon={<LocationOnIcon />} text="Ambato, Ecuador" />
@@ -106,7 +106,7 @@ export default function CvCover() {
               <Contact icon={<GitHubIcon />} text="https://github.com/Patogol35" />
             </Stack>
 
-            <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.4)", width: "80%", my: 0.8 }} />
+            <Divider flexItem sx={{ borderColor: "rgba(255,255,255,.45)", width: "85%", my: 1 }} />
 
             <Typography
               variant="body2"
@@ -115,9 +115,9 @@ export default function CvCover() {
                 textAlign: "center",
                 color: "#fff",
                 opacity: 0.95,
-                mt: 2.2,
+                mt: 2.5,
                 px: 1,
-                fontSize: 13,
+                fontSize: 13.5,
               }}
             >
               Portafolio Profesional Virtual
@@ -127,7 +127,7 @@ export default function CvCover() {
                 component="a"
                 href="https://portafoliojorgepatriciosantamariach.vercel.app/"
                 target="_blank"
-                sx={{ display: "block", mt: 1.6 }}
+                sx={{ display: "block", mt: 2 }}
               >
                 <Box
                   component="img"
@@ -144,18 +144,18 @@ export default function CvCover() {
               </Box>
             </Tooltip>
 
-            <Box sx={{ mt: 2.2, textAlign: "center" }}>
+            <Box sx={{ mt: 2.5, textAlign: "center" }}>
               <Tooltip title="Ver Portafolio Profesional">
                 <IconButton
                   href="https://portafoliojorgepatriciosantamariach.vercel.app/"
                   target="_blank"
                   sx={{
                     color: "#fff",
-                    width: 44,
-                    height: 44,
+                    width: 46,
+                    height: 46,
                   }}
                 >
-                  <DescriptionIcon sx={{ fontSize: 26 }} />
+                  <DescriptionIcon sx={{ fontSize: 27 }} />
                 </IconButton>
               </Tooltip>
             </Box>
@@ -166,18 +166,19 @@ export default function CvCover() {
         <Box
           sx={{
             flex: 1,
-            p: { xs: 3.7, md: 5.2 },
+            p: { xs: 4, md: 5.8 },
             bgcolor: "#ffffff",
-            pb: 6.5,
+            pb: 8,
           }}
         >
-          <Stack spacing={6.2} alignItems="center" sx={{ width: "100%" }}>
+          <Stack spacing={7} alignItems="center" sx={{ width: "100%" }}>
+            {/* ===== ÁREAS DE CONOCIMIENTO ===== */}
             <Box sx={{ width: "100%", maxWidth: 600 }}>
-              <Typography fontWeight={800} fontSize={19} color="#0d47a1" align="center" sx={{ mb: 2.2 }}>
+              <Typography fontWeight={800} fontSize={20} color="#0d47a1" align="center" sx={{ mb: 2.5 }}>
                 Áreas de Conocimiento
               </Typography>
-              <Divider sx={{ my: 2.2, width: "60%", mx: "auto" }} />
-              <Stack spacing={3.8} sx={{ width: "100%" }} alignItems="flex-start">
+              <Divider sx={{ my: 2.5, width: "60%", mx: "auto" }} />
+              <Stack spacing={4.5} sx={{ width: "100%" }} alignItems="flex-start">
                 <BlockLeftAligned title="Desarrollo de Software">
                   {["PHP", "React", "Spring Boot", "Python"].map((s) => (
                     <SkillChip key={s} label={s} />
@@ -204,12 +205,13 @@ export default function CvCover() {
               </Stack>
             </Box>
 
+            {/* ===== FORMACIÓN ACADÉMICA ===== */}
             <Box sx={{ width: "100%", maxWidth: 600 }}>
-              <Typography fontWeight={800} fontSize={19} color="#0d47a1" align="center" sx={{ mb: 2.2 }}>
+              <Typography fontWeight={800} fontSize={20} color="#0d47a1" align="center" sx={{ mb: 2.5 }}>
                 Formación Académica
               </Typography>
-              <Divider sx={{ my: 2.2, width: "60%", mx: "auto" }} />
-              <Stack spacing={3.2} sx={{ width: "100%" }} alignItems="flex-start">
+              <Divider sx={{ my: 2.5, width: "60%", mx: "auto" }} />
+              <Stack spacing={3.8} sx={{ width: "100%" }} alignItems="flex-start">
                 <ItemLeftAligned
                   icon={<SchoolIcon color="primary" />}
                   title="Universidad Internacional de La Rioja (UNIR)"
@@ -223,12 +225,13 @@ export default function CvCover() {
               </Stack>
             </Box>
 
+            {/* ===== EXPERIENCIA PROFESIONAL ===== */}
             <Box sx={{ width: "100%", maxWidth: 600 }}>
-              <Typography fontWeight={800} fontSize={19} color="#0d47a1" align="center" sx={{ mb: 2.2 }}>
+              <Typography fontWeight={800} fontSize={20} color="#0d47a1" align="center" sx={{ mb: 2.5 }}>
                 Experiencia Profesional
               </Typography>
-              <Divider sx={{ my: 2.2, width: "60%", mx: "auto" }} />
-              <Stack spacing={3.2} sx={{ width: "100%" }} alignItems="flex-start">
+              <Divider sx={{ my: 2.5, width: "60%", mx: "auto" }} />
+              <Stack spacing={3.8} sx={{ width: "100%" }} alignItems="flex-start">
                 <ItemLeftAligned
                   icon={<WorkIcon color="primary" />}
                   title="Docente de Informática"
@@ -260,37 +263,37 @@ SUB COMPONENTS
 const Contact = ({ icon, text }) => (
   <Stack
     direction="row"
-    spacing={1.4}
+    spacing={1.6}
     alignItems="center"
     justifyContent="center"
     sx={{ width: "100%" }}
   >
     {icon}
-    <Typography sx={{ fontSize: 13.5, textAlign: "center", wordBreak: "break-word", lineHeight: 1.45 }}>
+    <Typography sx={{ fontSize: 14, textAlign: "center", wordBreak: "break-word", lineHeight: 1.5 }}>
       {text}
     </Typography>
   </Stack>
 );
 
 const BlockLeftAligned = ({ title, children }) => (
-  <Box sx={{ width: "100%", mb: 1.6 }}>
-    <Typography fontWeight={700} mb={1.6} fontSize={15}>
+  <Box sx={{ width: "100%", mb: 2 }}>
+    <Typography fontWeight={700} mb={1.8} fontSize={15.5}>
       {title}
     </Typography>
-    <Stack direction="row" flexWrap="wrap" gap={1.2}>
+    <Stack direction="row" flexWrap="wrap" gap={1.4}>
       {children}
     </Stack>
   </Box>
 );
 
 const ItemLeftAligned = ({ icon, title, desc }) => (
-  <Stack direction="row" spacing={1.9} alignItems="flex-start" sx={{ maxWidth: 520 }}>
+  <Stack direction="row" spacing={2.1} alignItems="flex-start" sx={{ maxWidth: 530 }}>
     {icon}
     <Box>
-      <Typography fontWeight={700} fontSize={14.5}>
+      <Typography fontWeight={700} fontSize={15}>
         {title}
       </Typography>
-      <Typography sx={{ fontSize: 13.5, color: "#37474f", mt: 0.4, lineHeight: 1.55 }}>
+      <Typography sx={{ fontSize: 14, color: "#37474f", mt: 0.5, lineHeight: 1.6 }}>
         {desc}
       </Typography>
     </Box>
