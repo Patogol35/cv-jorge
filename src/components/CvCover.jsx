@@ -207,23 +207,30 @@ export default function CvCover() {
               />
             </SectionCentered>
 
-            <SectionCentered title="Experiencia Profesional">
-              <ItemCentered
-                icon={<WorkIcon color="primary" />}
-                title="Docente de Informática"
-                desc="Formación técnica en informática y tecnologías digitales."
-              />
-              <ItemCentered
-                icon={<WorkIcon color="primary" />}
-                title="Desarrollador de Aplicaciones"
-                desc="Diseño y desarrollo de soluciones digitales eficientes."
-              />
-              <ItemCentered
-                icon={<WorkIcon color="primary" />}
-                title="Desarrollador de Aulas Virtuales"
-                desc="Desarrollo e implementación de plataformas educativas virtuales."
-              />
-            </SectionCentered>
+            {/* ===== EXPERIENCIA PROFESIONAL - ALINEADO A LA IZQUIERDA ===== */}
+            <Box sx={{ width: "100%", maxWidth: 600 }}>
+              <Typography fontWeight={800} fontSize={18} color="#0d47a1" align="center">
+                Experiencia Profesional
+              </Typography>
+              <Divider sx={{ my: 1.5, width: "60%", mx: "auto" }} />
+              <Stack spacing={2.5} sx={{ width: "100%" }} alignItems="flex-start">
+                <ItemCentered
+                  icon={<WorkIcon color="primary" />}
+                  title="Docente de Informática"
+                  desc="Formación técnica en informática y tecnologías digitales."
+                />
+                <ItemCentered
+                  icon={<WorkIcon color="primary" />}
+                  title="Desarrollador de Aplicaciones"
+                  desc="Diseño y desarrollo de soluciones digitales eficientes."
+                />
+                <ItemCentered
+                  icon={<WorkIcon color="primary" />}
+                  title="Desarrollador de Aulas Virtuales"
+                  desc="Desarrollo e implementación de plataformas educativas virtuales."
+                />
+              </Stack>
+            </Box>
           </Stack>
         </Box>
       </Paper>
