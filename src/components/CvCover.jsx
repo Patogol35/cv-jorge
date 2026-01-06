@@ -14,7 +14,6 @@ import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import SchoolIcon from "@mui/icons-material/School";
 import WorkIcon from "@mui/icons-material/Work";
-import DescriptionIcon from "@mui/icons-material/Description";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import GitHubIcon from "@mui/icons-material/GitHub";
@@ -275,31 +274,6 @@ export default function CvCover() {
               </Stack>
             </Box>
             {/* ============================== */}
-
-            {/* ÚNICO ICONO (portafolio) AL FINAL, SIN DUPLICAR */}
-            <Box sx={{ mt: 3.4, textAlign: "center" }}>
-              <Tooltip title="Visitar portafolio" arrow>
-                <IconButton
-                  component="a"
-                  href="https://portafoliojorgepatriciosantamariach.vercel.app/"
-                  target="_blank"
-                  sx={{
-                    color: "#e2e8f0",
-                    bgcolor: "rgba(255,255,255,0.18)",
-                    width: 52,
-                    height: 52,
-                    borderRadius: "50%",
-                    transition: "all 0.25s ease",
-                    "&:hover": {
-                      bgcolor: "rgba(255,255,255,0.32)",
-                      transform: "scale(1.06)",
-                    },
-                  }}
-                >
-                  <DescriptionIcon sx={{ fontSize: 29 }} />
-                </IconButton>
-              </Tooltip>
-            </Box>
           </Stack>
         </Box>
 
