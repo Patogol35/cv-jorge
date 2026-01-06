@@ -230,20 +230,30 @@ export default function CvCover() {
               </Box>
             </Tooltip>
 
+            {/* ===== LÍNEA SEPARADORA ANTES DE IDIOMAS ===== */}
+            <Box
+              sx={{
+                height: "1px",
+                width: "80%",
+                bgcolor: "rgba(255,255,255,0.28)",
+                my: 2.8,
+              }}
+            />
+
             {/* ===== NUEVA SECCIÓN: IDIOMAS ===== */}
-            <Box sx={{ mt: 3.5, textAlign: "center" }}>
+            <Box sx={{ textAlign: "center", width: "100%" }}>
               <Typography
                 sx={{
                   fontWeight: 600,
                   fontSize: 14.2,
                   opacity: 0.92,
                   letterSpacing: "0.3px",
-                  mb: 1.8,
+                  mb: 2.2,
                 }}
               >
                 Idiomas
               </Typography>
-              <Stack spacing={1.2} alignItems="center">
+              <Stack spacing={1.4} alignItems="center">
                 <Typography
                   sx={{
                     fontSize: 14,
@@ -266,7 +276,8 @@ export default function CvCover() {
             </Box>
             {/* ============================== */}
 
-            <Box sx={{ mt: 2.7, textAlign: "center" }}>
+            {/* ÚNICO ICONO (portafolio) AL FINAL, SIN DUPLICAR */}
+            <Box sx={{ mt: 3.4, textAlign: "center" }}>
               <Tooltip title="Visitar portafolio" arrow>
                 <IconButton
                   component="a"
