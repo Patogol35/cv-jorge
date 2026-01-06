@@ -143,18 +143,50 @@ export default function CvCover() {
               </Typography>
             </Box>
 
-            <Box sx={{ height: "1px", width: "80%", bgcolor: "rgba(255,255,255,0.28)", my: 1.5 }} />
+            <Box
+              sx={{
+                height: "1px",
+                width: "80%",
+                bgcolor: "rgba(255,255,255,0.28)",
+                my: 1.5,
+              }}
+            />
 
             <Stack spacing={3.4} width="100%" alignItems="center">
-              <Contact icon={<EmailIcon />} text="patogol3535@gmail.com" />
-              <Contact icon={<WhatsAppIcon />} text="+593 99 797 9099" />
-              <Contact icon={<LocationOnIcon />} text="Ambato, Ecuador" />
-              <Contact icon={<FacebookIcon />} text="jorge.patricio.12" />
-              <Contact icon={<InstagramIcon />} text="@jorge_patricio_26" />
-              <Contact icon={<GitHubIcon />} text="Patogol35" />
+              <Contact
+                icon={<EmailIcon />}
+                text="patogol3535@gmail.com"
+              />
+              <Contact
+                icon={<WhatsAppIcon />}
+                text="+593 99 797 9099"
+              />
+              <Contact
+                icon={<LocationOnIcon />}
+                text="Ambato, Ecuador"
+              />
+              <Contact
+                icon={<FacebookIcon />}
+                text="jorge.patricio.12"
+              />
+              <Contact
+                icon={<InstagramIcon />}
+                text="@jorge_patricio_26"
+              />
+              <Contact
+                icon={<GitHubIcon />}
+                text="Patogol35"
+              />
             </Stack>
 
-            <Box sx={{ height: "1px", width: "80%", bgcolor: "rgba(255,255,255,0.28)", my: 1.5 }} />
+            <Box
+              sx={{
+                height: "1px",
+                width: "80%",
+                bgcolor: "rgba(255,255,255,0.28)",
+                my: 1.5,
+              }}
+            />
 
             <Typography
               sx={{
@@ -168,7 +200,10 @@ export default function CvCover() {
             >
               Portafolio Profesional
             </Typography>
-            <Tooltip title="Escanear para acceder a mi portafolio" arrow>
+            <Tooltip
+              title="Escanear para acceder a mi portafolio"
+              arrow
+            >
               <Box
                 component="a"
                 href="https://portafoliojorgepatriciosantamariach.vercel.app/"
@@ -194,6 +229,42 @@ export default function CvCover() {
                 />
               </Box>
             </Tooltip>
+
+            {/* ===== NUEVA SECCIÓN: IDIOMAS ===== */}
+            <Box sx={{ mt: 3.5, textAlign: "center" }}>
+              <Typography
+                sx={{
+                  fontWeight: 600,
+                  fontSize: 14.2,
+                  opacity: 0.92,
+                  letterSpacing: "0.3px",
+                  mb: 1.8,
+                }}
+              >
+                Idiomas
+              </Typography>
+              <Stack spacing={1.2} alignItems="center">
+                <Typography
+                  sx={{
+                    fontSize: 14,
+                    opacity: 0.94,
+                    fontWeight: 500,
+                  }}
+                >
+                  Español (Nativo)
+                </Typography>
+                <Typography
+                  sx={{
+                    fontSize: 14,
+                    opacity: 0.94,
+                    fontWeight: 500,
+                  }}
+                >
+                  Inglés (Intermedio)
+                </Typography>
+              </Stack>
+            </Box>
+            {/* ============================== */}
 
             <Box sx={{ mt: 2.7, textAlign: "center" }}>
               <Tooltip title="Visitar portafolio" arrow>
@@ -264,7 +335,15 @@ export default function CvCover() {
                 </Block>
 
                 <Block title="Herramientas & Metodologías">
-                  {["Microsoft Office", "Postman", "Linux", "Scrum", "Git", "VM", "AnyDesk"].map((s) => (
+                  {[
+                    "Microsoft Office",
+                    "Postman",
+                    "Linux",
+                    "Scrum",
+                    "Git",
+                    "VM",
+                    "AnyDesk",
+                  ].map((s) => (
                     <SkillChip key={s} label={s} />
                   ))}
                 </Block>
@@ -346,9 +425,20 @@ const Contact = ({ icon, text }) => (
     spacing={1.9}
     alignItems="center"
     justifyContent="center"
-    sx={{ width: "100%", transition: "opacity 0.2s", "&:hover": { opacity: 0.95 } }}
+    sx={{
+      width: "100%",
+      transition: "opacity 0.2s",
+      "&:hover": { opacity: 0.95 },
+    }}
   >
-    <Box sx={{ color: "white", opacity: 0.96, display: "flex", fontSize: "1.1rem" }}>
+    <Box
+      sx={{
+        color: "white",
+        opacity: 0.96,
+        display: "flex",
+        fontSize: "1.1rem",
+      }}
+    >
       {icon}
     </Box>
     <Typography
